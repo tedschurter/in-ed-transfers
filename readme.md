@@ -7,7 +7,7 @@
 
   - The **[Outgoing transfers](https://tedschurter.github.io/in-ed-transfers/outgoing-transfers.html)** map visualizes the number of students who transfer from a school corporation (selected with the filter on the upper left-hand side) to another public school corporation, public charter school or private school. Popup charts display the number of transfers from the selected school corporation to enrolled schools/corporations and visually contrasts their available test scores. 
   
-  - The **[Incoming transfers](https://tedschurter.github.io/in-ed-transfers/outgoing-transfers.html)** map visualizes the number of students that transfer to the enrolled school/corporation (selected with the filter on the upper left-hand side) from school corporations that sent transfer students. Popup charts display the number of transfers from a school corporation to the selected enrolled school/corporation and visually contrasts their available test scores.
+  - The **[Incoming transfers](https://tedschurter.github.io/in-ed-transfers/incoming-transfers.html)** map visualizes the number of students that transfer to the enrolled school/corporation (selected with the filter on the upper left-hand side) from school corporations that sent transfer students. Popup charts display the number of transfers from a school corporation to the selected enrolled school/corporation and visually contrasts their available test scores.
 
   - The **[Net transfers](https://tedschurter.github.io/in-ed-transfers/net-transfers.html)** map visualizes the number of transfer students entering or leaving a school corporation per 100 students that have legal settlement within the corporation. A tooltip details the 2023 rate for each school corporation.
   
