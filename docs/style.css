@@ -1,0 +1,51 @@
+
+body {
+    background-color: #fcfdfd;
+  }
+
+
+/* upper legend text incoming/outgoing transfers */
+.info > div:nth-child(1) > strong:nth-child(1) > span:nth-child(3){
+    line-height: 1;
+    color: #111111;
+      display: block; /* ht https://stackoverflow.com/questions/12851792/why-cant-i-decrease-the-line-height-of-this-text */
+  }
+
+/* lower legend text incoming transfers */
+  .info > div:nth-child(1) > strong:nth-child(1) > span:nth-child(6){
+    line-height: 1;
+    color: #111111;
+      display: block;  /* ht https://stackoverflow.com/questions/12851792/why-cant-i-decrease-the-line-height-of-this-text */
+  }
+  
+/* lower legend text outgoing transfers */
+.info > div:nth-child(1) > strong:nth-child(1) > span:nth-child(10){
+    line-height: 1;
+    color: #111111;
+      display: block;  /* ht https://stackoverflow.com/questions/12851792/why-cant-i-decrease-the-line-height-of-this-text */
+  }
+
+
+/* overall spacing for bscols - space between top line and filter text */
+.col-xs-3 {
+  line-height: 3
+}
+
+/* adjust line spacing for text of individual filters */
+#filter_stlmt  {
+  line-height: 1.2
+}
+
+#nrl-filter-stlmt{
+  line-height: 1.2
+}
+
+/*  line-height of outgoing transfer basegroup dialogue box within leaflet map */
+/*div.info:nth-child(2){
+  line-height: 1
+}/*
+
+/*  line-height of incoming transfer basegroup dialogue box within leaflet map */
+/*div.info:nth-child(1){
+  line-height: 1
+}/*

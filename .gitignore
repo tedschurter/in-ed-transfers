@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+scripts/census_API_key.R
+scripts/old Rmds
+scripts/20231212_aws_key.R
+scripts/leaf_repro.R
+plots/nrl_plots
+plots/stlmt_plots
+plots/xfr_plots
+plots/xfr_to
+

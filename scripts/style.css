@@ -1,0 +1,59 @@
+
+body {
+    background-color: #fcfdfd;
+  }
+
+<style type="text/css"> 
+.main-container { 
+  max-width: 100% !important
+  margin-left: 50px; 
+  margin-right: 50px; 
+  padding-left: 50px; 
+  line-height: .25;
+   }
+ 
+   
+h1 { font-size: 2.75rem;
+     line-height:.65;
+  color: #939392;
+}
+
+h2 { font-size: 1.45rem; 
+     color: #252525;
+}
+
+h3 { font-size: 1.65rem;  
+color: #252525;
+}
+
+
+h4 { font-size: 1.8rem; 
+     color: #252525;
+}
+h5 { font-size: 2rem; }
+h6 { font-size: 2.4rem; }
+
+
+/* overall spacing for bscols - space between top line and filter text */
+.col-xs-3 {
+  line-height: 3
+}
+
+/* adjust line spacing for text of individual filters */
+#filter_stlmt  {
+  line-height: 1.2
+}
+
+#nrl-filter-stlmt{
+  line-height: 1.2
+}
+
+/* adjust line-height of outgoing transfer basegroup dialogue box */
+div.info:nth-child(2){
+  line-height: 1
+}
+
+/* adjust line-height of incoming transfer basegroup dialogue box */
+div.info:nth-child(1){
+  line-height: 1
+}
