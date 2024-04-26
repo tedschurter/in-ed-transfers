@@ -3,7 +3,7 @@ title: ""
 author: ""           
 output:
   html_document:
-    css: style.css
+    css: css/style.css
     theme: paper
 ---
 
@@ -63,7 +63,7 @@ in_dis <-
 
 ```
 
----
+
 
 ```{r}
 # url components for popups
@@ -110,8 +110,8 @@ map <-
     addPolygons(data = in_dis,
                 color = "black",
                   #"#111111",
-                fillOpacity = .1,
-                fillColor = "#ffffff",
+                fillOpacity = .85,
+                fillColor = '#f0f0f0', #"#ffffff",
                 weight = .2,
                 group = "Outgoing transfers"
     ) |>
@@ -188,7 +188,7 @@ map <-
 filter <-   
   filter_select(
     id = "filter_stlmt",
-    label = "School corporation", 
+    label = "Select school corporation", 
     sharedData = schl_data,
     multiple = F,
     group = ~stlmt_corp_name, 

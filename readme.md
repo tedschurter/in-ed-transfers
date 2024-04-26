@@ -3,7 +3,7 @@
 
 #### **About**
 
-##### This repository aggregates, cleans, visualizes and maps data related to school transfers within Indiana's primary and secondary school system. The data is used create three Leaflet maps:
+##### This repository aggregates, cleans, visualizes and maps data related to school transfers within Indiana's primary and secondary school system. The [final output](https://tedschurter.github.io/in-ed-transfers/transfer-combo.html) is an html page that allows users to explore the movement of students in and out of Indiana school corporations and private schools. It's made up of three components:
 
   - The **[Outgoing transfers](https://tedschurter.github.io/in-ed-transfers/outgoing-transfers.html)** map visualizes the number of students who transfer from a school corporation (selected with the filter on the upper left-hand side) to another public school corporation, public charter school or private school. Popup charts display the number of transfers from the selected school corporation to enrolled schools/corporations and visually contrasts their available test scores. 
   
@@ -43,5 +43,6 @@
 [outgoing-transfers.Rmd](https://github.com/tedschurter/in-ed-transfers/blob/main/docs/outgoing-transfers.Rmd)| Uses Crosstalk to create a filterable Leaflet map of outgoing transfers from every school corporation in Indiana|[outgoing-transfers.html](https://tedschurter.github.io/in-ed-transfers/outgoing-transfers) 
 [incoming-transfers.Rmd](https://github.com/tedschurter/in-ed-transfers/blob/main/docs/incoming-transfers.Rmd)| Uses Crosstalk to create a filterable Leaflet map of incoming transfers to every school/corporation in Indiana that receives transfer students from another school corporation|[incoming-transfers.html](https://tedschurter.github.io/in-ed-transfers/incoming-transfers) 
 [net-transfers.Rmd](https://github.com/tedschurter/in-ed-transfers/blob/main/docs/net-transfers.Rmd)| Uses Leaflet map to visualize the net rate of transfer students in and out of Indiana school corporations |[incoming-transfers.html](https://tedschurter.github.io/in-ed-transfers/net-transfers) 
+[transfer-combo.html](https://tedschurter.github.io/in-ed-transfers/transfer-combo.html) | Combines the three Leaflet maps into one html page with a simple menu to toggle between them.|
 
 

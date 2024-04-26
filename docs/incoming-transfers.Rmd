@@ -3,7 +3,7 @@ title: ""
 author: ""           
 output:
   html_document:
-    css: style.css
+    css: css/style.css
     theme: paper
 ---
 
@@ -141,7 +141,7 @@ schl_data_2 <- SharedData$new(data = sxfer_n)
 
 ```
 
----
+
 
 ```{r}
 # url components for popups
@@ -187,8 +187,8 @@ map <-
     # polygon layer to show corporation/district boundaries for outgoing layer
     addPolygons(data = in_dis,
                 color = "black",
-                fillOpacity = .1,
-                fillColor = "#ffffff",
+                fillOpacity = .85,
+                fillColor = '#f0f0f0', #"#ffffff",
                 weight = .2,
                 group = "Incoming transfers"
     ) |>
@@ -272,7 +272,7 @@ map <-
 filter_nrl_schl <-   
   filter_select(
     id = "nrl-filter-stlmt",
-    label = "Enrolled school", 
+    label = "Select enrolled school/corporation", 
     sharedData = schl_data_2,
     multiple = F,
     group = ~nrl_schl_name, 

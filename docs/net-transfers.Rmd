@@ -3,7 +3,7 @@ title: ""
 author: ""           
 output:
   html_document:
-    css: style.css
+    css: css/style.css
     theme: paper
 ---
 
@@ -16,10 +16,12 @@ knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = F
 library(tidyverse)
 library(leaflet)
 library(leaflegend)
+library(leaflet.extras)
 library(readxl)
 library(crosstalk)
 library(sf)
 library(htmltools)
+library(stringr)
 
 ```
 
@@ -88,10 +90,10 @@ cp <-
     join_by('stlmt_corp_id'== 'corp_id')
   ) |> 
   
-  # add label column that details the net transfer rate per 100 students with legal settlement
-  mutate(lab = HTML(paste0("<strong>",stlmt_corp_name, "<br> Net transfer rate:</strong>", xfr_rate)),
-         xfr_rate_2 = if_else(xfr_rate > 100, 100, xfr_rate)
-  ) |> 
+  mutate(
+    # because of outliers - Union School Corporation mainly, keep max value of xfr_rate_2 - used to determine choropleth levels - at 100 to keep values manageable and distinct     
+    xfr_rate_2 = if_else(xfr_rate > 100, 100, xfr_rate)
+  ) |>
   # remove unneeded columns
   select(-c(STATEFP, UNSDLEA, AFFGEOID, GEOID, STUSPS, STATE_NAME, LSAD, ALAND, AWATER))
 
@@ -103,28 +105,33 @@ cp <- st_as_sf(cp) |>
   # remove duplicate rows
   distinct(stlmt_corp_id, .keep_all = T) |> 
   # add caption for over label that details net transfer rate from school of legal settlement for net transfers map layer
+  
+  
+# 
   mutate(
     lab2 =
       case_when(
         # if rate is more than 1 student
-        xfr_rate >= 2 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> gained <br>", format(abs(xfr_rate), big.mark = ","), " students for every 100 within its boundaries in 2023.")),
+        xfr_rate >= 2 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> gained ", format(abs(xfr_rate), big.mark = ","), " students for every 100 within its boundaries in 2023.")),
         # if rate is 0
         xfr_rate == 0 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name,
                                     if_else(
-                                      str_sub(stlmt_corp_name, nchar(stlmt_corp_name)) == "s", "'", "'s"), "</span> <br>incoming and outgoing transfers were equal in 2023.")),
+                                      str_sub(stlmt_corp_name, nchar(stlmt_corp_name)) == "s", "'", "'s"), "</span> incoming and outgoing transfers were equal in 2023.")),
         # if rate is less than or equal to 2 students
-        xfr_rate <= -2 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> lost <br>", format(abs(xfr_rate), big.mark = ","), " students for every 100 within its boundaries in 2023.")),
+        xfr_rate <= -2 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> lost ", format(abs(xfr_rate), big.mark = ","), " students for every 100 within its boundaries in 2023.")),
         # if rate is - 1
-        xfr_rate == -1 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> lost <br>", format(abs(xfr_rate), big.mark = ","), " student for every 100 within its boundaries in 2023.")),
+        xfr_rate == -1 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> lost ", format(abs(xfr_rate), big.mark = ","), " student for every 100 within its boundaries in 2023.")),
         # if rate is + one student
-        xfr_rate == 1 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> gained <br>", format(abs(xfr_rate), big.mark = ","), " student for every 100 within its boundaries in 2023.")
+        xfr_rate == 1 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> gained ", format(abs(xfr_rate), big.mark = ","), " student for every 100 within its boundaries in 2023.")
         )
-      ))
+      ),
+    # need to add line breaks so label isn't obscured by legend; have to calculate str_wrap length by first remove span style tag for school corp name, then add it back after breaks are calculated; replace \n with html compatible <br>
+    lab3 = HTML(str_replace_all(paste("<span style = 'font-weight:bold'>", str_wrap(str_sub(lab2, start = 34L, end = nchar(lab2)), 30, whitespace_only = T)), "\n", "<br>")))
 
 
 ```
 
----
+
 
 
 ```{r, legend}
@@ -156,7 +163,7 @@ leaflet(
   height = 500
 )|>
   
-  setView(lng = -86.95, 
+  setView(lng = -86.95, #-87.5, #-86.95, 
           lat = 39.8, 6) |>
   
   addProviderTiles(providers$CartoDB.Positron, ) |>
@@ -167,20 +174,24 @@ leaflet(
               fillColor = ~mypal(cp$xfr_rate_2),
               fillOpacity = 1,
               weight = .2,
-              label = ~ lab2,
+              label = ~ lab3,
               group = "Net transfers",
   ) |> 
   
-  # choropleth legend
+  
+  # reset button
+    addResetMapButton() |>
+  
+  # choropleth legend 
     addLegendNumeric(
      # if using pipe to add this to leaflet map, leaving map causes issues; if map is assigned leaflet 'map' than no issue.
       mypal,
       values = cp$xfr_rate_2,
-      title = 
-        HTML("<span style='font-weight:600; line-height: normal'>Net transfers</span><br><span style='font-size: 9pt; font-weight:100; line-height: normal'><br>Per 100 students within legal settlement</span>"),
+      title =
+        HTML("<span style='font-weight:600; line-height: normal'>Net transfers</span><br><span style='font-size: 9pt; font-weight:100; line-height: normal'><br>Per 100 students within legal<br> settlement<br></span>"),
       shape = NULL,
       orientation = "horizontal",
-      width = 215, # 200
+      width = 180,
       height = 15,
       bins = 7,
       tickLength = 2,
@@ -188,7 +199,7 @@ leaflet(
       fillOpacity = 1,
       group = "Net transfers",
       className = "info legend Nettransfers",
-      labels = c("- 66",  "More than 100"),
+      labels = c("- 66", "More than 100"),
       labelStyle = 'font-size: 10px',
       data = leaflet::getMapData(map),
       position = "topleft"
