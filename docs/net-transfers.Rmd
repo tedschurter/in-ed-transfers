@@ -16,11 +16,13 @@ knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = F
 library(tidyverse)
 library(leaflet)
 library(leaflegend)
+library(leafpop)
 library(leaflet.extras)
 library(readxl)
 library(crosstalk)
 library(sf)
 library(htmltools)
+library(htmlwidgets)
 library(stringr)
 
 ```
@@ -155,6 +157,12 @@ mypal <- colorNumeric(palette = rampcols,
 
 
 ```{r}
+
+# url components for popups
+base_url <- "https://tedschurter-data.s3.us-east-2.amazonaws.com/2024-in-ed-net-"
+end_url <- ".png"
+
+
 map <- 
 leaflet(
   options = leafletOptions(
@@ -176,6 +184,11 @@ leaflet(
               weight = .2,
               label = ~ lab3,
               group = "Net transfers",
+              popup = popupImage(paste0(base_url, cp$stlmt_corp_id, end_url),
+                         width = 400, height = 400), # popup will not autopan on first click if height not explicitly set
+      popupOptions =
+        popupOptions(keepInView = TRUE,
+                     autoPan = TRUE),
   ) |> 
   
   
@@ -188,7 +201,7 @@ leaflet(
       mypal,
       values = cp$xfr_rate_2,
       title =
-        HTML("<span style='font-weight:600; line-height: normal'>Net transfers</span><br><span style='font-size: 9pt; font-weight:100; line-height: normal'><br>Per 100 students within legal<br> settlement<br></span>"),
+        HTML("<span style='font-weight:600; line-height: normal'>Net transfers</span><br><span style='font-size: 8pt; font-weight:100; line-height: normal'>Click on school corporation for details.<br><br>Transfers per 100 students living<br>within legal settlement.<br></span>"),
       shape = NULL,
       orientation = "horizontal",
       width = 180,
@@ -203,7 +216,27 @@ leaflet(
       labelStyle = 'font-size: 10px',
       data = leaflet::getMapData(map),
       position = "topleft"
-    )
+    )|>
+    
+    # javascript function to return map to default bounds if circle marker popup moves map beyond view
+    onRender("function(el, x) {
+                          var map = this;
+                          map.eachLayer(function(layer) {
+  
+                            if(layer instanceof L.Polygon){
+                              layer.on('click', function(e){
+  
+                                layer.getPopup().on('remove', function () {
+  
+                                  map.setView(map._initialCenter, map._initialZoom);
+                                });
+                              })
+                              .addTo(map)
+                            }
+                          });
+                        }
+    ")  
+  
     
 ```
 
