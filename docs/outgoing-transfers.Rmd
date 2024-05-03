@@ -165,35 +165,21 @@ map <-
     onRender("function(el, x) {
                           var map = this;
                           map.eachLayer(function(layer) {
-             map.on('popupclose', function(){
-             map.setView(map._initialCenter, map._initialZoom);
+  
+                            if(layer instanceof L.CircleMarker){
+                              layer.on('click', function(e){
+  
+                                layer.getPopup().on('remove', function () {
+  
+                                  map.setView(map._initialCenter, map._initialZoom);
                                 });
-             });
-             }"
-             )
+                              })
+                              .addTo(map)
+                            }
+                          });
+                        }
+    ")
       
-      
-      
-      
-      
-    #   
-    #   "function(el, x) {
-    #                       var map = this;
-    #                       map.eachLayer(function(layer) {
-    # 
-    #                         if(layer instanceof L.CircleMarker){
-    #                           layer.on('click', function(e){
-    # 
-    # layer.getPopup().on('remove', function () {
-    # 
-    #   map.setView(map._initialCenter, map._initialZoom);
-    # });
-    #                           })
-    #                           .addTo(map)
-    #                         }
-    #                       });
-    #                     }
-    # ")
   
  
 ```
