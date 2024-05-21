@@ -67,19 +67,19 @@ cp <- cp |>
     lab2 =
       case_when(
         # if rate is more than 1 student
-        xfr_rate >= 2 ~ paste0("**", stlmt_corp_name, "** gained <span style = 'color: #00008b' >", format(abs(xfr_rate), big.mark = ","), " transfer students </span>for every 100 living within its boundaries in 2023."),
+        xfr_rate >= 2 ~ paste0("**", stlmt_corp_name, "** gained <span style = 'color: ", inc, "' >", format(abs(xfr_rate), big.mark = ","), " **transfer students** </span>for every 100 living within its boundaries in 2023."),
         # if rate is 0
         xfr_rate == 0 ~ paste0("**", stlmt_corp_name,
-                                    if_else(
-                                      str_sub(stlmt_corp_name, nchar(stlmt_corp_name)) == "s", "'", "'s"), "** net transfer rate was zero for every 100 students within its boundaries in 2023."),
+                               if_else(
+                                 str_sub(stlmt_corp_name, nchar(stlmt_corp_name)) == "s", "'", "'s"), "** net <span style = 'color: ", inc, "' >transfer rate </span>was zero for every 100 students within its boundaries in 2023."),
         # if rate is less than or equal to 2 students
-        xfr_rate <= -2 ~ paste0("**", stlmt_corp_name, "** lost ", format(abs(xfr_rate), big.mark = ","), " transfer students for every 100 living within its boundaries in 2023."),
+        xfr_rate <= -2 ~ paste0("**", stlmt_corp_name, "** lost ", format(abs(xfr_rate), big.mark = ","), " <span style = 'color: ", inc, "' >**transfer students** </span>for every 100 living within its boundaries in 2023."),
         # if rate is - 1
-        xfr_rate == -1 ~ paste0("**", stlmt_corp_name, "** lost ", format(abs(xfr_rate), big.mark = ","), " transfer student for every 100 living within its boundaries in 2023."),
+        xfr_rate == -1 ~ paste0("**", stlmt_corp_name, "** lost ", format(abs(xfr_rate), big.mark = ","), " <span style = 'color: ", inc, "' >**transfer student** </span>for every 100 living within its boundaries in 2023."),
         # if rate is + one student
-        xfr_rate == 1 ~ paste0("**", stlmt_corp_name, "** gained <span style = 'color: #00008b' >", format(abs(xfr_rate), big.mark = ","), " transfer student </span>for every 100 living within its boundaries in 2023.")
-        )
+        xfr_rate == 1 ~ paste0("**", stlmt_corp_name, "** gained <span style = 'color: ", inc, "' >", format(abs(xfr_rate), big.mark = ","), " **transfer student** </span>for every 100 living within its boundaries in 2023.")
       )
+  )
 
 # clean up
 rm(nc, sxfer)
@@ -114,7 +114,7 @@ t_theme <- function(base_size = 10){
       panel.background = element_rect(fill = bg_c, color = NA),
       plot.title = element_textbox(
         family = "serif", 
-        size = rel(x = 1.3),
+        size = rel(x = 1.1),
         width = unit(1, "npc"),
         padding = margin(.05, .25, .25, .25),   #(4, 4, 1, 4),
         margin  = margin(.25, .25, 5, .25),   #(8, 0, 0, 0),
@@ -140,16 +140,16 @@ t_theme <- function(base_size = 10){
 
 # set up png images ####
 # path to folder
-sPath <- "png/"
+sPath <- "icons/"
 
 # girl icon, full 
 gt <- paste0(sPath, 'girl_plain.png')
 # girl icon - transfer out
-gcu <- paste0(sPath, 'girl_cu.png')
+gcu <- paste0(sPath, 'girl_cu_2.png')
 # boy icon full
 bt <- paste0(sPath, 'boy_plain.png')
 # boy icon transfer out
-bcu <- paste0(sPath, 'boy_cu.png')
+bcu <- paste0(sPath, 'boy_cu_2.png')
 
 # vector of students
 student <- c(gt, bt)
@@ -157,6 +157,10 @@ student <- c(gt, bt)
 # vector of students transfer out
 out_st <- c(gcu, bcu)
 
+
+# set icon color to match legal settlement color used within story
+lgst <-  '#d0ccbe' 
+inc  <-  '#525252'
 # loop to create plots
 
 # vector of settlement corp id but exclude Union School Corporation - an extreme outlier that needs to be handled differently
@@ -174,22 +178,25 @@ for (i in 1:length(sc)){
     
     df$x <- rep(seq(1, 10, 1), 10)
     df$y <- rep(1:10, each = 10)
-    df$color <- '#2a9011'
+    
+    # assign color to match legal settlement color from accompanying web page
+    df$color <- lgst
+    
     # randomly select male or female student icon
     df$image <- sample(student, size = 100, T)
     
-    # assign net transfer rate o z
+    # assign net transfer rate to z
     z <- cp$xfr_rate[cp$stlmt_corp_id == sc[i]]
     
-    # randomly assign z number of icon rows to change to outline shape to represent outgoing transfers 
+    # randomly assign z number of icon rows to switch to outline shape to represent outgoing transfers 
     zz <- sample(100, abs(z), F) 
     # if transfers should be grouped together use simple sequence instead
     # zz <- seq(1, z, by = 1)  
     
-    # replace the full figures with outline figure and light color to represent their absence
+    # replace the full figures with outline figure to represent their absence
     for (a in (zz)){ # if transfers are to be grouped together, use 1:length(zz)
       df[a,4] <- sample(out_st, 1)
-      df[a,3] <- "#d9d8d8"
+      df[a,3] <- inc
     }
     
     ggplot()+
@@ -202,8 +209,9 @@ for (i in 1:length(sc)){
                  #color = NA
       ) +
       scale_color_manual(values = c(
-        "#2a9011" =  "#2a9011",
-        '#d9d8d8' = '#d9d8d8'
+        "#d0ccbe" = "#d0ccbe",
+        '#d9d8d8' = '#d9d8d8',
+        '#525252' = '#525252'
       )
       )+
       labs(
@@ -226,7 +234,7 @@ for (i in 1:length(sc)){
         panel.background = element_rect(fill = bg_c, color = NA),
         plot.title = element_textbox(
           family = "serif", 
-          size = rel(x = 1.3),
+          size = rel(x = 1.1),
           width = unit(1, "npc"),
           padding = margin(.05, .25, .25, .25),   #(4, 4, 1, 4),
           margin  = margin(.25, .25, 5, .25),   #(8, 0, 0, 0),
@@ -250,7 +258,7 @@ for (i in 1:length(sc)){
       )
     
     
-    ggsave(paste0("plots/net/net-", sc[i], ".png"), plot = last_plot(),
+    ggsave(paste0("plots/net2/net-", sc[i], ".png"), plot = last_plot(),
            width = 4, height = 4, units = "in")
     
     rm(df)
@@ -264,7 +272,10 @@ for (i in 1:length(sc)){
     
     df$x <- rep(seq(1, 10, 1), 10)
     df$y <- rep(1:10, each = 10)
-    df$color <- '#2a9011'
+    
+    # set color to match legal settlement color on accompanying web page
+    df$color <- lgst
+    
     # randomly select male or female student icon
     df$image <- sample(student, size = 100, T)
     
@@ -275,12 +286,14 @@ for (i in 1:length(sc)){
                  aes(x, y,
                      image = image,
                      color = color),
-                 size = .05,
-                 #color = NA
+                 size = .044,
       ) +
+      
       scale_color_manual(values = c(
-        "#2a9011" =  "#2a9011",
-        '#d9d8d8' = '#d9d8d8')
+        "#d0ccbe" =  "#d0ccbe",
+        '#d9d8d8' = '#d9d8d8',
+        '#525252' = '#525252'
+      )
       )+
       labs(
         title = cp$lab2[cp$stlmt_corp_id == sc[i]],
@@ -302,7 +315,7 @@ for (i in 1:length(sc)){
         panel.background = element_rect(fill = bg_c, color = NA),
         plot.title = element_textbox(
           family = "serif", 
-          size = rel(x = 1.3),
+          size = rel(x = 1.1),
           width = unit(1, "npc"),
           padding = margin(.05, .25, .25, .25),   #(4, 4, 1, 4),
           margin  = margin(.25, .25, 5, .25),   #(8, 0, 0, 0),
@@ -326,7 +339,7 @@ for (i in 1:length(sc)){
       )
     
     
-    ggsave(paste0("plots/net/net-", sc[i], ".png"), plot = last_plot(),
+    ggsave(paste0("plots/net2/net-", sc[i], ".png"), plot = last_plot(),
            width = 4, height = 4, units = "in")
     
     rm(df)
@@ -335,7 +348,7 @@ for (i in 1:length(sc)){
     
     # to accommodate transfers added to base of 100, increase dataframe size to 300 and then remove extra (maximum outgoing transfers excluding outlier is 170) after z is determined 
     
-# build dataframe  
+    # build dataframe  
     df <- data.frame(matrix(nrow = 1,
                             ncol = 2))
     
@@ -356,7 +369,9 @@ for (i in 1:length(sc)){
                          !is.na(y))
     }
     
-    df$color <- '#2a9011'
+    # assign color to match legal settlement color on accompanying web page
+    df$color <- lgst
+    
     # randomly assign male or female student icon
     df$image <- sample(student, size = 300, T)
     
@@ -366,72 +381,72 @@ for (i in 1:length(sc)){
     # need to reduce 200 rows to 100 + 100-z
     df <- df[1:(200-(100-z)),]
     
-    df[101:(100+z),3] <- "darkblue" 
+    df[101:(100+z),3] <- inc
     
-# plot
-ggplot()+
-  # students with legal settlement
-  geom_image(data = df,
-             aes(x, y,
-                 image = image,
-                 color = color),
-             # reduce size of icon if number of incoming transfers is especially high
-             size = if_else(z > 100, .03, .05)
-  ) +
-  scale_color_manual(values = c(
-    '#2a9011' =  '#2a9011',
-    "darkblue"  = "darkblue" 
-  )
-  )+
-  xlim(c(1, 20))+
-  ylim(c(1, ceiling(((100+z)/20))) # total number of students (100 base + transfers) / length of row(20).
+    # plot
+    ggplot()+
+      # students with legal settlement
+      geom_image(data = df,
+                 aes(x, y,
+                     image = image,
+                     color = color),
+                 # reduce size of icon if number of incoming transfers is especially high
+                 size = if_else(z > 100, .03, .044)
+      ) +
+      scale_color_manual(values = c(
+        '#d0ccbe' = '#d0ccbe',
+        '#525252' = '#525252'  
+      )
+      )+
+      xlim(c(1, 20))+
+      ylim(c(1, ceiling(((100+z)/20))) # total number of students (100 base + transfers) / length of row(20).
       )+  
-  
-  labs(
-    title = cp$lab2[cp$stlmt_corp_id == sc[i]],
-    subtitle = "<br>",
-    caption = "<br>**Data**:   Indiana Department of Education<br>(c)   tedschurter.com"
-  )+
-  # unknown issue causing sporadic headline spacing issue with t_theme set theme manually
-  theme_classic() +
-  theme(
-    legend.position = 'none',
-    axis.text.x = element_blank(),
-    axis.text.y = element_blank(),
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank(),
-    axis.line = element_blank(),
-    axis.ticks = element_blank(),
-    plot.title.position = "plot",
-    plot.margin = margin(.1,.1,.1,.1, "in"), # border around entire chart
-    plot.background = element_rect(fill  = bg_c, color = NA),
-    panel.background = element_rect(fill = bg_c, color = NA),
-    plot.title = element_textbox(
-      family = "serif", 
-      size = rel(x = 1.3),
-      width = unit(1, "npc"),
-      padding = margin(.05, .25, .25, .25),   #(4, 4, 1, 4),
-      margin  = margin(.25, .25, 5, .25),   #(8, 0, 0, 0),
-      lineheight = 1.1
-    ),
-    plot.subtitle = element_textbox(
-      family = "sans", 
-      size = rel(x = .95),
-      width = unit(1, "npc"),
-      padding = margin(.15, .25, .25, .25),  
-      margin  = margin(1.75, .45, 6.25, .25),
-      lineheight = 1
-    ),
-    plot.caption = element_markdown(
-      family = "sans",
-      color = "#808080",
-      margin = margin(0, 0, .1, 0), 
-      hjust = 1, 
-      halign = 1,
-      size = rel(x = .75))
-  )
+      
+      labs(
+        title = cp$lab2[cp$stlmt_corp_id == sc[i]],
+        subtitle = "<br>",
+        caption = "<br>**Data**:   Indiana Department of Education<br>(c)   tedschurter.com"
+      )+
+      # unknown issue causing sporadic headline spacing issue with t_theme set theme manually
+      theme_classic() +
+      theme(
+        legend.position = 'none',
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        plot.title.position = "plot",
+        plot.margin = margin(.1,.1,.1,.1, "in"), # border around entire chart
+        plot.background = element_rect(fill  = bg_c, color = NA),
+        panel.background = element_rect(fill = bg_c, color = NA),
+        plot.title = element_textbox(
+          family = "serif", 
+          size = rel(x = 1.1),
+          width = unit(1, "npc"),
+          padding = margin(.05, .25, .25, .25),   #(4, 4, 1, 4),
+          margin  = margin(.25, .25, 5, .25),   #(8, 0, 0, 0),
+          lineheight = 1.1
+        ),
+        plot.subtitle = element_textbox(
+          family = "sans", 
+          size = rel(x = .95),
+          width = unit(1, "npc"),
+          padding = margin(.15, .25, .25, .25),  
+          margin  = margin(1.75, .45, 6.25, .25),
+          lineheight = 1
+        ),
+        plot.caption = element_markdown(
+          family = "sans",
+          color = "#808080",
+          margin = margin(0, 0, .1, 0), 
+          hjust = 1, 
+          halign = 1,
+          size = rel(x = .75))
+      )
     
-    ggsave(paste0("plots/net/net-", sc[i], ".png"), plot = last_plot(),
+    ggsave(paste0("plots/net2/net-", sc[i], ".png"), plot = last_plot(),
            width = 4, height = 4, units = "in")
     
     rm(df)
@@ -469,13 +484,13 @@ z <- cp$xfr_rate[cp$stlmt_corp_name == name]
 
 
 # assign color 
-df$color <- '#2a9011'
+df$color <- lgst
 
 # reduce number of rows to 100 + 100-z
 df <- df[1:(200-(100-z)),]
 
 # assign color blue to outgoing transfer rows
-df[101:(100+z),3] <- "#00008b" 
+df[101:(100+z),3] <- inc
 
 # plot
 
@@ -486,8 +501,8 @@ ggplot(df)+
     show.legend = F
   )+
   scale_color_manual(values = c(
-    "#2a9011" =  "#2a9011",
-    '#00008b' = '#00008b'
+    '#d0ccbe' = '#d0ccbe',
+    '#525252' = '#525252'  
   )
   )+
   labs(
@@ -504,7 +519,7 @@ ggplot(df)+
     axis.title.y = element_blank()
   )
 
-ggsave(paste0("plots/net/net-", cp$stlmt_corp_id[cp$stlmt_corp_name == name], ".png"), plot = last_plot(),
+ggsave(paste0("plots/net2/net-", cp$stlmt_corp_id[cp$stlmt_corp_name == name], ".png"), plot = last_plot(),
        width = 4, height = 4, units = "in")
 
 
@@ -539,12 +554,12 @@ for(i in 1:length(plots)){
 
 
 
-# loop to delete all above objects if needed
-
+# # loop to delete all above objects if needed
+# 
 # for(i in 1:length(plots)){
 #   delete_object(
 #     object = paste0("2024-in-ed-",plots[i]),
 #     bucket = bucket,
 #     quiet = TRUE)
 # }
-
+  
