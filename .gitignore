@@ -2,14 +2,19 @@
 .Rhistory
 .RData
 .Ruserdata
+docs/old-pages/
+docs/session_log
+docs/images/old-images/
+plots/nrl_plots/
+plots/stlmt_plots/
+plots/net/
+plots/xfr_to/
+raw_data/old_raw_data/
+README.html
 scripts/census_API_key.R
-scripts/old Rmds
+scripts/old-scripts
 scripts/20231212_aws_key.R
 scripts/leaf_repro.R
-plots/nrl_plots
-plots/stlmt_plots
-plots/xfr_plots
-plots/xfr_to
-plots/net
-readme.html
+
+
 

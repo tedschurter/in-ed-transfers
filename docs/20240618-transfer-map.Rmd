@@ -1,0 +1,337 @@
+---
+title: ""
+author: ""           
+output:
+  html_document:
+    css: css/style.css
+    theme: paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = F
+)
+```
+
+```{r libraries, warnings = F}
+library(tidyverse)
+library(leaflet)
+library(leaflegend)
+library(leafpop)
+library(leaflet.extras)
+library(readxl)
+library(crosstalk)
+library(sf)
+library(htmltools)
+library(htmlwidgets)
+library(stringr)
+library(tigris)
+
+```
+
+```{r, results='hide'}
+# import data
+
+
+# spatial geometry
+
+# import school corporation boundaries 
+in_dis <-
+  st_read("clean_data/20240607_corporation_bounds.geojson")
+
+# import nearby state boundaries for map
+b_states <- states(cb = T, year = 2023) |> 
+  filter(NAME == "Illinois" | NAME == "Kentucky" | NAME == "Ohio" | NAME == "Michigan" | NAME == "Missouri" | NAME == "Iowa" | NAME == "West Virginia")
+
+# Indiana state boundary
+in_bd <- states(cb = T, year = 2023) |> 
+  filter(NAME == "Indiana") 
+
+
+# set colors for school type
+pub <-  '#d95f02'     # public schools
+chr <-  '#1b9e77'     # charter schools
+pr <-   '#7570b3'     # private (Choice Scholarship) schools
+
+sxfer <- read_csv("clean_data/20240613_transfer_pts_18_24.csv") |> 
+  
+  rename('Public' = 'par_ch', 'Charter' = 'p_xfer_chrtr', 'Choice Scholarship' = 'pr_ch_sclrs', "Other" = 'p_xfer_oth') |> 
+  # remove unneeded columns
+  select(-c(tot_xfr)) |> 
+  
+  mutate(
+    # replace NA's with 0's
+    across(
+      c(Public, Other, Charter, 'Choice Scholarship'),
+      ~replace_na(.,0))
+  ) |>
+  
+  # pivot to long data
+  pivot_longer(cols = c(Public, Other, Charter, 'Choice Scholarship'), names_to = 'typ', values_to = 'tot_xfr') |>
+  
+  group_by(yr, nrl_schl_id, stlmt_corp_id, typ) |>
+  mutate(
+    # calculate total by yr, nrl and stlmt id
+    tot_xfr = sum(tot_xfr),
+    
+    # assign fill color based on type 
+    fillcolor = case_when(
+      typ == 'Public' ~              pub, 
+      typ == 'Charter' ~             chr, 
+      typ == 'Choice Scholarship'  ~ pr
+    ),
+    
+    # assign unique name to identify combiation of stlmt_corp and nrl_schl
+    fname = paste0(stlmt_corp_id, "-", nrl_schl_id),
+    
+    # convert 'other' transfers to 'public'; though Indiana classifies Charter schools as public also, in this case we're making a distinction between parent choice and other public and charter public.
+    typ = case_match(typ,
+                     "Other" ~ 'Public',
+                     .default = typ),
+    # add columns for stroke and stroke color for circle marker denoting school corp
+    # stroke size
+    weight = 0,
+    # stroke color 
+    color = NA) |>
+  
+  group_by(stlmt_corp_id, nrl_schl_id, yr, typ) |> 
+  
+  # with 'Other' and 'public' both now labeled 'public', combine their transfer totals
+  mutate(tot_xfr = sum(tot_xfr)) |> 
+  
+  # remove rows with na fill (rows with formerly 'other' transfer types) to avoid duplicating counts
+  filter(!is.na(fillcolor)) |> 
+  
+  group_by(stlmt_corp_id, yr) |> 
+  
+  mutate(
+    # calculate percent of total transfers to school corporation given row represents
+    pct_of_xfr = round(100*(tot_xfr/sum(tot_xfr)),2),
+    # convert to log for better circleMarkers in leaflet
+    log = log(pct_of_xfr)) |> 
+  
+  ungroup() |> 
+  
+  filter(
+    # remove rows with zero transfer totals
+    stlmt_corp_id != nrl_schl_id &
+      tot_xfr > 0 &
+      yr == 2024) 
+
+
+
+
+cp <- read_xlsx("raw_data/fall-2023-2024-public-corporation-transfer-report.xlsx",
+                sheet = 3,
+                skip = 1) 
+
+# new column names  
+nc <- 
+  c(
+    "stlmt_corp_id",
+    "stlmt_corp_name",
+    "leg_stl_tot",
+    "res_nrl_tot",
+    "pub_incoming",
+    "pub_outgoing",
+    "net_pub",
+    "non_pub_outgoing",
+    "net_xfr"
+  )
+
+colnames(cp) <- nc
+
+cp <- cp |> 
+  mutate(xfr_rate = round((net_xfr/leg_stl_tot)*100)) 
+
+# update column names
+nc <- colnames(cp) 
+
+# update cp with corrected school corporation names (done already in sxfer)
+cp <- 
+  left_join(
+    
+    sxfer |> select(stlmt_corp_id, stlmt_corp_name) |> 
+      # need to remove West Clark Community Schools - present in sxfer dataframe but was replaced by Borden Henryville in Jul 2020
+      filter(stlmt_corp_id != "0940") |> 
+      distinct(),
+    
+    cp, 
+    
+    by = 'stlmt_corp_id') |> 
+  
+  # remove extra stlmt_corp_name column  
+  select(-stlmt_corp_name.y)
+
+# update column names 
+colnames(cp) <- nc
+
+# join with geometry for school corporation boundaries
+cp <- 
+  left_join(
+    cp,
+    in_dis, 
+    join_by('stlmt_corp_id'== 'corp_id')
+  ) |> 
+  
+  mutate(
+    # because of outliers - Union School Corporation mainly, keep max value of xfr_rate_2 - used to determine choropleth levels - at 100 to keep values manageable and distinct     
+    xfr_rate_2 = if_else(xfr_rate > 100, 100, xfr_rate)
+  ) 
+
+# convert to sf dataframe
+cp <- st_as_sf(cp) |> 
+  group_by(corp_name) |>
+  
+  # remove duplicate rows
+  distinct(stlmt_corp_id, .keep_all = T) |> 
+  
+  # add caption for over label that details net transfer rate from school of legal settlement for net transfers map layer
+  mutate(
+    lab2 =
+      case_when(
+        # if rate is more than 1 student
+        xfr_rate >= 2 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> gained ", format(abs(xfr_rate), big.mark = ","), " students for every 100 within its boundaries in 2023.")),
+        # if rate is 0
+        xfr_rate == 0 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name,
+                                    if_else(
+                                      str_sub(stlmt_corp_name, nchar(stlmt_corp_name)) == "s", "'", "'s"), "</span> incoming and outgoing transfers were equal in 2024.")),
+        # if rate is less than or equal to 2 students
+        xfr_rate <= -2 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> lost ", format(abs(xfr_rate), big.mark = ","), " students for every 100 within its boundaries in 2024.")),
+        # if rate is - 1
+        xfr_rate == -1 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> lost ", format(abs(xfr_rate), big.mark = ","), " student for every 100 within its boundaries in 2024.")),
+        # if rate is + one student
+        xfr_rate == 1 ~ HTML(paste0("<span style = 'font-weight:bold'> ", stlmt_corp_name, "</span> gained ", format(abs(xfr_rate), big.mark = ","), " student for every 100 within its boundaries in 2024.")
+        )
+      ),
+    # need to add line breaks so label isn't obscured by legend; have to calculate str_wrap length by first remove span style tag for school corp name, then add it back after breaks are calculated; replace \n with html compatible <br>
+    lab3 = HTML(str_replace_all(paste("<span style = 'font-weight:bold'>", str_wrap(str_sub(lab2, start = 34L, end = nchar(lab2)), 30, whitespace_only = T)), "\n", "<br>")))
+
+
+```
+
+
+
+
+```{r, legend}
+# set diverging color palette for choropleth map with red for negative transfer rates and blue for positive transfer rates 
+# ht stackoverflow.com/questions/60321495/merging-palettes-with-colorramppalette-and-plotting-with-leaflet
+
+# set negative palette from red to white with 100 steps
+rc1 <- colorRampPalette(colors = c("red", "white"), space = "Lab")(100)
+
+## set positive palette from white to blue with 100 steps
+rc2 <- colorRampPalette(colors = c("white", "blue"), space = "Lab")(100)
+
+## Combine the two color palettes
+rampcols <- c(rc1, rc2)
+
+mypal <- colorNumeric(palette = rampcols, 
+                      # domain = tst$xfr_rate_2
+                      domain = -100:100
+)
+```
+
+
+```{r}
+
+# url components for popups
+base_url <- "https://tedschurter-data.s3.us-east-2.amazonaws.com/2024-in-ed-net-"
+end_url <- ".png"
+
+
+map <- 
+leaflet(
+  options = leafletOptions(
+    minZoom = 6.8,
+    maxZoom = 6.8),
+  height = 500
+)|>
+  
+  setView(lng = -86.95, #-87.5, #-86.95, 
+          lat = 39.8, 6) |>
+  
+  addProviderTiles(providers$CartoDB.Positron, ) |>
+  
+      # add adjacent and nearby states in order to reduce transparency of labels, etc
+  addPolygons(data = b_states,
+              color = "black",
+              fillOpacity = .8,
+              fillColor = '#fafafa', 
+              weight = .2,
+              group = "Incoming transfers"
+  ) |> 
+  
+  # add polygon for Indiana border
+  addPolygons(data = in_bd,
+                color = "black",
+                fillOpacity = 0,
+                fillColor = '#fafafa', 
+                weight = .5,
+                group = "Incoming transfers"
+  )  |> 
+  
+  # in order for popups to work, layer with associated pop-ups - choropleth layer - needs to be last
+  addPolygons(data = cp,
+              #fillColor = "#ededec",
+              color = "#111111",
+              fillColor = ~mypal(cp$xfr_rate_2),
+              fillOpacity = 1,
+              weight = .2,
+              label = ~ stlmt_corp_name,
+              group = "Net transfers",
+              popup = popupImage(paste0(base_url, cp$stlmt_corp_id, end_url),
+                         width = 400, height = 400), # popup will not autopan on first click if height not explicitly set
+      popupOptions =
+        popupOptions(keepInView = TRUE,
+                     autoPan = TRUE),
+  ) |> 
+  
+  
+  # reset button
+    addResetMapButton() |>
+  
+  # choropleth legend 
+    addLegendNumeric(
+     # if using pipe to add this to leaflet map, leaving map causes issues; if map is assigned leaflet 'map' than no issue.
+      mypal,
+      values = cp$xfr_rate_2,
+      title =
+        HTML("<span style='font-weight:600; line-height: normal'>Net transfers</span><br><span style='font-size: 8pt; font-weight:100; line-height: normal'>Click school corporation for transfer<br> details.<br><br>Transfers per 100 students with<br>legal settlement.<br></span>"),
+      shape = NULL,
+      orientation = "horizontal",
+      width = 180,
+      height = 15,
+      bins = 7,
+      tickLength = 2,
+      decreasing = FALSE,
+      fillOpacity = 1,
+      group = "Net transfers",
+      className = "info legend Nettransfers",
+      labels = c("- 66", "More than 100"),
+      labelStyle = 'font-size: 10px',
+      data = leaflet::getMapData(map),
+      position = "topleft"
+    )|>
+    
+    # javascript function to return map to default bounds if circle marker popup moves map beyond view
+    onRender("function(el, x) {
+                          var map = this;
+                          map.eachLayer(function(layer) {
+  
+                            if(layer instanceof L.Polygon){
+                              layer.on('click', function(e){
+  
+                                layer.getPopup().on('remove', function () {
+  
+                                  map.setView(map._initialCenter, map._initialZoom);
+                                });
+                              })
+                              .addTo(map)
+                            }
+                          });
+                        }
+    ")  
+  
+map
+```
+

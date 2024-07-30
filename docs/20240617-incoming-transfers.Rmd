@@ -1,0 +1,415 @@
+---
+title: ""
+author: ""           
+output:
+  html_document:
+    css: css/style.css
+    theme: paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = F
+)
+```
+
+```{r libraries, warnings = F}
+library(tidyverse)
+library(leaflet)
+library(leafpop)
+library(leaflet.extras)
+library(crosstalk)
+library(sf)
+library(htmlwidgets)
+library(htmltools)
+library(leaflegend)
+library(tigris)
+
+```
+
+```{r, results='hide'}
+# import data
+
+# import school corporation boundaries 
+in_dis <-
+  st_read("clean_data/20240607_corporation_bounds.geojson")
+
+# import nearby state boundaries for map
+b_states <- states(cb = T, year = 2023) |> 
+  filter(NAME == "Illinois" | NAME == "Kentucky" | NAME == "Ohio" | NAME == "Michigan" | NAME == "Missouri" | NAME == "Iowa" | NAME == "West Virginia")
+
+# Indiana state boundary
+in_bd <- states(cb = T, year = 2023) |> 
+  filter(NAME == "Indiana") 
+
+
+# assign colors for type
+pub <-  '#d95f02'     # public schools
+chr <-  '#1b9e77'     # charter schools
+pr <-   '#7570b3'     # private (Choice Scholarship) schools
+
+sxfer <- read_csv("clean_data/20240613_transfer_pts_18_24.csv") |> 
+  
+  
+  
+  rename('Public' = 'par_ch', 'Charter' = 'p_xfer_chrtr', 'Choice Scholarship' = 'pr_ch_sclrs', "Other" = 'p_xfer_oth') |> 
+  # remove unneeded columns
+  select(-c(tot_xfr)) |> 
+  
+  mutate(
+    # replace NA's with 0's
+    across(
+      c(Public, Other, Charter, 'Choice Scholarship'),
+      ~replace_na(.,0))
+  ) |>
+  
+  # pivot to long data
+  pivot_longer(cols = c(Public, Other, Charter, 'Choice Scholarship'), names_to = 'typ', values_to = 'tot_xfr') |>
+  
+  group_by(yr, nrl_schl_id, stlmt_corp_id, typ) |>
+  mutate(
+    # calculate total by yr, nrl and stlmt id
+    tot_xfr = sum(tot_xfr),
+    
+    # assign fill color based on type 
+    fillcolor = case_when(
+      typ == 'Public' ~              pub, 
+      typ == 'Charter' ~             chr, 
+      typ == 'Choice Scholarship'  ~ pr
+    ),
+    
+    # assign unique name to identify combiation of stlmt_corp and nrl_schl
+    fname = paste0(stlmt_corp_id, "-", nrl_schl_id),
+    
+    # convert 'other' transfers to 'public'; though Indiana classifies Charter schools as public also, in this case we're making a distinction between parent choice and other public and charter public.
+    typ = case_match(typ,
+                     "Other" ~ 'Public',
+                     .default = typ),
+    # add columns for stroke and stroke color for circle marker denoting school corp
+    # stroke size
+    weight = 0,
+    # stroke color 
+    color = NA) |>
+  
+  group_by(stlmt_corp_id, nrl_schl_id, yr, typ) |> 
+  
+  # with 'Other' and 'public' both now labeled 'public', combine their transfer totals
+  mutate(tot_xfr = sum(tot_xfr)) |> 
+  
+  # remove rows with na fill (rows with formerly 'other' transfer types) to avoid duplicating counts
+  filter(!is.na(fillcolor)) |> 
+  
+  group_by(stlmt_corp_id, yr) |> 
+  
+  mutate(
+    # calculate percent of total transfers to school corporation given row represents
+    pct_of_xfr = round(100*(tot_xfr/sum(tot_xfr)),2),
+    # convert to log for better circleMarkers in leaflet
+    log = log(pct_of_xfr)) |> 
+  
+  ungroup() |> 
+  
+  filter(
+    # remove rows with zero transfer totals
+    stlmt_corp_id != nrl_schl_id &
+      tot_xfr > 0 &
+      yr == 2024) 
+
+sxfer <- rbind(sxfer,
+               # create row where the settlement corporation and the enrolled school corporation are the same so it appears as a transfer to itself but rather than having a type color equal to public, charter or choice scholarship, the color is white to more easily locate the school corporation
+               sxfer |>
+                 ungroup() |>
+                 distinct(stlmt_corp_name, .keep_all = T) |>
+                 mutate(nrl_schl_id = stlmt_corp_id,
+                        nrl_schl_name = stlmt_corp_name,
+                        nrl_lat = stlmt_lat,
+                        nrl_lon = stlmt_lon,
+                        tot_xfr = 0, # set to 0 to not alter total xfer count
+                        fname = paste0(stlmt_corp_id, "-", stlmt_corp_id),
+                        fillcolor = '#ffffff',
+                        # stroke weight
+                        weight = 1,
+                        # stroke color
+                        color = "#000000",
+                        typ = 'Public',
+                        pct_of_xfr = 0,
+                        # add square root figure that reflects square root for average transfer size
+                        log = 1.759581))
+
+# 
+# need a list of enrolled school names that identical but have unique ids -  like "Saint Joseph School" so their name in nrl_schl_name column can be differentiated for filtering purposes on final map page
+
+dupes <- 
+  sxfer |> filter(nrl_schl_id %in% unique(sxfer$nrl_schl_id)) |> 
+  distinct(nrl_schl_id, .keep_all = T) 
+
+# create list of duplicated school names within dataframe of unique enrolled schools
+nrl_dupes <- dupes$nrl_schl_name[duplicated(dupes$nrl_schl_name)]
+
+
+# create dataframe with details of transfers to enrolled schools
+sxfer_n <- sxfer |> 
+  # remove pct_of_xfr column - was calculated for school corporations
+  select(-c(pct_of_xfr, log)) |>  
+  filter(stlmt_corp_id != nrl_schl_id)
+
+
+sxfer_n <- 
+  sxfer_n |> 
+  group_by(nrl_schl_id) |> 
+  
+  mutate(
+    # calculate percent of enrolled school's transfers a given school corporation's transfers represent
+    pct_of_xfr = round(100*(tot_xfr/sum(tot_xfr)),2),
+    
+    # convert to log for easier circleMarkers
+    log = log(pct_of_xfr),
+    # to ensure smallest enrolled schools appear on leaflet map, change log sizes below .845 (a more easily discernible size on leaflet) to .4
+    log = 
+      if_else(log < .845, .4, log),
+    # need to make allowances for duplicate enrolled school names (of which there are 43) by appending nrl_schl_id to any name that has identically named doppelganger
+    nrl_schl_name = if_else(nrl_schl_name %in% nrl_dupes, 
+                            paste0(nrl_schl_name, " (", nrl_schl_id, ")"),
+                            nrl_schl_name)
+  )
+
+
+sxfer_n <- rbind(sxfer_n |> 
+                   group_by(yr, stlmt_corp_id, nrl_schl_id) |> 
+                   mutate(
+                     # for incoming transfers, the school corporations that send students are the variable that changes. Their fill color should be white (even though they are all public). The enrolled school type fill color will be adjusted later.
+                     fillcolor = "#ffffff",
+                     color = "#000000",
+                     weight = 2,
+                   ),
+                 
+                 # create dataframe of unique enrolled schools, assign them a color based on their type, set the transfers to 0 and give them all a standard size.
+                 sxfer_n |>
+                   ungroup() |>
+                   distinct(nrl_schl_id, .keep_all = T) |>
+                   mutate(
+                     stlmt_corp_name = nrl_schl_name,
+                     stlmt_corp_id = nrl_schl_id,
+                     stlmt_lat = nrl_lat,
+                     stlmt_lon = nrl_lon,
+                     tot_xfr = 0, # set to 0 to not alter total xfer count
+                     fname = paste0(nrl_schl_id, "-", nrl_schl_id),
+                     fillcolor = case_when(
+                       stlmt_corp_id == nrl_schl_id & typ == "Public" ~ "#d95f02",
+                       stlmt_corp_id == nrl_schl_id & typ == "Charter" ~ "#1b9e77",
+                       stlmt_corp_id == nrl_schl_id & typ == "Choice Scholarship" ~ "#7570b3"
+                     ), #'#ffffff',
+                     # stroke weight
+                     weight = 0,
+                     # stroke color 
+                     color = "#000000",
+                     typ = 'Public', 
+                     pct_of_xfr = 0,
+                     # add square root figure that reflects sqrt for average transfer size
+                     log = 1.759581
+                   )
+) |> 
+  mutate(
+    # need to reverse order of fname to access proper popup - nrl_schl_id should be first
+    fname = paste("it", str_sub(fname, 5-9), str_sub(fname, 1,4), sep = "-"),
+    )
+
+
+sxfer <- sxfer |> 
+  filter(yr == 2024) |> 
+  group_by(stlmt_corp_name) |> 
+  mutate(cut = cut(pct_of_xfr, 9, labels = F),
+         cut = if_else(stlmt_corp_name == nrl_schl_name, 5, cut))
+
+# make shared data object from sxfer dataframe
+schl_data_2 <- SharedData$new(data = sxfer_n)
+
+
+```
+
+
+
+```{r}
+# url components for popups
+base_url <- "https://tedschurter-data.s3.us-east-2.amazonaws.com/2024-in-ed-"
+end_url <- ".png"
+
+# add custom legend for outgoing transfer types; # basic structure from: stackoverflow.com/questions/58505589/circles-in-legend-for-leaflet-map-with-addcirclemarkers-in-r-without-shiny
+
+# note: if argument is not listed within function(), can't call it later within leaflet
+
+addLegendCustom <- function(map, colors, labels, sizes, title, position, group, opacity = 1, className ){
+  
+  colorAdditions <- paste0(colors, "; border-radius: 50%; width:", sizes, "px; height:", sizes, "px")
+  
+  labelAdditions <- paste0("<div style='display: inline-block;height: ", 
+                           sizes, "px;margin-top: 4px;line-height: ", sizes, "px;'>", 
+                           labels, "</div>")
+  
+  return(addLegend(map, 
+                   colors = colorAdditions, 
+                   labels = labelAdditions, 
+                   opacity = opacity,
+                   title = title, 
+                   position = position, 
+                   group = group,
+                   className = className
+                   ))
+}
+
+map <-  
+  leaflet(
+    options = leafletOptions(
+      minZoom = 6.8,
+      maxZoom = 11),
+    height = 500
+  )|>
+    
+    setView(lng = -86.95, #-86.75, #-87.05, 
+            lat = 39.8, 6) |>
+    
+    addProviderTiles(providers$CartoDB.Positron, ) |>
+  
+    # polygon layer for nearby and adjacent states in order to reduce transparency of labels, city names etc
+  addPolygons(data = b_states,
+              color = "black",
+              fillOpacity = .8,
+              fillColor = '#fafafa', 
+              weight = .2,
+              group = "Incoming transfers"
+  ) |> 
+    
+    # polygon layer to show corporation/district boundaries for outgoing layer
+    addPolygons(data = in_dis,
+                color = "black",
+             fillOpacity = .65,
+                fillColor = '#fafafa', 
+                weight = .2,
+                group = "Incoming transfers"
+    ) |>
+  
+  # polygon layer for Indiana boundaries
+  addPolygons(data = in_bd,
+                color = "black",
+                fillOpacity = 0,
+                fillColor = '#fafafa', 
+                weight = .3,
+                group = "Incoming transfers"
+  )  |> 
+
+     # circle markers for incoming transfers - transfers from school corporations to enrolled schools
+  addCircleMarkers (
+  data = schl_data_2,
+  ~ stlmt_lon,
+  ~ stlmt_lat,
+  radius =  ~log*4,
+  fillColor = ~ fillcolor,
+  color = ~ color,
+  weight = ~weight,
+  stroke = T,
+  fillOpacity = .85,
+  
+  # popup charts for school corporations sending transfer students but no popup chart for enrolled school, only label. If the components of fname equal each other, that means the row is there to create circle for the enrolled school, not a transfering school corporation.
+  popup = if_else(
+    str_sub(sxfer_n$fname, 5-9) == str_sub(sxfer_n$fname, 4,7), 
+    NA, 
+    popupImage(paste0(base_url, sxfer_n$fname, end_url),
+                         width = 350, height = 467)
+    ), # popup will not autopan on first click if height not explicitly set
+      popupOptions =
+        popupOptions(keepInView = TRUE,
+                     autoPan = TRUE),
+
+  label = ~stlmt_corp_name,
+  group = "Incoming transfers"
+
+) |>
+  
+  # reset button
+    addResetMapButton() |>
+  
+  # custom legend for incoming transfers
+  addLegendCustom(
+    colors = 
+      c(
+        "#fc8d62",
+        "#66c2a5",
+        "#8da0cb"
+      ),
+    labels = 
+      c('Public',
+        'Charter',
+        'Choice Scholarship'
+      ),
+    sizes = c(15, 15, 15), 
+    position = "topleft", 
+    title = 
+      paste0("<span style='font-weight:600'>Incoming transfers</span><br><span style='font-weight:100;font-size: 8pt; line-height: 1.25'>Click circles for transfer details </span><br>\u25EF <span style='font-size: 10pt; font-weight:100'>School corporations<br></span><span style='font-weight:100;font-size: 8pt;line-height: 1.25'>Circle size proportional to <br>transfer totals</span><br><span style='font-weight:100; font-size: 10pt'>Enrolled school type:"),
+    group = "Incoming transfers",
+    className = "info legend Incomingtransfers"
+  ) |>
+    
+    # javascript function to return map to default bounds if circle marker popup moves map beyond view
+    onRender("function(el, x) {
+                          var map = this;
+                          map.eachLayer(function(layer) {
+  
+                            if(layer instanceof L.CircleMarker){
+                              layer.on('click', function(e){
+  
+                                layer.getPopup().on('remove', function () {
+  
+                                  map.setView(map._initialCenter, map._initialZoom);
+                                });
+                              })
+                              .addTo(map)
+                            }
+                          });
+                        }
+    ")  
+  
+ 
+```
+
+```{r, filter}
+# dropdown filter for enrolled school
+filter_nrl_schl <-   
+  filter_select(
+    id = "nrl-filter-stlmt",
+    label = "Select enrolled school/corporation", 
+    sharedData = schl_data_2,
+    multiple = F,
+    group = ~nrl_schl_name, 
+  )
+
+```
+
+
+
+```{r, out-filters}
+
+filt <- list(filter_nrl_schl 
+             )
+bscols(
+  # set widths of respective elements; 12 column max available
+  widths = c(2,10),
+  filt, map)
+
+```
+
+
+
+```{js out-filter-select-nrl-map}
+
+<!-- <!--   helpful js function to enable selecting default value in filter; from https://stackoverflow.com/questions/67058016/how-to-set-default-values-in-filter-select-in-crosstalk-in-r-plotly/68024136#68024136  --> -->
+
+
+function filter_nrl_schl() {
+    document.getElementById("nrl-filter-stlmt").getElementsByClassName("selectized")
+[0].selectize.setValue("Adams Central Community Schools",  false);
+ }
+
+window.onload=function(){
+filter_nrl_schl()
+}
+```
+

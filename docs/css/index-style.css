@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 2rem 0 3rem;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 1280px;
+  color: #3b3b3b;
+  background-color: #fcfdfd;
+  font-size: 22px;
+  /* margin: 0rem 4rem */
+}
+
+p,
+h1 
+h2,
+h3,
+h4
+
+
+a {
+  margin: 0;
+  font-weight: 400;
+}
+
+a,
+a:visited,
+a:hover {
+  color: teal;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
+
+
+#intro {
+  max-width: 80rem;
+  margin: 0rem 0rem;
+  margin-bottom: 0rem;
+  text-align: left;
+  
+  
+}
+
+.intro__hed {
+  font-size: 2em;
+  margin: 2rem auto 0.5rem auto;
+  font-family:Helvetica Neue 
+}
+
+.intro__dek {
+  color: #8a8a8a; 
+  margin: 0 auto 0 auto;
+}
+
+
+.intro__body {
+  color: #525252;
+  margin: 1rem 5rem 0rem 0rem;
+  max-width: 80rem;
+  font-size:1.2rem;
+}
+
+
+.byline {
+  color: #525252; 
+  margin: .5rem 0rem 2.5rem 0rem;
+  max-width: 80rem;
+  font-size:1rem;
+}
+
+
+.body {
+  color: #525252; 
+  margin: 1rem 5rem 1rem 0rem;
+  max-width: 80rem;
+  font-size:1.1rem;
+}
+
+.body__header {
+  color: #525252; 
+  margin: 0rem 1rem 0rem 2rem;
+  max-width: 80rem;
+  font-size:1.1rem;
+}
+
+.body__subhed{
+  color: #525252; 
+  margin: 0rem 0rem 1.5rem 0rem;
+  max-width: 80rem;
+  font-size:1.4rem;
+}
+
+.body__dek {
+  color: #525252; 
+  margin: 2rem 1rem 0rem 2rem;
+  max-width: 80rem;
+  font-size:1.2rem;
+}
+
+.line_chart{
+  margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+ }
+
+ .chart{
+  margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+ }
+
+#outro {
+  height: 10px; /* sets gap between bottom of scrolly and next element */
+  color: #525252; 
+  /* margin: 2rem 1rem 0.5rem 1rem; */
+  margin: 2rem 1rem 0rem 1rem;
+  max-width: 80rem;
+  font-size:1.4rem;
+}
+
+
+
+@media (min-width: 840px) {
+  .nav__examples {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+}
+
+#scrolly {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fcfdfd;
+  padding: 0rem;
+  /* margin:0rem 0rem 0rem 0rem; */
+}
+
+#scrolly >  {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+
+/* scroll-2 section rules */
+#scrolly2 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fcfdfd;
+  padding: 0rem;
+}
+
+#scrolly2 >  {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+} 
+
+#scrolly3 {
+  position: relative; 
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fcfdfd;
+  padding: 0rem;
+  /* margin:0rem 0rem 0rem 0rem; */
+}
+
+#scrolly3 >  {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  } 
+
+/* applies to side column of vertical scrolling text */
+article { 
+  position: relative;
+  padding: 0rem;
+  max-width: 40rem;
+  /* margin: 0rem 0rem 0rem 0rem; */
+}
+
+
+/*graphics container*/
+.sticky-thing { 
+  position: -webkit-sticky;
+  position: sticky;
+  width:  auto;
+  height: auto;
+  margin: 0;
+  background-color: #fcfdfd;
+  z-index: 0;
+  top: 12.5vh;
+  height: 80vh;
+  /* Center everything inside */
+  display: flex;
+  align-items: top;
+  justify-content: left;
+}
+
+
+
+/* image within graphics container */
+   .sticky-thing img { 
+    padding: 0 rem;
+    width:  808px; /*900; */
+    height: 404px;/*450px;*/
+    border:#f6f8f8
+    } 
+
+    
+
+/* settings for non-active vertical scrolling elements */
+.step { 
+  margin: 0 auto 8rem auto;
+  background-color: #f8fafa;
+  color: #eae9e9;
+  
+}
+
+.step:last-child {
+  margin-bottom: 2;
+}
+
+/* settings for active vertical scrolling text elements */
+.step.is-active p { 
+  background-color: #f6f8f8;
+  color: #646363;
+  text-align: left;
+}
+
+.step p {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: auto;
+  
+  
+}
+
+
+.maps{
+  margin: .25rem 0rem 0rem 0rem;
+  display: inline-block;
+  font-size: .9rem;
+  font-family:Helvetica Neue  
+}
+
+.maps_cl{
+  margin: 1rem 0rem 1rem 0rem;
+  /* display: center; */
+  /* margin-left: auto; */
+  font-size: 1.2rem;
+  font-family:Helvetica Neue;
+  color:#646363  
+}
+
+.button {
+  /* background-color: */
+  border: .5px solid #202020;
+  /* color:  */
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+ 
+.button:hover {
+  background-color:  #e3e3e6;
+} 
+

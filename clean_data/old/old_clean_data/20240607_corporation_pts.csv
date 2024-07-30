@@ -1,0 +1,292 @@
+corp_id,corp_name,typ,address,county,coords,NAME
+1010,Greater Clark County Schools,School Corporation,"2112 Utica-Sellersburg Rd, Jeffersonville, IN, 47130",Clark,"c(-85.6803132, 38.3380759)",Greater Clark County Schools
+1125,Clay Community Schools,School Corporation,"1013 S Forest Ave, Brazil, IN, 47834",Clay,"c(-87.1258185, 39.5134146)",Clay Community Schools
+1150,Clinton Central School Corporation,School Corporation,"Box 118, Michigantown, IN, 46057",Clinton,"c(-86.3782198, 40.2931784)",Clinton Central School Corporation
+1160,Clinton Prairie School Corporation,School Corporation,"2390 S CR 450 W, Frankfort, IN, 46041",Clinton,"c(-86.5920065, 40.2512842)",Clinton Prairie School Corporation
+1170,Community Schools of Frankfort,School Corporation,"2400 E Wabash Ave, Frankfort, IN, 46041",Clinton,"c(-86.4815614, 40.2794796)",Frankfort Community Schools
+1180,Rossville Consolidated School District,School Corporation,"PO Box 11, Rossville, IN, 46065",Clinton,"c(-86.5947239, 40.4169804)",Rossville Consolidated School District
+1300,Crawford County Community School Corporation,School Corporation,"5805 E Administration Rd, Marengo, IN, 47140",Crawford,"c(-86.3524126, 38.3216566)",Crawford County Community School Corporation
+1315,Barr-Reeve Community Schools Incorporated,School Corporation,"Box 97, Montgomery, IN, 47558",Daviess,"c(-87.0491666, 38.6682821)",Barr-Reeve Community School Corporation
+1375,North Daviess Community Schools,School Corporation,"5494 E SR 58, Elnora, IN, 47529",Daviess,"c(-87.0620062, 38.8474234)",North Daviess Community Schools
+1405,Washington Community Schools,School Corporation,"301 E South St, Washington, IN, 47501",Daviess,"c(-87.172009, 38.6558995)",Washington Community School Corporation
+1560,Sunman-Dearborn Community School Corporation,School Corporation,"1 Trojan Place Ste B, St Leon, IN, 47012",Dearborn,"c(-84.9741916, 39.2792271)",Sunman-Dearborn Community School Corporation
+1600,South Dearborn Community School Corporation,School Corporation,"6109 Squire Pl, Aurora, IN, 47001",Dearborn,"c(-84.9325662, 39.0631857)",South Dearborn Community School Corporation
+1620,Lawrenceburg Community School Corporation,School Corporation,"300 Tiger Blvd, Lawrenceburg, IN, 47025",Dearborn,"c(-84.8523647, 39.1005011)",Lawrenceburg Community School Corporation
+1655,Decatur County Community Schools,School Corporation,"2020 N Montgomery Rd, Greensburg, IN, 47240",Decatur,"c(-85.4695443, 39.3576501)",Greensburg Community Schools
+1730,Greensburg Community Schools,School Corporation,"1312 W Westridge Pky, Greensburg, IN, 47240",Decatur,"c(-85.5025371, 39.3529482)",Greensburg Community Schools
+1805,DeKalb County Eastern Community School District,School Corporation,"300 E Washington St, Butler, IN, 46721",Dekalb,"c(-84.8683436, 41.4313289)",DeKalb County Eastern Community School District
+1820,Garrett-Keyser-Butler Community School Corporation,School Corporation,"801 E Houston St, Garrett, IN, 46738",Dekalb,"c(-85.1266549, 41.3473204)",Garrett-Keyser-Butler Community Schools
+1835,DeKalb County Central United School District,School Corporation,"3326 CR 427, Waterloo, IN, 46793",Dekalb,"c(-85.0649071, 41.4556306)",DeKalb County Central United School District
+1875,Delaware Community School Corporation,School Corporation,"9750 N CR 200 E, Muncie, IN, 47303",Delaware,"c(-85.3863599, 40.1933767)",Muncie Community Schools
+1885,Wes-Del Community Schools,School Corporation,"10290 N CR 600 W, Gaston, IN, 47342",Delaware,"c(-85.4994192, 40.2827958)",Wes-Del Community Schools
+1895,Liberty-Perry Community School Corporation,School Corporation,"Box 337, Selma, IN, 47383",Delaware,"c(-85.2929384, 40.1521403)",Liberty-Perry Community School Corporation
+1900,Cowan Community School Corporation,School Corporation,"9401 S Nottingham, Muncie, IN, 47302",Delaware,"c(-85.3931312, 40.1080198)",Cowan Community School Corporation
+1910,Yorktown Community Schools,School Corporation,"2311 S Broadway St, Yorktown, IN, 47396",Delaware,"c(-85.4932738, 40.1719843)",Yorktown Community Schools
+1940,Daleville Community Schools,School Corporation,"14300 W 2nd St, Daleville, IN, 47334",Delaware,"c(-85.5551793, 40.119923)",Daleville Community Schools
+1970,Muncie Community Schools,School Corporation,"4301 S. Cowan Road, Muncie, IN, 47303",Delaware,"c(-85.4057523, 40.1545906)",Muncie Community Schools
+2040,Northeast Dubois County School Corporation,School Corporation,"5379 E Main St Box 158, Dubois, IN, 47527",Dubois,"c(-86.805904, 38.445571)",Northeast Dubois County School Corporation
+2100,Southeast Dubois County School Corporation,School Corporation,"432 E 15th St, Ferdinand, IN, 47532",Dubois,"c(-86.8573482, 38.2289015)",Southeast Dubois County School Corporation
+2110,Southwest Dubois County School Corporation,School Corporation,"105 West Sunset Drive, Huntingburg, IN, 47542",Dubois,"c(-86.9611558, 38.2767247)",Southwest Dubois County School Corporation
+2120,Greater Jasper Consolidated Schools,School Corporation,"1520 St Charles St Suite 1, Jasper, IN, 47546",Dubois,"c(-86.9514748, 38.4006147)",Greater Jasper Consolidated Schools
+2155,Fairfield Community Schools,School Corporation,"67240 CR 31, Goshen, IN, 46528",Elkhart,"c(-85.769062, 41.5197842)",Fairfield Community Schools
+2260,Baugo Community Schools,School Corporation,"29125 CR 22 W, Elkhart, IN, 46517",Elkhart,"c(-86.0247882, 41.6358153)",Baugo Community Schools
+2270,Concord Community Schools,School Corporation,"59040 Minuteman Way, Elkhart, IN, 46517",Elkhart,"c(-85.9277509, 41.6374023)",Concord Community Schools
+2275,Middlebury Community Schools,School Corporation,"56853 Northridge Dr, Middlebury, IN, 46540",Elkhart,"c(-85.7259625, 41.6704882)",Middlebury Community Schools
+2285,Wa-Nee Community Schools,School Corporation,"1300 N Main St, Nappanee, IN, 46550",Elkhart,"c(-86.0022306, 41.4532945)",Wa-Nee Community Schools
+2305,Elkhart Community Schools,School Corporation,"2720 California Rd, Elkhart, IN, 46514",Elkhart,"c(-86.0165091, 41.6960755)",Elkhart Community Schools
+2315,Goshen Community Schools,School Corporation,"613 E Purl St, Goshen, IN, 46526",Elkhart,"c(-85.8255055, 41.5800861)",Goshen Community Schools
+2395,Fayette County School Corporation,School Corporation,"1401 Spartan Drive, Connersville, IN, 47331",Fayette,"c(-85.1654536, 39.631994)",Fayette County School Corporation
+2400,New Albany-Floyd County Consolidated School,School Corporation,"2813 Grant Line PO Box 1087, New Albany, IN, 47150",Floyd,"c(-85.8215136, 38.3176595)",New Albany-Floyd County Consolidated Schools
+2435,Attica Consolidated School Corporation,School Corporation,"205 E Sycamore St, Attica, IN, 47918",Fountain,"c(-87.2538932, 40.2797504)",Attica Consolidated School Corporation
+2440,Covington Community School Corporation,School Corporation,"601 Market St, Covington, IN, 47932",Fountain,"c(-87.3948857, 40.1442618)",Covington Community School Corporation
+2455,Southeast Fountain School Corporation,School Corporation,"744 E US Hwy 136, Veedersburg, IN, 47987",Fountain,"c(-87.2260678, 40.1060057)",Southeast Fountain School Corporation
+2475,Franklin County Community School Corporation,School Corporation,"225 E 10th St, Brookville, IN, 47012",Franklin,"c(-85.0101082, 39.4258273)",Franklin County Community School Corporation
+2645,Rochester Community School Corporation,School Corporation,"690 Zebra Ln Box 108, Rochester, IN, 46975",Fulton,"c(-86.224814, 41.0555088)",Rochester Community School Corporation
+2650,Caston School Corporation,School Corporation,"9815 S State Rd 25, Rochester, IN, 46975",Fulton,"c(-86.2822388, 40.9117014)",Caston School Corporation
+2725,East Gibson School Corporation,School Corporation,"941 S. Franklin St., Oakland City, IN, 47660",Gibson,"c(-87.3511626, 38.3301977)",East Gibson School Corporation
+2735,North Gibson School Corporation,School Corporation,"1104 N Embree St, Princeton, IN, 47670",Gibson,"c(-87.5797401, 38.3664824)",North Gibson School Corporation
+2765,South Gibson School Corporation,School Corporation,"3321 W 800 S, Fort Branch, IN, 47648",Gibson,"c(-87.7346618, 38.2379076)",South Gibson School Corporation
+2815,Eastbrook Community School Corporation,School Corporation,"CR 560 S 900 E, Marion, IN, 46953",Grant,"c(-85.5047347, 40.5449593)",Eastbrook Community School Corporation
+2825,Madison-Grant United School Corporation,School Corporation,"11580 S/E 00 W, Fairmount, IN, 46928",Grant,"c(-85.6719567, 40.4219101)",Madison-Grant United School Corporation
+2855,Mississinewa Community School Corporation,School Corporation,"424 E S 'A' St, Gas City, IN, 46933",Grant,"c(-85.6080034, 40.4865732)",Mississinewa Community School Corporation
+2865,Marion Community Schools,School Corporation,"750 W 26th St, Marion, IN, 46953",Grant,"c(-85.6686617, 40.5379222)",Marion Community Schools
+2920,Bloomfield School District,School Corporation,"501 W Spring St., Bloomfield, IN, 47424",Greene,"c(-86.9458888, 39.0253854)",Bloomfield School District
+2940,Eastern Greene Schools,School Corporation,"1471 N SR 43, Bloomfield, IN, 47424",Greene,"c(-86.7447151, 39.043309)",Eastern Greene County School District
+2950,Linton-Stockton School Corporation,School Corporation,"109 I Street NE, Linton, IN, 47441",Greene,"c(-87.1647168, 39.0412944)",Linton-Stockton School Corporation
+2960,Metropolitan School District Shakamak Schools,School Corporation,"9233 Shakamak School Rd, Jasonville, IN, 47438",Greene,"c(-87.2123124, 39.1595628)",Shakamak Schools Metropolitan School District
+2980,White River Valley School District,School Corporation,"PO Box 1470, Switz City, IN, 47465",Greene,"c(-87.0224442, 38.9915292)",White River Valley School District
+3005,Hamilton Southeastern Schools,School Corporation,"13485 Cumberland Rd, Fishers, IN, 46038",Hamilton,"c(-85.9951648, 39.9847309)",Hamilton Southeastern Schools
+3025,Hamilton Heights School Corporation,School Corporation,"PO Box 469, Arcadia, IN, 46030",Hamilton,"c(-85.9917437, 40.1783877)",Hamilton Heights School Corporation
+3030,Westfield-Washington Schools,School Corporation,"19500 Tomlinson Rd., Westfield, IN, 46074",Hamilton,"c(-86.1388649, 40.0709784)",Westfield-Washington Schools
+3055,Sheridan Community Schools,School Corporation,"24795 N Hinesley Rd, Sheridan, IN, 46069",Hamilton,"c(-86.2167232, 40.1470545)",Sheridan Community Schools
+3060,Carmel Clay Schools,School Corporation,"5201 E Main St, Carmel, IN, 46033",Hamilton,"c(-86.0810734, 39.9777936)",Carmel Clay Schools
+3070,Noblesville Schools,School Corporation,"18025 River Ave, Noblesville, IN, 46062",Hamilton,"c(-86.0290815, 40.0496787)",Noblesville Schools
+3115,Southern Hancock County Community School Corporation,School Corporation,"PO Box 508, New Palestine, IN, 46163",Hancock,"c(-85.8690933, 39.7228776)",Southern Hancock County Community School Corporation
+3125,Greenfield-Central Community Schools,School Corporation,"110 W North St, Greenfield, IN, 46140",Hancock,"c(-85.77119, 39.7864275)",Greenfield-Central Community Schools
+3135,Mt Vernon Community School Corporation,School Corporation,"1806 W SR 234, Fortville, IN, 46040",Hancock,"c(-85.8401638, 39.9010796)",Mount Vernon Community School Corporation
+3145,Eastern Hancock County Community School Corporation,School Corporation,"10370 E 250 N, Charlottesville, IN, 46117",Hancock,"c(-85.6096814, 39.8237477)",Eastern Hancock County Community School Corporation
+3160,Lanesville Community School Corporation,School Corporation,"2725 Crestview Ave NE, Lanesville, IN, 47136",Harrison,"c(-85.9891043, 38.2390105)",Lanesville Community School Corporation
+3180,North Harrison Community School Corporation,School Corporation,"1260 Hwy 64 NW, Ramsey, IN, 47166",Harrison,"c(-86.1548269, 38.3169506)",North Harrison Community School Corporation
+3190,South Harrison Community Schools,School Corporation,"315 S Harrison Dr, Corydon, IN, 47112",Harrison,"c(-86.1216513, 38.2028812)",South Harrison Community Schools
+3295,North West Hendricks Schools,School Corporation,"Box 70, Lizton, IN, 46149",Hendricks,"c(-86.5602614, 39.8687659)",North West Hendricks Schools
+3305,Brownsburg Community School Corporation,School Corporation,"310 Stadium Dr, Brownsburg, IN, 46112",Hendricks,"c(-86.3896893, 39.8385959)",Brownsburg Community School Corporation
+3315,Avon Community School Corporation,School Corporation,"7203 E US Hwy 36, Avon, IN, 46123",Hendricks,"c(-86.3946401, 39.7615222)",Avon Community School Corporation
+3325,Danville Community School Corporation,School Corporation,"200 Warrior Way, Danville, IN, 46122",Hendricks,"c(-86.5417385, 39.7589461)",Danville Community School Corporation
+3330,Plainfield Community School Corporation,School Corporation,"985 S Longfellow Dr, Plainfield, IN, 46168",Hendricks,"c(-86.395591, 39.6942116)",Plainfield Community School Corporation
+3335,Mill Creek Community School Corporation,School Corporation,"6631 S CR 200 W, Clayton, IN, 46118",Hendricks,"c(-86.5596739, 39.6646095)",Mill Creek Community School Corporation
+3405,Blue River Valley Schools,School Corporation,"3038 US Highway 36 East, New Castle, IN, 47362",Henry,"c(-85.3270225, 40.0048833)",Blue River Valley Schools
+3415,South Henry School Corporation,School Corporation,"6972 S SR 103, Straughn, IN, 47387",Henry,"c(-85.3342973, 39.8260342)",South Henry School Corporation
+3435,Shenandoah School Corporation,School Corporation,"5100 N Raider Rd, Middletown, IN, 47356",Henry,"c(-85.5256986, 40.0059389)",Shenandoah School Corporation
+3445,New Castle Community School Corporation,School Corporation,"322 Elliott Ave, New Castle, IN, 47362",Henry,"c(-85.3802579, 39.9261015)",New Castle Community School Corporation
+3455,C A Beard Memorial School Corporation,School Corporation,"8139 W US 40, Knightstown, IN, 46148",Henry,"c(-85.5874135, 39.7921207)",C. A. Beard Memorial School Corporation
+3460,Taylor Community School Corporation,School Corporation,"3750 E CR 300 S, Kokomo, IN, 46902",Howard,"c(-86.0551143, 40.4346825)",Taylor Community School Corporation
+3470,Northwestern School Corporation,School Corporation,"3075 N Washington St, Kokomo, IN, 46901",Howard,"c(-86.1283246, 40.5212211)",Northwestern School Corporation
+3480,Eastern Howard School Corporation,School Corporation,"221 W Main Suite One, Greentown, IN, 46936",Howard,"c(-85.9687585, 40.4776822)",Eastern Howard School Corporation
+3490,Western School Corporation,School Corporation,"2600 S 600 W, Russiaville, IN, 46979",Howard,"c(-86.2433462, 40.4372676)",Western School Corporation
+3500,Kokomo School Corporation,School Corporation,"1500 S Washington PO Box 2188, Kokomo, IN, 46904",Howard,"c(-86.1327501, 40.4688951)",Kokomo-Center Township Consolidated School Corporation
+3625,Huntington County Community School Corporation,School Corporation,"1063 E 900 S, Warren, IN, 46792",Huntington,"c(-85.427556, 40.695733)",Huntington County Community School Corporation
+3640,Medora Community School Corporation,School Corporation,"PO Box 369, Medora, IN, 47260",Jackson,"c(-86.1955169, 38.8215176)",Medora Community School Corporation
+3675,Seymour Community Schools,School Corporation,"1420 Corporate Way, Seymour, IN, 47274",Jackson,"c(-85.909929, 38.9485714)",Seymour Community Schools
+3695,Brownstown Central Community School Corporation,School Corporation,"608 W Commerce St, Brownstown, IN, 47220",Jackson,"c(-86.0494652, 38.878108)",Brownstown Central Community School Corporation
+3710,Crothersville Community Schools,School Corporation,"201 S Preston St, Crothersville, IN, 47229",Jackson,"c(-85.8360541, 38.7963604)",Crothersville Community Schools
+3785,Kankakee Valley School Corporation,School Corporation,"PO Box 278, Wheatfield, IN, 46392",Jasper,"c(-87.1023746, 41.2043542)",Kankakee Valley School Corporation
+3815,Rensselaer Central School Corporation,School Corporation,"900 E Washington St, Rensselaer, IN, 47978",Jasper,"c(-87.1405929, 40.9385132)",Rensselaer Central School Corporation
+3945,Jay School Corporation,School Corporation,"1976 W Tyson Rd, Portland, IN, 47371",Jay,"c(-85.0056064, 40.4323188)",Jay School Corporation
+3995,Madison Consolidated Schools,School Corporation,"2421 Wilson Ave, Madison, IN, 47250",Jefferson,"c(-85.4069225, 38.7726834)",Madison Consolidated Schools
+4000,Southwestern-Jefferson County Consolidated,School Corporation,"239 S Main Cross St, Hanover, IN, 47243",Jefferson,"c(-85.4735702, 38.7078324)",Southwestern Jefferson County Consolidated Schools
+4015,Jennings County School Corporation,School Corporation,"34 Main St, North Vernon, IN, 47265",Jennings,"c(-85.684578, 38.9914998)",Jennings County Schools
+4145,Clark-Pleasant Community School Corporation,School Corporation,"50 Center St, Whiteland, IN, 46184",Johnson,"c(-86.0805654, 39.5507448)",Clark-Pleasant Community School Corporation
+4205,Center Grove Community School Corporation,School Corporation,"4800 W Stones Crossing Rd, Greenwood, IN, 46143",Johnson,"c(-86.1905516, 39.5779146)",Center Grove Community School Corporation
+4215,Edinburgh Community School Corporation,School Corporation,"202 S Keeley St, Edinburgh, IN, 46124",Johnson,"c(-85.9699743, 39.3529052)",Edinburgh Community School Corporation
+4225,Franklin Community School Corporation,School Corporation,"998 Grizzly Cub Dr, Franklin, IN, 46131",Johnson,"c(-86.063427, 39.4903895)",Franklin Community School Corporation
+4245,Greenwood Community School Corporation,School Corporation,"605 W Smith Valley Rd, Greenwood, IN, 46142",Johnson,"c(-86.1164736, 39.6056678)",Greenwood Community School Corporation
+4255,Nineveh-Hensley-Jackson United,School Corporation,"802 S Indian Creek Dr, Trafalgar, IN, 46181",Johnson,"c(-86.1586123, 39.4097109)",Nineveh-Hensley-Jackson United School Corporation
+4315,North Knox School Corporation,School Corporation,"11110 N SR 159, Bicknell, IN, 47512",Knox,"c(-87.30964, 38.7910527)",North Knox School Corporation
+4325,South Knox School Corporation,School Corporation,"6116 E SR 61, Vincennes, IN, 47591",Knox,"c(-87.4236546, 38.6364312)",South Knox School Corporation
+4335,Vincennes Community School Corporation,School Corporation,"1712 S Quail Run Road, Vincennes, IN, 47591",Knox,"c(-87.4957085, 38.6507891)",Vincennes Community School Corporation
+4345,Wawasee Community School Corporation,School Corporation,"801 S Sycamore St, Syracuse, IN, 46567",Kosciusko,"c(-85.7494001, 41.4139526)",Wawasee Community School Corporation
+4415,Warsaw Community Schools,School Corporation,"PO Box 288, Warsaw, IN, 46581",Kosciusko,"c(-85.80766, 41.2448875)",Warsaw Community Schools
+4445,Tippecanoe Valley School Corporation,School Corporation,"8343 S SR 19, Akron, IN, 46910",Kosciusko,"c(-86.0387963, 41.1111561)",Tippecanoe Valley School Corporation
+4455,Whitko Community School Corporation,School Corporation,"710 N SR 5, Suite B, Larwill, IN, 46764",Whitley,"c(-85.643487, 41.1585232)",Whitko Community School Corporation
+4515,Prairie Heights Community School Corporation,School Corporation,"0305 S 1150 E, LaGrange, IN, 46761",Lagrange,"c(-85.2008972, 41.6388854)",Prairie Heights Community School Corporation
+4525,Westview School Corporation,School Corporation,"1545 S 600 W, Topeka, IN, 46571",Lagrange,"c(-85.5397301, 41.6173213)",Westview School Corporation
+4535,Lakeland School Corporation,School Corporation,"0825 E 075 N, LaGrange, IN, 46761",Lagrange,"c(-85.4089215, 41.6542855)",Lakeland School Corporation
+4580,Hanover Community School Corporation,School Corporation,"PO Box 645, Cedar Lake, IN, 46303",Lake,"c(-87.4802068, 41.3937315)",Hanover Community School Corporation
+4590,River Forest Community School Corporation,School Corporation,"3250 Michigan St, Hobart, IN, 46342",Lake,"c(-87.2750062, 41.5585442)",River Forest Community School Corporation
+4600,Merrillville Community School Corporation,School Corporation,"6701 Delaware St, Merrillville, IN, 46410",Lake,"c(-87.330302, 41.4966412)",Merrillville Community School
+4615,Lake Central School Corporation,School Corporation,"8260 Wicker Ave, Saint John, IN, 46373",Lake,"c(-87.4726808, 41.4669846)",Lake Central School Corporation
+4645,Tri-Creek School Corporation,School Corporation,"19290 Cline Avenue, Lowell, IN, 46356",Lake,"c(-87.4294058, 41.2170965)",Tri-Creek School Corporation
+4650,Lake Ridge New Technology Schools,School Corporation,"6111 W Ridge Rd, Gary, IN, 46408",Lake,"c(-87.411893, 41.5487228)",Lake Ridge Schools
+4660,Crown Point Community School Corporation,School Corporation,"200 E North St, Crown Point, IN, 46307",Lake,"c(-87.3626769, 41.4206147)",Crown Point Community School Corporation
+4670,School City of East Chicago,School Corporation,"1401 E 144th Street, East Chicago, IN, 46312",Lake,"c(-87.4532462, 41.6330037)",City of East Chicago School District
+4680,Lake Station Community Schools,School Corporation,"2500 Pike St, Lake Station, IN, 46405",Lake,"c(-87.2447721, 41.5726247)",Lake Station Community Schools
+4690,Gary Community School Corporation,School Corporation,"PO Box 4608, Gary, IN, 46404",Lake,"c(-87.3512913, 41.6007075)",Gary Community School Corporation
+4700,Griffith Public Schools,School Corporation,"601 N Raymond, Griffith, IN, 46319",Lake,"c(-87.4345849, 41.5320369)",Griffith Public Schools
+4710,School City of Hammond,School Corporation,"41 Williams Street, Hammond, IN, 46320",Lake,"c(-87.5242432, 41.6113681)",Hammond School City
+4720,School Town of Highland,School Corporation,"9145 Kennedy Ave, Highland, IN, 46322",Lake,"c(-87.4608613, 41.5468806)",Highland School Town
+4730,School City of Hobart,School Corporation,"32 E 7th St, Hobart, IN, 46342",Lake,"c(-87.2583105, 41.5275117)",Hobart School City
+4740,School Town of Munster,School Corporation,"8616 Columbia Ave, Munster, IN, 46321",Lake,"c(-87.5016443, 41.5582966)",Munster School Town
+4760,School City of Whiting,School Corporation,"1500 Center St, Whiting, IN, 46394",Lake,"c(-87.4904953, 41.6814583)",Whiting School City
+4805,New Prairie United School Corporation,School Corporation,"5327 N Cougar Rd, New Carlisle, IN, 46552",LaPorte,"c(-86.5639615, 41.6830983)",New Prairie United School Corporation
+4860,Metropolitan School District of New Durham Township,School Corporation,"207 E Valparaiso St, Westville, IN, 46391",LaPorte,"c(-86.8938787, 41.5420097)",New Durham Township Metropolitan School District
+4915,Tri-Township Consolidated School Corporation,School Corporation,"PO Box 249, Wanatah, IN, 46390",LaPorte,"c(-86.8621827, 41.3585564)",Tri-Township Consolidated School Corporation
+4925,Michigan City Area Schools,School Corporation,"408 S Carroll Ave, Michigan City, IN, 46360",LaPorte,"c(-86.8684232, 41.7059889)",Michigan City Area Schools
+4940,South Central Community School Corporation,School Corporation,"9808 S 600 W, Union Mills, IN, 46382",LaPorte,"c(-86.816215, 41.464207)",South Central Community School Corporation
+4945,LaPorte Community School Corporation,School Corporation,"1921 'A' St, LaPorte, IN, 46350",LaPorte,"c(-86.7186185, 41.5889814)",La Porte Community School Corporation
+5075,North Lawrence Community Schools,School Corporation,"PO Box 729, Bedford, IN, 47421",Lawrence,"c(-86.4592091, 38.8924224)",North Lawrence Community Schools
+5085,Mitchell Community Schools,School Corporation,"441 N 8th St, Mitchell, IN, 47446",Lawrence,"c(-86.4767183, 38.7360176)",Mitchell Community Schools
+5245,Frankton-Lapel Community Schools,School Corporation,"7916 W 300 N, Anderson, IN, 46011",Madison,"c(-85.8231239, 40.1497456)",Frankton-Lapel Community Schools
+5255,South Madison Community School Corporation,School Corporation,"203 S Heritage Way, Pendleton, IN, 46064",Madison,"c(-85.7638416, 40.0007336)",South Madison Community School Corporation
+5265,Alexandria Community School Corporation,School Corporation,"800 N. Central, Alexandria, IN, 46001",Madison,"c(-85.6815225, 40.2696425)",Alexandria Community School Corporation
+5275,Anderson Community School Corporation,School Corporation,"1600 Hillcrest Ave, Anderson, IN, 46011",Madison,"c(-85.6984491, 40.1264238)",Anderson Community School Corporation
+5280,Elwood Community School Corporation,School Corporation,"1306 N Anderson St, Elwood, IN, 46036",Madison,"c(-85.8427141, 40.2918686)",Elwood Community School Corporation
+5300,Metropolitan School District Decatur Township,School Corporation,"5275 Kentucky Ave, Indianapolis, IN, 46221",Marion,"c(-86.2770749, 39.686445)",Decatur Township Metropolitan School District
+5310,Franklin Township Community School Corporation,School Corporation,"6141 S Franklin Rd, Indianapolis, IN, 46259",Marion,"c(-86.0181253, 39.6782549)",Franklin Township Community School Corporation
+5330,Metropolitan School District Lawrence Township,School Corporation,"6501 Sunnyside Rd, Indianapolis, IN, 46236",Marion,"c(-85.971256, 39.8775748)",Lawrence Township Metropolitan School District
+5340,Perry Township Schools,School Corporation,"6548 Orinoco Ave, Indianapolis, IN, 46227",Marion,"c(-86.136058, 39.6710606)",Perry Township Metropolitan School District
+5350,Metropolitan School District Pike Township,School Corporation,"6901 Zionsville Rd, Indianapolis, IN, 46268",Marion,"c(-86.2591214, 39.878646)",Pike Township Metropolitan School District
+5360,Metropolitan School District Warren Township,School Corporation,"975 N Post Rd, Indianapolis, IN, 46219",Marion,"c(-86.0086465, 39.7815456)",Warren Township Metropolitan School District
+5370,Metropolitan School District Washington Township,School Corporation,"8550 Woodfield Crossing Blvd, Indianapolis, IN, 46240",Marion,"c(-86.1244808, 39.9119226)",Washington Township Metropolitan School District
+5375,Metropolitan School District Wayne Township,School Corporation,"1220 S High Sch Rd, Indianapolis, IN, 46241",Marion,"c(-86.2666463, 39.767184)",Wayne Township Metropolitan School District
+5380,Beech Grove City Schools,School Corporation,"5334 Hornet Ave, Beech Grove, IN, 46107",Marion,"c(-86.0766849, 39.7127396)",Beech Grove City Schools
+5385,Indianapolis Public Schools,School Corporation,"120 E Walnut St, Indianapolis, IN, 46204",Marion,"c(-86.1545603, 39.7769924)",Indianapolis Public Schools
+5400,School Town of Speedway,School Corporation,"5300 Crawfordsville Rd, Speedway, IN, 46224",Marion,"c(-86.2515138, 39.7926132)",Speedway School Town
+5455,Culver Community Schools Corporation,School Corporation,"700 School Street, Culver, IN, 46511",Marshall,"c(-86.4238357, 41.2228909)",Culver Community Schools Corporation
+5470,Argos Community Schools,School Corporation,"500 Yearick Ave, Argos, IN, 46501",Marshall,"c(-86.2485037, 41.2376393)",Argos Community Schools
+5480,Bremen Public Schools,School Corporation,"512 W Grant St, Bremen, IN, 46506",Marshall,"c(-86.1519845, 41.4429108)",Bremen Public Schools
+5485,Plymouth Community School Corporation,School Corporation,"611 Berkley St, Plymouth, IN, 46563",Marshall,"c(-86.3020376, 41.3461273)",Plymouth Community School Corporation
+5495,Triton School Corporation,School Corporation,"100 Triton Dr, Bourbon, IN, 46504",Marshall,"c(-86.1112827, 41.3010524)",Triton School Corporation
+5520,Shoals Community School Corporation,School Corporation,"11741 Ironton Rd, Shoals, IN, 47581",Martin,"c(-86.7768572, 38.6681)",Shoals Community School Corporation
+5525,Loogootee Community School Corporation,School Corporation,"P O Box 282, Loogootee, IN, 47553",Martin,"c(-86.8621827, 38.8203753)",Loogootee Community School Corporation
+5615,Maconaquah School Corporation,School Corporation,"7932 S Strawtown Pike, Bunker Hill, IN, 46914",Miami,"c(-86.059771, 40.6511411)",Maconaquah School Corporation
+5620,North Miami Community Schools,School Corporation,"394 E 900 N, Denver, IN, 46926",Miami,"c(-86.0682605, 40.8958123)",North Miami Community Schools
+5625,Oak Hill United School Corporation,School Corporation,"1474 N 800 W, PO Box 550, Converse, IN, 46919",Grant,"c(-85.825373, 40.5732061)",Oak Hill United School Corporation
+5635,Peru Community Schools,School Corporation,"35 W 3rd St, Peru, IN, 46970",Miami,"c(-86.0693488, 40.7522667)",Peru Community Schools
+5705,Richland-Bean Blossom Community School Corporation,School Corporation,"600 S Edgewood Dr, Ellettsville, IN, 47429",Monroe,"c(-86.633711, 39.2361338)",Richland-Bean Blossom Community School Corporation
+5740,Monroe County Community School Corporation,School Corporation,"315 E North Dr, Bloomington, IN, 47401",Monroe,"c(-86.5305985, 39.1449503)",Monroe County Community School Corporation
+5835,North Montgomery Community School Corporation,School Corporation,"480 W 580 N, Crawfordsville, IN, 47933",Montgomery,"c(-86.9131124, 40.1236215)",North Montgomery Community School Corporation
+5845,South Montgomery Community School Corporation,School Corporation,"PO Box 8, New Market, IN, 47965",Montgomery,"c(-86.7818523, 39.9777608)",South Montgomery Community School Corporation
+5855,Crawfordsville Community Schools,School Corporation,"1000 Fairview Ave, Crawfordsville, IN, 47933",Montgomery,"c(-86.8882403, 40.0456096)",Crawfordsville Community Schools
+5900,Monroe-Gregg School District,School Corporation,"135 S Chestnut St, Monrovia, IN, 46157",Morgan,"c(-86.4776288, 39.5760431)",Monroe-Gregg School District
+5910,Eminence Community School Corporation,School Corporation,"PO Box 135, Eminence, IN, 46125",Morgan,"c(-86.6006249, 39.4989766)",Eminence Community School Corporation
+5925,Metropolitan School District Martinsville Schools,School Corporation,"PO Box 1416, Martinsville, IN, 46151",Morgan,"c(-86.4592091, 39.3913252)",Martinsville Schools Metropolitan School District
+5930,Mooresville Consolidated School Corporation,School Corporation,"11 W Carlisle St, Mooresville, IN, 46158",Morgan,"c(-86.3799428, 39.6170144)",Mooresville Consolidated School Corporation
+5945,North Newton School Corporation,School Corporation,"PO Box 8, Morocco, IN, 47963",Newton,"c(-87.4207518, 41.0509537)",North Newton School Corporation
+5995,South Newton School Corporation,School Corporation,"13232 S 50 E, Kentland, IN, 47951",Newton,"c(-87.3829344, 40.8059927)",South Newton School Corporation
+6055,Central Noble Community School Corporation,School Corporation,"200 E Main St, Albion, IN, 46701",Noble,"c(-85.4223393, 41.3954086)",Central Noble Community School Corporation
+6060,East Noble School Corporation,School Corporation,"126 W Rush St, Kendallville, IN, 46755",Noble,"c(-85.266279, 41.441375)",East Noble School Corporation
+6065,West Noble School Corporation,School Corporation,"5050 N US 33, Ligonier, IN, 46767",Noble,"c(-85.5816829, 41.4259194)",West Noble School Corporation
+6080,Rising Sun-Ohio County Community,School Corporation,"110 S Henrietta St, Rising Sun, IN, 47040",Ohio,"c(-84.8589914, 38.9506064)",Rising Sun-Ohio County Community Schools
+6145,Orleans Community Schools,School Corporation,"173 W Marley St, Orleans, IN, 47452",Orange,"c(-86.4545279, 38.6687848)",Orleans Community Schools
+6155,Paoli Community School Corporation,School Corporation,"501 Elm St - Ofc Supt, Paoli, IN, 47454",Orange,"c(-86.47701, 38.5497709)",Paoli Community School Corporation
+6160,Springs Valley Community School Corporation,School Corporation,"498 S Larry Bird Blvd, French Lick, IN, 47432",Orange,"c(-86.6169637, 38.5489744)",Springs Valley Community School Corporation
+6195,Spencer-Owen Community Schools,School Corporation,"205 E Hillside, Spencer, IN, 47460",Owen,"c(-86.7603009, 39.2899403)",Spencer-Owen Community Schools
+6260,Southwest Parke Community School Corporation,School Corporation,"4851 S Coxville Rd, Montezuma, IN, 47862",Parke,"c(-87.324697, 39.698077)",Southwest Parke Community School Corporation
+6325,Perry Central Community Schools Corporation,School Corporation,"18677 Old SR 37, Leopold, IN, 47551",Perry,"c(-86.60415, 38.111347)",Perry Central Community School Corporation
+6340,Cannelton City Schools,School Corporation,"109 S Third St, Cannelton, IN, 47520",Perry,"c(-86.7438865, 37.9102913)",Cannelton City Schools
+6350,Tell City-Troy Township School Corporation,School Corporation,"837 17th St, Tell City, IN, 47586",Perry,"c(-86.7215175, 37.9541186)",Tell City-Troy Township School Corporation
+6375,North Central Parke Comm School Corporation,School Corporation,"602 Howard Ave, Rockville, IN, 47872",Parke,"c(-87.2341978, 39.7679216)",North Central Parke Community School Corporation
+6445,Pike County School Corporation,School Corporation,"211 South 12th St, Petersburg, IN, 47567",Pike,"c(-87.2772225, 38.4918217)",Pike County School Corporation
+6460,Metropolitan School District Boone Township,School Corporation,"307 S Main St, Hebron, IN, 46341",Porter,"c(-87.1977404, 41.316463)",Boone Township Metropolitan School District
+6470,Duneland School Corporation,School Corporation,"601 W Morgan Ave, Chesterton, IN, 46304",Porter,"c(-87.059963, 41.6087847)",Duneland School Corporation
+6510,East Porter County School Corporation,School Corporation,"502 E College Ave - PO Box 370, Kouts, IN, 46347",Porter,"c(-87.0306651, 41.3148356)",East Porter County School Corporation
+6520,Porter Township School Corporation,School Corporation,"248 S 500 W, Valparaiso, IN, 46385",Porter,"c(-87.1620456, 41.3986726)",Porter Township School Corporation
+6530,Union Township School Corporation,School Corporation,"599 W 300 N Suite A, Valparaiso, IN, 46385",Porter,"c(-87.1471679, 41.506501)",Union Township School Corporation
+6550,Portage Township Schools,School Corporation,"6240 US Hwy 6, Portage, IN, 46368",Porter,"c(-87.1723984, 41.5516742)",Portage Township Schools
+6560,Valparaiso Community Schools,School Corporation,"3801 N Campbell St, Valparaiso, IN, 46385",Porter,"c(-87.0672163, 41.5021938)",Valparaiso Community Schools
+6590,Metropolitan School District Mount Vernon,School Corporation,"1000 W 4th St, Mount Vernon, IN, 47620",Posey,"c(-87.906771, 37.9290206)",Mount Vernon Metropolitan School District
+6600,Metropolitan School District North Posey County Schools,School Corporation,"101 N Church St, Poseyville, IN, 47633",Posey,"c(-87.7847782, 38.1725346)",North Posey County Schools Metropolitan School District
+6620,Eastern Pulaski Community School Corporation,School Corporation,"711 School Dr, Winamac, IN, 46996",Pulaski,"c(-86.5975057, 41.0462349)",Eastern Pulaski Community School Corporation
+6630,West Central School Corporation,School Corporation,"PO Box 578, Francesville, IN, 47946",Pulaski,"c(-86.8621827, 41.037141)",West Central School Corporation
+6705,South Putnam Community Schools,School Corporation,"3999 S US Hwy 231, Greencastle, IN, 46135",Putnam,"c(-86.8326309, 39.6026821)",Greencastle Community School Corporation
+6715,North Putnam Community Schools,School Corporation,"PO Box 169-300 N Washington, Bainbridge, IN, 46105",Putnam,"c(-86.812242, 39.7633013)",North Putnam Community Schools
+6750,Cloverdale Community Schools,School Corporation,"310 E Logan, Cloverdale, IN, 46120",Putnam,"c(-86.7818523, 39.483443)",Cloverdale Community Schools
+6755,Greencastle Community School Corporation,School Corporation,"1002 Mill Pond Lane, Greencastle, IN, 46135",Putnam,"c(-86.8403556, 39.6403188)",Greencastle Community School Corporation
+6795,Union School Corporation,School Corporation,"8707 W US Hwy 36 PO Box 148, Modoc, IN, 47358",Randolph,"c(-85.1422848, 40.0453531)",Union School Corporation
+6805,Randolph Southern School Corporation,School Corporation,"1 Rebel Dr, Lynn, IN, 47355",Randolph,"c(-84.981754, 40.0777761)",Randolph Southern School Corporation
+6820,Monroe Central School Corporation,School Corporation,"1918 N CR 1000 W, Parker City, IN, 47368",Randolph,"c(-85.1997667, 40.1789583)",Monroe Central School Corporation
+6825,Randolph Central School Corporation,School Corporation,"103 N East St, Winchester, IN, 47394",Randolph,"c(-84.9799858, 40.1727455)",Randolph Central School Corporation
+6835,Randolph Eastern School Corporation,School Corporation,"731 N Plum St, Union City, IN, 47390",Randolph,"c(-84.8146277, 40.2055819)",Randolph Eastern School Corporation
+6865,South Ripley Community School Corporation,School Corporation,"PO Box 690, Versailles, IN, 47042",Ripley,"c(-85.3136218, 39.0188511)",South Ripley Community School Corporation
+6895,Batesville Community School Corporation,School Corporation,"PO Box 121, Batesville, IN, 47006",Ripley,"c(-85.2308414, 39.3475649)",Batesville Community School Corporation
+6900,Jac-Cen-Del Community School Corporation,School Corporation,"723 N Buckeye St, Osgood, IN, 47037",Ripley,"c(-85.293838, 39.1357353)",Jac-Cen-Del Community School Corporation
+6910,Milan Community Schools,School Corporation,"412 E Carr St, Milan, IN, 47031",Ripley,"c(-85.1249073, 39.1204878)",Milan Community Schools
+6995,Rush County Schools,School Corporation,"330 W 8th St, Rushville, IN, 46173",Rush,"c(-85.4487993, 39.6152638)",Rush County Schools
+7150,John Glenn School Corporation,School Corporation,"101 John Glenn Dr, Walkerton, IN, 46574",St Joseph,"c(-86.4810434, 41.458001)",John Glenn School Corporation
+7175,Penn-Harris-Madison School Corporation,School Corporation,"55900 Bittersweet Rd, Mishawaka, IN, 46545",St Joseph,"c(-86.1086726, 41.6821092)",Penn-Harris-Madison School Corporation
+7200,School City of Mishawaka,School Corporation,"1402 S Main St, Mishawaka, IN, 46544",St Joseph,"c(-86.1793982, 41.6491237)",Mishawaka School City
+7205,South Bend Community School Corporation,School Corporation,"215 Dr Martin Luther King Jr B, South Bend, IN, 46601",St Joseph,"c(-86.2491653, 41.6744808)",South Bend Community School Corporation
+7215,Union-North United School Corporation,School Corporation,"22601 Tyler Rd, Lakeville, IN, 46536",St Joseph,"c(-86.3048487, 41.477562)",Union-North United School Corporation
+7230,Scott County School District 1,School Corporation,"PO Box 9, Austin, IN, 47102",Scott,"c(-85.7769164, 38.7549368)",Scott County School District 1
+7255,Scott County School District 2,School Corporation,"375 E McClain Ave, Scottsburg, IN, 47170",Scott,"c(-85.7663851, 38.6844525)",Scott County School District 2
+7285,Shelby Eastern Schools,School Corporation,"2451 N 600 E, Shelbyville, IN, 46176",Shelby,"c(-85.6697994, 39.5616496)",Shelby Eastern Schools
+7350,Northwestern Consolidated School Corporation,School Corporation,"4920 W 600 N, Fairland, IN, 46126",Shelby,"c(-85.874304, 39.6107052)",Northwestern Consolidated School Corporation
+7360,Southwestern Consolidated School Shelby County,School Corporation,"3406 W 600 S, Shelbyville, IN, 46176",Shelby,"c(-85.8458906, 39.4409928)",Southwestern Shelby County Consolidated Schools
+7365,Shelbyville Central Schools,School Corporation,"1121 E State Road 44, Shelbyville, IN, 46176",Shelby,"c(-85.7599292, 39.5196499)",Shelbyville Central Schools
+7385,North Spencer County School Corporation,School Corporation,"PO Box 316, Lincoln City, IN, 47552",Spencer,"c(-86.9423801, 38.0658202)",North Spencer County School Corporation
+7445,South Spencer County School Corporation,School Corporation,"321 S 5th Street, Rockport, IN, 47635",Spencer,"c(-87.0511065, 37.8796483)",South Spencer County School Corporation
+7495,Oregon-Davis School Corporation,School Corporation,"5998 N 750 E, Hamlet, IN, 46532",Starke,"c(-86.5528269, 41.38923)",Oregon-Davis School Corporation
+7515,North Judson-San Pierre School Corporation,School Corporation,"801 Campbell Dr, North Judson, IN, 46366",Starke,"c(-86.7857718, 41.2110408)",North Judson-San Pierre School Corporation
+7525,Knox Community School Corporation,School Corporation,"2 Redskin Trl, Knox, IN, 46534",Starke,"c(-86.624457, 41.2865936)",Knox Community School Corporation
+7605,Fremont Community Schools,School Corporation,"PO Box 665, Fremont, IN, 46737",Steuben,"c(-84.9505398, 41.7394424)",Fremont Community Schools
+7610,Hamilton Community Schools,School Corporation,"903 S Wayne St, Hamilton, IN, 46742",Steuben,"c(-84.919959, 41.522286)",Hamilton Community Schools
+7615,Metropolitan School District Steuben County,School Corporation,"400 S Martha St, Angola, IN, 46703",Steuben,"c(-84.9984731, 41.6322289)",Steuben County Metropolitan School District
+7645,Northeast School Corporation,School Corporation,"PO Box 493, Hymera, IN, 47855",Sullivan,"c(-87.3957238, 39.1837876)",Northeast School Corporation
+7715,Southwest School Corporation,School Corporation,"PO Box 510, Sullivan, IN, 47882",Sullivan,"c(-87.4207518, 39.0843122)",Southwest School Corporation
+7775,Switzerland County School Corporation,School Corporation,"1040 W Main St, Vevay, IN, 47043",Switzerland,"c(-85.0844019, 38.7387551)",Switzerland County School Corporation
+7855,Lafayette School Corporation,School Corporation,"2300 Cason St, Lafayette, IN, 47904",Tippecanoe,"c(-86.8712844, 40.4222831)",Lafayette School Corporation
+7865,Tippecanoe School Corporation,School Corporation,"21 Elston Rd, Lafayette, IN, 47909",Tippecanoe,"c(-86.90429, 40.3923331)",Tippecanoe School Corporation
+7875,West Lafayette Community School Corporation,School Corporation,"1130 N Salisbury, West Lafayette, IN, 47906",Tippecanoe,"c(-86.9055935, 40.4370751)",West Lafayette Community School Corporation
+7935,Tri-Central Community Schools,School Corporation,"4774 N 200 W, Sharpsville, IN, 46068",Tipton,"c(-86.0536605, 40.3756544)",Tipton County Northern Community School Corporation
+7945,Tipton Community School Corporation,School Corporation,"1051 S Main St, Tipton, IN, 46072",Tipton,"c(-86.0399007, 40.2722284)",Tipton Community School Corporation
+7950,Union County/Clg Corner Joint School District,School Corporation,"107 S Layman St, Liberty, IN, 47353",Union,"c(-84.9171539, 39.6367448)",Union County-College Corner Joint School District
+7995,Evansville Vanderburgh School Corporation,School Corporation,"951 Walnut St, Evansville, IN, 47713",Vanderburgh,"c(-87.5635528, 37.9725911)",Evansville-Vanderburgh School Corporation
+8010,North Vermillion Community School Corporation,School Corporation,"5551 N Falcon Dr, Cayuga, IN, 47928",Vermillion,"c(-87.4519935, 39.9669621)",North Vermillion Community School Corporation
+8020,South Vermillion Community School Corporation,School Corporation,"PO Box 387, Clinton, IN, 47842",Vermillion,"c(-87.4405786, 39.7268394)",South Vermillion Community School Corporation
+8030,Vigo County School Corporation,School Corporation,"PO Box 3703, Terre Haute, IN, 47803",Vigo,"c(-87.4207518, 39.4165382)",Vigo County School Corporation
+8045,Manchester Community Schools,School Corporation,"404 W Ninth St, N Manchester, IN, 46962",Wabash,"c(-85.7758999, 41.009895)",Manchester Community Schools
+8050,Metropolitan School District Wabash County Schools,School Corporation,"204 N 300 W, Wabash, IN, 46992",Wabash,"c(-85.8492946, 40.8278251)",Wabash County Schools Metropolitan School District
+8060,Wabash City Schools,School Corporation,"189 W Market St, Wabash, IN, 46992",Wabash,"c(-85.823625, 40.796447)",Wabash City Schools
+8115,Metropolitan School District Warren County,School Corporation,"101 N Monroe St, Williamsport, IN, 47993",Warren,"c(-87.2937518, 40.2872342)",Warren County Metropolitan School District
+8130,Warrick County School Corporation,School Corporation,"PO Box 809, Boonville, IN, 47601",Warrick,"c(-87.2618328, 38.0736703)",Warrick County School Corporation
+8205,Salem Community Schools,School Corporation,"500 N Harrison St, Salem, IN, 47167",Washington,"c(-86.1054457, 38.6140167)",Salem Community Schools
+8215,East Washington School Corporation,School Corporation,"1050 N Eastern School Rd, Pekin, IN, 47165",Washington,"c(-86.0014731, 38.5146014)",East Washington School Corporation
+8220,West Washington School Corporation,School Corporation,"8026 W Batt Rd, Campbellsburg, IN, 47108",Washington,"c(-86.2341519, 38.5835549)",West Washington School Corporation
+8305,Nettle Creek School Corporation,School Corporation,"297 E Northmarket St, Hagerstown, IN, 47346",Wayne,"c(-85.1583343, 39.9123225)",Nettle Creek School Corporation
+8355,Western Wayne Schools,School Corporation,"519 Queen St., Pershing, IN, 47370",Wayne,"c(-85.1373986, 39.8143106)",Western Wayne Schools
+8360,Centerville-Abington Community Schools,School Corporation,"115 W South St, Centerville, IN, 47330",Wayne,"c(-84.9977135, 39.8144717)",Centerville-Abington Community Schools
+8375,Northeastern Wayne Schools,School Corporation,"PO Box 406, Fountain City, IN, 47341",Wayne,"c(-84.9193082, 39.9317436)",Northeastern Wayne Schools
+8385,Richmond Community Schools,School Corporation,"300 Hub Etchison Parkway, Richmond, IN, 47374",Wayne,"c(-84.9020762, 39.8244866)",Richmond Community School Corporation
+8425,Southern Wells Community Schools,School Corporation,"9120 S 300 W, Poneto, IN, 46781",Wells,"c(-85.2799676, 40.6082732)",Southern Wells Community Schools
+8435,Norwell Community Schools,School Corporation,"312 N Jefferson St, Ossian, IN, 46777",Wells,"c(-85.16588, 40.8827459)",Northern Wells Community Schools
+8445,Metropolitan School District Bluffton-Harrison,School Corporation,"805 E Harrison St, Bluffton, IN, 46714",Wells,"c(-85.1271907, 40.7145634)",Bluffton-Harrison Metropolitan School District
+8515,North White School Corporation,School Corporation,"402 E Broadway St, Monon, IN, 47959",White,"c(-86.8748551, 40.8687365)",North White School Corporation
+8525,Frontier School Corporation,School Corporation,"PO Box 809, Chalmers, IN, 47929",White,"c(-86.8621827, 40.6327966)",Frontier School Corporation
+8535,Tri-County School Corporation,School Corporation,"105 N 2nd St, Wolcott, IN, 47995",White,"c(-87.042301, 40.7590605)",Tri-County School Corporation
+8565,Twin Lakes School Corporation,School Corporation,"565 S Main St, Monticello, IN, 47960",White,"c(-86.7614859, 40.7379158)",Twin Lakes School Corporation
+8625,Smith-Green Community Schools,School Corporation,"222 W Tulley St, Churubusco, IN, 46723",Whitley,"c(-85.3230721, 41.2310371)",Smith-Green Community Schools
+8665,Whitley County Consolidated Schools,School Corporation,"107 N Walnut St, Columbia City, IN, 46725",Whitley,"c(-85.4934534, 41.1580538)",Whitley County Consolidated Schools
+9022,Paramount School of Excellence Lafayette,School Corporation,"1904 Elmwood Ave, Lafayette, IN, 47904",NA,"c(-86.8761052, 40.427751)",Lafayette School Corporation
+0015,Adams Central Community Schools,School Corporation,"222 W Washington St, Monroe, IN, 46772-9436",Adams,"c(-84.9193082, 40.746062)",Adams Central Community Schools
+0025,North Adams Community Schools,School Corporation,"625 Stadium Dr, Decatur, IN, 46733",Adams,"c(-84.9193082, 40.8672374)",North Adams Community Schools
+0035,South Adams Schools,School Corporation,"1075 Starfire Way, Berne, IN, 46711",Adams,"c(-84.9193082, 40.6246316)",South Adams Schools
+0125,Metropolitan School District Southwest Allen County Schools,School Corporation,"4824 Homestead Rd, Fort Wayne, IN, 46814",Allen,"c(-85.2881248, 41.0387344)",Southwest Allen County Metropolitan School District
+0225,Northwest Allen County Schools,School Corporation,"13119 Coldwater Rd, Fort Wayne, IN, 46845",Allen,"c(-85.1365144, 41.2044412)",Northwest Allen County Schools
+0235,Fort Wayne Community Schools,School Corporation,"1200 S Clinton St, Fort Wayne, IN, 46802",Allen,"c(-85.0649071, 41.1352268)",Fort Wayne Community Schools
+0255,East Allen County Schools,School Corporation,"1240 SR 930 E, New Haven, IN, 46774",Allen,"c(-84.8984775, 41.0476016)",East Allen County Schools
+0365,Bartholomew Consolidated School Corporation,School Corporation,"1200 Central Ave, Columbus, IN, 47201",Bartholomew,"c(-85.9048034, 39.2111108)",Bartholomew County School Corporation
+0370,Flat Rock-Hawcreek School Corporation,School Corporation,"9423 N SR 9, Hope, IN, 47246",Bartholomew,"c(-85.7871663, 39.3068524)",Flat Rock-Hawcreek School Corporation
+0395,Benton Community School Corporation,School Corporation,"PO Box 512, Fowler, IN, 47944",Benton,"c(-87.2618328, 40.5617189)",Benton Community School Corporation
+0515,Blackford County Schools,School Corporation,"0668 W 200 S, Hartford City, IN, 47348",Blackford,"c(-85.3136218, 40.4992784)",Blackford County Schools
+0615,Western Boone County Community School District,School Corporation,"1201 N SR 75, Thorntown, IN, 46071",Boone,"c(-86.6207943, 40.0551854)",Western Boone County Community School Corporation
+0630,Zionsville Community Schools,School Corporation,"900 Mulberry St, Zionsville, IN, 46077",Boone,"c(-86.2767995, 39.9831886)",Zionsville Community Schools
+0665,Lebanon Community School Corporation,School Corporation,"1810 N Grant St, Lebanon, IN, 46052",Boone,"c(-86.4592091, 40.0503732)",Lebanon Community School Corporation
+0670,Brown County School Corporation,School Corporation,"357 E Main St, Nashville, IN, 47448",Brown,"c(-86.1751759, 39.1749729)",Brown County County School Corporation
+0750,Carroll Consolidated School Corporation,School Corporation,"2 S 3rd St, Flora, IN, 46929",Carroll,"c(-86.4794359, 40.5202693)",Carroll Consolidated School Corporation
+0755,Delphi Community School Corporation,School Corporation,"501 Armory Rd, Delphi, IN, 46923",Carroll,"c(-86.5400674, 40.6236211)",Delphi Community School Corporation
+0775,Pioneer Regional School Corporation,School Corporation,"PO Box 577, Royal Center, IN, 46978",Cass,"c(-86.4592091, 40.864111)",Pioneer Regional School Corporation
+0815,Lewis Cass Schools,School Corporation,"100 S Main Street, Walton, IN, 46994",Cass,"c(-86.2514139, 40.6627281)",Lewis Cass Schools
+0875,Logansport Community School Corporation,School Corporation,"2829 George St, Logansport, IN, 46947",Cass,"c(-86.3295554, 40.7563474)",Logansport Community School Corporation
+0935,Borden-Henryville School Corporation,School Corporation,"14312 Railroad St., Memphis, IN, 47143",Clark,"c(-85.7608169, 38.4872222)",Borden-Henryville School Corp
+0945,Silver Creek School Corporation,School Corporation,"601 Renz Ave, Sellersburg, IN, 47172",Clark,"c(-85.7564107, 38.397887)",Silver Creek School Corporation
+1000,Clarksville Community School Corporation,School Corporation,"502 Little League Blvd, Clarksville, IN, 47129",Clark,"c(-85.7641013, 38.3008943)",Clarksville Community School Corporation

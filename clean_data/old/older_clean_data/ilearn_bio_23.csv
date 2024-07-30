@@ -1,0 +1,593 @@
+corp_id,corp_name,schl_id,schl_name,bio_prof_pct
+0015,Adams Central Community Schools,0021,Adams Central High School,0.374
+0025,North Adams Community Schools,0029,Bellmont Senior High School,0.545
+0035,South Adams Schools,0023,South Adams High School,0.48
+0125,MSD Southwest Allen County Schls,0047,Homestead High School,0.6
+0125,MSD Southwest Allen County Schls,0188,eSACS Virtual School,0.182
+0225,Northwest Allen County Schools,0091,Carroll High School,0.54
+0235,Fort Wayne Community Schools,0101,North Side High School,0.107
+0235,Fort Wayne Community Schools,0102,R Nelson Snider High School,0.139
+0235,Fort Wayne Community Schools,0105,South Side High School,0.092
+0235,Fort Wayne Community Schools,0177,Wayne High School,0.184
+0235,Fort Wayne Community Schools,0219,Northrop High School,0.219
+0235,Fort Wayne Community Schools,0248,Fort Wayne Virtual Academy,0.167
+0255,East Allen County Schools,0049,Leo Junior/Senior High School,0.369
+0255,East Allen County Schools,0081,Heritage Jr/Sr High School,0.233
+0255,East Allen County Schools,0285,Woodlan Jr/Sr High School,0.278
+0255,East Allen County Schools,0297,New Haven Jr/Sr High School,0.112
+0255,East Allen County Schools,0394,East Allen University,0.235
+0365,Bartholomew Con School Corp,0390,Central Middle School,0.877
+0365,Bartholomew Con School Corp,0395,Northside Middle School,0.913
+0365,Bartholomew Con School Corp,0397,Columbus North High School,0.211
+0365,Bartholomew Con School Corp,0399,Columbus East High School,0.136
+0370,Flat Rock-Hawcreek School Corp,0410,Hauser Jr-Sr High School,0.133
+0395,Benton Community School Corp,0445,Benton Central Jr-Sr High School,0.416
+0515,Blackford County Schools,0489,Blackford Jr-Sr High School,0.345
+0615,Western Boone Co Com Sch Dist,0539,Western Boone Jr-Sr High School,0.387
+0630,Zionsville Community Schools,0512,Zionsville Community High School,0.627
+0665,Lebanon Community School Corp,0553,Lebanon Senior High School,0.316
+0670,Brown County School Corporation,0573,Brown County High School,0.139
+0670,Brown County School Corporation,0587,Brown County Middle School,0.5
+0750,Carroll Consolidated School Corp,0621,Carroll Senior High School,0.326
+0755,Delphi Community School Corp,0637,Delphi Community High School,0.458
+0775,Pioneer Regional School Corp,0645,Pioneer Jr-Sr High School,0.376
+0815,Lewis Cass Schools,0689,Lewis Cass High School,0.261
+0875,Logansport Community Sch Corp,0701,Logansport Community High School,0.22
+0875,Logansport Community Sch Corp,0719,The Academy at Logansport Community School,0
+0935,Borden-Henryville School Corporation,0765,Henryville Jr & Sr High School,0.207
+0935,Borden-Henryville School Corporation,0813,William W Borden High School,0.39
+0945,Silver Creek School Corporation,0777,Silver Creek High School,0.3
+1000,Clarksville Community School Corp,0833,Clarksville Senior High School,0.157
+1000,Clarksville Community School Corp,1007,Indiana Gateway Digital Academy,0.154
+1010,Greater Clark County Schools,0809,New Washington Middle/High School,0.308
+1010,Greater Clark County Schools,0821,Charlestown Senior High School,0.244
+1010,Greater Clark County Schools,0849,Jeffersonville High School,0.217
+1010,Greater Clark County Schools,0886,Old Corden Porter School,NA
+1125,Clay Community Schools,0897,Clay City Jr-Sr High School,0.265
+1125,Clay Community Schools,0933,Northview High School,0.165
+1150,Clinton Central School Corporation,0957,Clinton Central Junior-Senior HS,0.198
+1160,Clinton Prairie School Corporation,0977,Clinton Prairie Jr-Sr High School,0.375
+1170,Community Schools of Frankfort,0997,Frankfort High School,0.147
+1180,Rossville Con School District,1021,Rossville Middle/Senior High Sch,0.452
+1300,Crawford County Community Sch Corp,1049,Crawford County Virtual Academy,0
+1300,Crawford County Community Sch Corp,1059,Crawford County High School,0.207
+1315,Barr-Reeve Community Schools Inc,1069,Barr Reeve Middle/High School,0.515
+1375,North Daviess Com Schools,1121,North Daviess Jr-Sr High School,0.156
+1405,Washington Community Schools,1125,Washington High School,0.03
+1560,Sunman-Dearborn Com Sch Corp,7213,East Central High School,0.339
+1600,South Dearborn Community Sch Corp,1172,South Dearborn Middle School,0.604
+1600,South Dearborn Community Sch Corp,1179,South Dearborn High School,0.059
+1620,Lawrenceburg Community School Corp,1177,Lawrenceburg High School,0.126
+1620,Lawrenceburg Community School Corp,1209,Greendale Middle School,0.375
+1655,Decatur County Community Schools,1263,South Decatur Jr-Sr High School,0.086
+1655,Decatur County Community Schools,1267,North Decatur Jr-Sr High School,0.11
+1730,Greensburg Community Schools,1268,Greensburg Community High School,0.348
+1730,Greensburg Community Schools,1269,Greensburg Community Jr High,1
+1805,DeKalb Co Eastern Com Sch Dist,1317,Eastside Junior-Senior High School,0.271
+1820,Garrett-Keyser-Butler Com Sch Corp,1325,Garrett High School,0.121
+1835,DeKalb Co Ctl United Sch Dist,1345,DeKalb High School,0.266
+1875,Delaware Community School Corp,1369,Delta High School,0.36
+1885,Wes-Del Community Schools,1372,Wes-Del Middle/Senior High School,0.373
+1895,Liberty-Perry Community Sch Corp,1375,Wapahani High School,0.261
+1900,Cowan Community School Corp,1386,Cowan High School,0.145
+1910,Yorktown Community Schools,1387,Yorktown Middle School,0.885
+1910,Yorktown Community Schools,1389,Yorktown High School,0.29
+1940,Daleville Community Schools,1401,Daleville Jr-Sr High School,0.346
+1970,Muncie Community Schools,1421,Muncie Central High School,0.078
+2040,Northeast Dubois Co Sch Corp,1545,Northeast Dubois Jr/Sr High School,0.236
+2100,Southeast Dubois Co Sch Corp,1583,Forest Park Jr-Sr High School,0.478
+2110,Southwest Dubois Co Sch Corp,1587,Southridge Middle School,0.8
+2110,Southwest Dubois Co Sch Corp,1588,Southridge High School,0.297
+2120,Greater Jasper Consolidated Schs,1575,Jasper Middle School,0.963
+2120,Greater Jasper Consolidated Schs,1593,Jasper High School,0.249
+2155,Fairfield Community Schools,1613,Fairfield Jr-Sr High School,0.322
+2260,Baugo Community Schools,1701,Jimtown High School,0.299
+2270,Concord Community Schools,1713,Concord Junior High School,0.595
+2270,Concord Community Schools,1715,Concord Community High School,0.081
+2275,Middlebury Community Schools,1733,Northridge High School,0.274
+2285,Wa-Nee Community Schools,1737,North Wood High School,0.416
+2305,Elkhart Community Schools,1752,Elkhart Alternative Education,0
+2305,Elkhart Community Schools,1754,Elkhart High School,0.063
+2305,Elkhart Community Schools,1761,West Side Middle School,0.833
+2315,Goshen Community Schools,1821,Goshen High School,0.152
+2395,Fayette County School Corporation,1889,Connersville Sr High School,0.287
+2400,New Albany-Floyd Co Con Sch,1925,New Albany Senior High School,0.339
+2400,New Albany-Floyd Co Con Sch,1930,Floyd Central High School,0.482
+2435,Attica Consolidated School Corp,2053,Attica High School,0.146
+2440,Covington Community School Corp,2005,Covington Community High School,0.338
+2455,Southeast Fountain School Corp,2022,Fountain Central High School,0.375
+2455,Southeast Fountain School Corp,2458,Southeast Fountain Virtual Academy,NA
+2475,Franklin County Community Sch Corp,2083,Franklin County High,0.375
+2645,Rochester Community School Corp,2173,Rochester Community High School,0.26
+2650,Caston School Corporation,2159,Caston Jr-Sr High School,0.227
+2725,East Gibson School Corporation,2233,Waldo J Wood Memorial High,0.143
+2735,North Gibson School Corporation,2249,Princeton Community High School,0.151
+2765,South Gibson School Corporation,2211,Gibson Southern High School,0.312
+2815,Eastbrook Community Sch Corp,2293,Eastbrook High School,0.412
+2825,Madison-Grant United School Corp,2321,Madison-Grant Jr./Sr. High School,0.222
+2825,Madison-Grant United School Corp,2836,Virtual Preparatory Academy of Indiana at Madison-Grant 6-8,NA
+2825,Madison-Grant United School Corp,2838,Virtual Preparatory Academy of Indiana at Madison-Grant 9-12,0.068
+2855,Mississinewa Community School Corp,2333,Mississinewa High School,0.057
+2855,Mississinewa Community School Corp,2335,R J Baskett Middle School,0.378
+2865,Marion Community Schools,2351,Marion High School,0.127
+2865,Marion Community Schools,2357,John L McCulloch Junior High Sch,0.298
+2920,Bloomfield School District,2419,Bloomfield High School,0.214
+2940,Eastern Greene Schools,2435,Eastern Greene High School,0.24
+2950,Linton-Stockton School Corporation,2437,Linton-Stockton High School,0.389
+2960,MSD Shakamak Schools,2445,Shakamak Jr-Sr High School,0.241
+2980,White River Valley School District,2429,White River Valley High School,0.346
+3005,Hamilton Southeastern Schools,2487,Fishers High School,0.483
+3005,Hamilton Southeastern Schools,2499,Hamilton Southeastern HS,0.428
+3025,Hamilton Heights School Corp,2477,Hamilton Heights High School,0.364
+3030,Westfield-Washington Schools,2493,Westfield High School,0.597
+3055,Sheridan Community Schools,2463,Sheridan High School,0.337
+3060,Carmel Clay Schools,2505,Carmel High School,0.606
+3070,Noblesville Schools,2517,Noblesville High School,0.376
+3115,Southern Hancock Co Com Sch Corp,2565,New Palestine High School,0.41
+3115,Southern Hancock Co Com Sch Corp,2566,New Palestine Jr High School,0.794
+3125,Greenfield-Central Com Schools,2579,Greenfield Central Junior High Sch,0.903
+3125,Greenfield-Central Com Schools,2595,Greenfield-Central High School,0.207
+3135,Mt Vernon Community School Corp,2569,Mt Vernon High School,0.57
+3145,Eastern Hancock Co Com Sch Corp,2585,Eastern Hancock High School,0.223
+3160,Lanesville Community School Corp,2613,Lanesville Jr-Sr HS,0.239
+3180,North Harrison Com School Corp,2629,North Harrison High School,0.259
+3190,South Harrison Com Schools,2640,Corydon Central High School,0.309
+3190,South Harrison Com Schools,2670,South Central Jr & Sr High School,0.429
+3295,North West Hendricks Schools,2682,Tri-West Middle School,0.943
+3295,North West Hendricks Schools,2731,Tri-West Senior High School,0.25
+3305,Brownsburg Community School Corp,2709,Brownsburg High School,0.558
+3305,Brownsburg Community School Corp,2713,Brownsburg West Middle School,1
+3305,Brownsburg Community School Corp,2720,Brownsburg East Middle School,1
+3315,Avon Community School Corp,2730,Avon Middle School North,0.963
+3315,Avon Community School Corp,2736,Avon Middle School South,1
+3315,Avon Community School Corp,2737,Avon High School,0.313
+3325,Danville Community School Corp,2741,Danville Community High School,0.36
+3325,Danville Community School Corp,2743,Danville Middle School,0.667
+3330,Plainfield Community School Corp,2749,Plainfield High School,0.336
+3330,Plainfield Community School Corp,2750,Plainfield Community Middle School,0.861
+3335,Mill Creek Community Sch Corp,2692,Cascade Senior High School,0.554
+3405,Blue River Valley Schools,2801,Blue River Valley Jr-Sr High Sch,0.205
+3415,South Henry School Corp,2773,Tri Junior-Senior High School,0.14
+3435,Shenandoah School Corporation,2817,Shenandoah High School,0.234
+3445,New Castle Community School Corp,2810,New Castle Schools at the Hoosier Youth Challenge Academy,NA
+3445,New Castle Community School Corp,2825,New Castle High School,0.263
+3455,C A Beard Memorial School Corp,2869,Knightstown High School,0.272
+3460,Taylor Community School Corp,2894,Taylor High School,0.19
+3470,Northwestern School Corp,2897,Northwestern Senior High School,0.377
+3480,Eastern Howard School Corporation,2919,Eastern High School,0.41
+3490,Western School Corporation,2921,Western High School,0.411
+3500,Kokomo School Corporation,2955,Central Middle School,0.31
+3500,Kokomo School Corporation,3013,Kokomo High School,0.106
+3625,Huntington Co Com Sch Corp,3065,Huntington North High School,0.313
+3675,Seymour Community Schools,3133,Seymour Senior High School,0.194
+3695,Brownstown Cnt Com Sch Corp,3126,Brownstown Central High School,0.3
+3710,Crothersville Community Schools,3121,Crothersville Jr-Sr High School,0.216
+3785,Kankakee Valley School Corp,3181,Kankakee Valley High School,0.296
+3815,Rensselaer Central School Corp,3201,Rensselaer Central High School,0.071
+3815,Rensselaer Central School Corp,3221,Rensselaer Middle School,0.739
+3945,Jay School Corporation,3239,Jay County Jr/Sr High School,0.193
+3995,Madison Consolidated Schools,3309,Madison Consolidated High School,0.21
+4000,Southwestern-Jefferson Co Con,3337,Southwestern High School,0.238
+4015,Jennings County School Corporation,3345,Jennings County High School,0.14
+4145,Clark-Pleasant Community Sch Corp,3421,Whiteland Community High School,0.177
+4205,Center Grove Community School Corp,3437,Center Grove High School,0.414
+4205,Center Grove Community School Corp,3441,Center Grove Middle School Central,0.972
+4205,Center Grove Community School Corp,3443,Center Grove Middle School North,1
+4215,Edinburgh Community School Corp,3447,Edinburgh Community High School,0.328
+4225,Franklin Community School Corp,3445,Franklin Community High School,0.286
+4245,Greenwood Community Sch Corp,3473,Greenwood Community High Sch,0.324
+4255,Nineveh-Hensley-Jackson United,3419,Indian Creek Sr High School,0.261
+4315,North Knox School Corp,3537,North Knox Jr-Sr High School,0.218
+4325,South Knox School Corp,3490,South Knox Middle-High School,0.23
+4335,Vincennes Community School Corp,3553,Lincoln High School,0.139
+4335,Vincennes Community School Corp,4319,Washington Learning Academy,0
+4345,Wawasee Community School Corp,3639,Wawasee High School,0.34
+4415,Warsaw Community Schools,3607,Lakeview Middle School,0.975
+4415,Warsaw Community Schools,3647,Warsaw Community High School,0.206
+4415,Warsaw Community Schools,3653,Edgewood Middle School,0.848
+4445,Tippecanoe Valley School Corp,3602,Tippecanoe Valley High School,0.189
+4445,Tippecanoe Valley School Corp,3619,Tippecanoe Valley Middle School,0.469
+4455,Whitko Community School Corp,9191,Whitko Jr/Sr High School,0.093
+4515,Prairie Heights Community Sch Corp,3690,Prairie Heights Sr High School,0.345
+4525,Westview School Corporation,3697,Westview Jr-Sr High School,0.388
+4535,Lakeland School Corporation,3730,Lakeland Jr/Sr High School,0.22
+4580,Hanover Community School Corp,3785,Hanover Central High School,0.402
+4590,River Forest Community Sch Corp,3791,River Forest High School,0.132
+4600,Merrillville Community School Corp,3809,Merrillville High School,0.152
+4615,Lake Central School Corporation,3833,Lake Central High School,0.43
+4645,Tri-Creek School Corporation,3865,Lowell Senior High School,0.435
+4650,Lake Ridge New Tech Schools,3869,Calumet New Tech High School,0.023
+4660,Crown Point Community School Corp,3761,Robert Taft Middle School,0.925
+4660,Crown Point Community School Corp,3901,Crown Point High School,0.354
+4660,Crown Point Community School Corp,3915,Colonel John Wheeler Middle School,0.889
+4670,School City of East Chicago,3924,East Chicago Central High School,0.049
+4680,Lake Station Community Schools,3965,Thomas A Edison Jr-Sr HS,0.058
+4690,Gary Community School Corp,4163,West Side Leadership Academy,0.013
+4700,Griffith Public Schools,4173,Griffth Jr/Sr High School,0.165
+4710,School City of Hammond,4415,Hammond Central High School,0.016
+4710,School City of Hammond,4417,Morton Senior High School,0.026
+4710,School City of Hammond,4425,Henry W Eggers Middle School,0.159
+4710,School City of Hammond,4433,Charles N Scott Middle School,0.125
+4720,School Town of Highland,4281,Highland High School,0.18
+4730,School City of Hobart,4305,Hobart High School,0.125
+4730,School City of Hobart,4309,Hobart Middle School,0.444
+4740,School Town of Munster,4332,Munster High School,0.367
+4740,School Town of Munster,4333,Wilbur Wright Middle School,1
+4760,School City of Whiting,4353,Whiting High School,0.051
+4805,New Prairie United School Corp,4689,New Prairie High School,0.398
+4860,MSD of New Durham Township,4701,Westville High School,0.272
+4915,Tri-Township Cons School Corp,4692,Tri-Township Jr.-Sr. High School,0.136
+4925,Michigan City Area Schools,4788,Martin T Krueger Middle School,0.348
+4925,Michigan City Area Schools,4795,Michigan City High School,0.076
+4940,South Central Com School Corp,4737,South Central Jr-Sr High School,0.268
+4945,LaPorte Community School Corp,4741,LaPorte High School,0.242
+5075,North Lawrence Com Schools,4911,Bedford-North Lawrence High School,0.266
+5085,Mitchell Community Schools,4925,Mitchell High School,0.14
+5245,Frankton-Lapel Community Schools,5005,Frankton Jr-Sr High School,0.317
+5245,Frankton-Lapel Community Schools,5011,Lapel Sr High School,0.402
+5255,South Madison Com Sch Corp,5053,Pendleton Heights High School,0.393
+5265,Alexandria Community School Corp,5041,Alexandria-Monroe High School,0.123
+5275,Anderson Community School Corp,4906,COMPASS Alternative School,0
+5275,Anderson Community School Corp,4945,Anderson High School,0.083
+5275,Anderson Community School Corp,5076,Highland Middle School,0.492
+5280,Elwood Community School Corp,5149,Elwood Jr-Sr High School,0.17
+5300,MSD Decatur Township,5177,Decatur Central High School,0.074
+5300,MSD Decatur Township,5181,Decatur Middle School,0.783
+5310,Franklin Township Com Sch Corp,5193,Franklin Central High School,0.328
+5330,MSD Lawrence Township,5275,Lawrence Central High School,0.081
+5330,MSD Lawrence Township,5276,Lawrence North High School,0.1
+5330,MSD Lawrence Township,5277,Belzer Middle School,0.743
+5330,MSD Lawrence Township,5291,Fall Creek Valley Middle School,0.409
+5340,Perry Township Schools,5307,Perry Meridian High School,0.343
+5340,Perry Township Schools,5309,Southport High School,0.173
+5350,MSD Pike Township,5353,Pike High School,0.194
+5360,MSD Warren Township,5361,Warren Central High School,0.088
+5360,MSD Warren Township,5379,Warren Online Academy,0.051
+5370,MSD Washington Township,5442,Eastwood Middle School,0.774
+5370,MSD Washington Township,5445,Northview Middle School,0.66
+5370,MSD Washington Township,5448,Westlane Middle School,0.344
+5370,MSD Washington Township,5451,North Central High School,0.369
+5375,MSD Wayne Township,5213,Ben Davis High School,0.011
+5375,MSD Wayne Township,5219,Ben Davis Ninth Grade Center,0.04
+5375,MSD Wayne Township,5221,Chapel Hill 7th & 8th Grade Center,0.188
+5375,MSD Wayne Township,5222,Lynhurst 7th & 8th Grade Center,0.549
+5375,MSD Wayne Township,5271,Sanders School,NA
+5375,MSD Wayne Township,5288,Achieve Virtual Education Academy,0.15
+5380,Beech Grove City Schools,5449,Beech Grove Sr High School,0.151
+5385,Indianapolis Public Schools,0109,Thrival Academy,0.088
+5385,Indianapolis Public Schools,5462,Arsenal Technical High School,0.031
+5385,Indianapolis Public Schools,5467,HW Longfellow Med/STEM Magnet Midl,0.2
+5385,Indianapolis Public Schools,5474,Crispus Attucks High School,0.01
+5385,Indianapolis Public Schools,5492,Shortridge High School,0.069
+5385,Indianapolis Public Schools,5577,Merle Sidener Gifted Academy,0.25
+5385,Indianapolis Public Schools,5644,George Washington High School,0.009
+5390,Southside Sp Srvs Of Marion Co,5320,RISE Learning Center,NA
+5400,School Town of Speedway,5891,Speedway Senior High School,0.48
+5455,Culver Community Schools Corp,5245,Culver Community Middle/High Sch,0.206
+5470,Argos Community Schools,5937,Argos Comm Jr-Sr High School,0.357
+5480,Bremen Public Schools,5941,Bremen Senior High School,0.259
+5485,Plymouth Community School Corp,5945,Plymouth High School,0.231
+5495,Triton School Corporation,5923,Triton Jr-Sr High School,0.475
+5520,Shoals Community School Corp,5985,Shoals Community High School,0.143
+5525,Loogootee Community Sch Corp,6003,Loogootee High School,0.538
+5615,Maconaquah School Corp,6032,Maconaquah High School,0.248
+5620,North Miami Community Schools,6049,North Miami Middle/High School,0.394
+5625,Oak Hill United School Corp,6069,Oak Hill High School,0.25
+5635,Peru Community Schools,6085,Peru Jr/Sr High School,0.271
+5705,Richland-Bean Blossom C S C,6146,Edgewood High School,0.258
+5705,Richland-Bean Blossom C S C,6147,Edgewood Junior High School,NA
+5740,Monroe County Community Sch Corp,6166,Bloomington High School South,0.481
+5740,Monroe County Community Sch Corp,6168,Bloomington High School North,0.41
+5740,Monroe County Community Sch Corp,6202,The Acad of Sci & Entrepreneurship,0.348
+5740,Monroe County Community Sch Corp,6220,Bloomington Graduation School,0.038
+5835,North Montgomery Com Sch Corp,6271,North Montgomery High School,0.159
+5845,South Montgomery Com Sch Corp,6257,Southmont Sr High School,0.44
+5855,Crawfordsville Community Schools,6277,Crawfordsville Sr High School,0.294
+5900,Monroe-Gregg School District,6321,Monrovia High School,0.212
+5910,Eminence Community School Corp,6325,Eminence Jr-Sr High School,0
+5925,MSD Martinsville Schools,6329,Martinsville High School,0.172
+5925,MSD Martinsville Schools,6332,John R. Wooden Middle School,0.769
+5930,Mooresville Con School Corp,6369,Mooresville High School,0.199
+5930,Mooresville Con School Corp,6373,Paul Hadley Middle School,0.596
+5945,North Newton School Corp,6411,North Newton Jr-Sr High School,0.236
+5995,South Newton School Corp,6417,South Newton Senior High School,0.279
+6055,Central Noble Com School Corp,6453,Central Noble Junior Senior HS,0.233
+6060,East Noble School Corporation,6458,East Noble High School,0.311
+6065,West Noble School Corporation,6489,West Noble High School,0.212
+6080,Rising Sun-Ohio Co Com,6512,Ohio County Middle School,0.333
+6080,Rising Sun-Ohio Co Com,6513,Rising Sun High School,0.074
+6145,Orleans Community Schools,6573,Orleans Jr-Sr High School,0.279
+6155,Paoli Community School Corp,6581,Paoli Jr & Sr High School,0.185
+6160,Springs Valley Com School Corp,6589,Springs Valley Comm High School,0.353
+6195,Spencer-Owen Community Schools,6613,Owen Valley Community High School,0.129
+6260,Southwest Parke Com Sch Corp,6627,Riverton Parke Jr-Sr High School,0.051
+6325,Perry Central Com Schools Corp,6708,Perry Central Jr-Sr High School,0.282
+6340,Cannelton City Schools,6733,Cannelton Elementary & High School,0.308
+6350,Tell City-Troy Twp School Corp,6741,Tell City Jr-Sr High School,0.255
+6375,North Central Parke Comm Schl Corp,6654,Parke Heritage High School,0.278
+6445,Pike County School Corp,6763,Pike Central High School,0.155
+6460,MSD Boone Township,6813,Hebron High School,0.287
+6470,Duneland School Corporation,6925,Chesterton Senior High School,0.29
+6470,Duneland School Corporation,6926,Trojan Virtual Academy,0
+6470,Duneland School Corporation,6930,Chesterton Middle School,0.723
+6510,East Porter County School Corp,6825,Morgan Township Middle/High School,0.659
+6510,East Porter County School Corp,6833,Kouts Middle/High School,0.306
+6510,East Porter County School Corp,6849,Washington Twp Middle/High School,0.667
+6520,Porter Township School Corp,6838,Boone Grove High School,0.301
+6520,Porter Township School Corp,6839,Boone Grove Middle School,NA
+6530,Union Township School Corp,6841,Wheeler High School,0.506
+6550,Portage Township Schools,6853,Portage High School,0.113
+6550,Portage Township Schools,6859,William Fegely Middle School,0.523
+6550,Portage Township Schools,6871,Willowcreek Middle School,0.571
+6560,Valparaiso Community Schools,6881,Valparaiso High School,0.333
+6560,Valparaiso Community Schools,6885,Benjamin Franklin Middle School,0.94
+6560,Valparaiso Community Schools,6887,Thomas Jefferson Middle School,0.824
+6590,MSD Mount Vernon,6949,Mount Vernon High School,0.304
+6600,MSD North Posey Co Schools,6975,North Posey High School,0.178
+6620,Eastern Pulaski Community Sch Corp,6997,Winamac Community High School,0.12
+6630,West Central School Corp,7025,West Central Senior High School,0.153
+6705,South Putnam Community Schools,7071,South Putnam High School,0.409
+6715,North Putnam Community Schools,7061,North Putnam Sr High School,0.395
+6750,Cloverdale Community Schools,7077,Cloverdale High School,0.174
+6755,Greencastle Community School Corp,7089,Greencastle High School,0.306
+6795,Union School Corporation,7119,Union Junior & High School,0.16
+6795,Union School Corporation,7122,Indiana Digital Elementary,NA
+6795,Union School Corporation,7131,Indiana Digital JR and High School,0.086
+6795,Union School Corporation,7142,Indiana Digital Alternative School,0.015
+6805,Randolph Southern School Corp,7121,Randolph Southern Jr-Sr High Sch,0.161
+6820,Monroe Central School Corp,7151,Monroe Central Jr-Sr High School,0.282
+6825,Randolph Central School Corp,7125,Winchester Community High School,0.189
+6835,Randolph Eastern School Corp,7161,Union City Community Jr/Sr High,0.074
+6865,South Ripley Com Sch Corp,7182,South Ripley High School,0.113
+6895,Batesville Community School Corp,7217,Batesville High School,0.226
+6895,Batesville Community School Corp,7219,Batesville Middle School,0.949
+6900,Jac-Cen-Del Community Sch Corp,7193,Jac-Cen-Del MS/HS,0.053
+6910,Milan Community Schools,7205,Milan High School,0.161
+6995,Rush County Schools,7285,Rushville Consolidated High School,0.227
+7150,John Glenn School Corporation,7453,John Glenn High School,0.415
+7175,Penn-Harris-Madison School Corp,7353,Penn High School,0.541
+7200,School City of Mishawaka,7461,Mishawaka High School,0.158
+7200,School City of Mishawaka,7467,Oaklawn Campus Program,NA
+7205,South Bend Community School Corp,7248,South Bend Virtual School,NA
+7205,South Bend Community School Corp,7421,Clay High School,0.076
+7205,South Bend Community School Corp,7505,Adams High School,0.163
+7205,South Bend Community School Corp,7513,Riley High School,0.095
+7205,South Bend Community School Corp,7517,Washington High School,0.023
+7205,South Bend Community School Corp,7534,Rise Up Academy at Eggleston,NA
+7205,South Bend Community School Corp,7632,Juvenile Justice Center,NA
+7215,Union-North United School Corp,7399,LaVille Jr-Sr High School,0.327
+7230,Scott County School District 1,7629,Austin High School,0.173
+7255,Scott County School District 2,7641,Scottsburg Senior High School,0.102
+7285,Shelby Eastern Schools,7661,Morristown Jr-Sr High School,0.226
+7285,Shelby Eastern Schools,7665,Waldron Jr-Sr High School,0.15
+7350,Northwestern Con School Corp,7689,Triton Central High School,0.403
+7360,Southwestern Con Sch Shelby Co,7701,Southwestern High School,0.114
+7365,Shelbyville Central Schools,7717,Shelbyville Sr High School,0.159
+7365,Shelbyville Central Schools,7721,Shelbyville Middle School,0.686
+7385,North Spencer County Sch Corp,7759,Heritage Hills High School,0.5
+7445,South Spencer County Sch Corp,7795,South Spencer High School,0.286
+7495,Oregon-Davis School Corp,7831,Oregon-Davis Jr-Sr High School,0.136
+7515,North Judson-San Pierre Sch Corp,7849,N Judson-San Pierre Jr Sr High Sch,0.217
+7525,Knox Community School Corp,7833,Knox Community High School,0.138
+7525,Knox Community School Corp,7837,Knox Community Middle School,0.35
+7605,Fremont Community Schools,7877,Fremont High School,0.613
+7610,Hamilton Community Schools,7885,Hamilton Community High School,0.091
+7615,MSD Steuben County,7893,Angola High School,0.229
+7615,MSD Steuben County,7895,Angola Middle School,0.784
+7645,Northeast School Corp,7917,North Central Jr/Sr High School,0.203
+7715,Southwest School Corporation,7954,Carlisle Middle School,0.778
+7715,Southwest School Corporation,7957,Sullivan High School,0.191
+7715,Southwest School Corporation,7961,Sullivan Middle School,0.5
+7775,Switzerland County School Corp,7993,Switzerland Co Senior High School,0.18
+7855,Lafayette School Corporation,8069,Jefferson High School,0.181
+7855,Lafayette School Corporation,8077,Lafayette Tecumseh Jr High School,1
+7865,Tippecanoe School Corp,8003,McCutcheon High School,0.246
+7865,Tippecanoe School Corp,8029,William Henry Harrison High School,0.482
+7875,West Lafayette Com School Corp,8129,West Lafayette Jr/Sr High School,0.61
+7935,Tri-Central Community Schools,8155,Tri Central Middle-High School,0.258
+7945,Tipton Community School Corp,8177,Tipton High School,0.126
+7950,Union Co/Clg Corner Joint Sch Dist,8193,Union County High School,0.224
+7995,Evansville Vanderburgh School Corp,8207,EVSC Virtual Academy,0.278
+7995,Evansville Vanderburgh School Corp,8237,Benjamin Bosse High School,0.135
+7995,Evansville Vanderburgh School Corp,8241,Central High School,0.275
+7995,Evansville Vanderburgh School Corp,8245,Francis Joseph Reitz High School,0.386
+7995,Evansville Vanderburgh School Corp,8253,North High School,0.37
+7995,Evansville Vanderburgh School Corp,8270,Academy for Innovative Studies,0
+7995,Evansville Vanderburgh School Corp,8271,Harwood Career Prep High School,0
+7995,Evansville Vanderburgh School Corp,8311,William Henry Harrison High School,0.17
+7995,Evansville Vanderburgh School Corp,8326,New Tech Institute,0.361
+7995,Evansville Vanderburgh School Corp,8345,Perry Heights Middle School,NA
+8010,North Vermillion Com Sch Corp,8394,North Vermillion High School,0.226
+8020,South Vermillion Com Sch Corp,8432,South Vermillion High School,0.211
+8030,Vigo County School Corp,8441,Terre Haute North Vigo High School,0.24
+8030,Vigo County School Corp,8453,West Vigo High School,0.306
+8030,Vigo County School Corp,8457,Terre Haute South Vigo High School,0.195
+8030,Vigo County School Corp,8483,Vigo Virtual School Academy,0.182
+8030,Vigo County School Corp,8611,Booker T Washington Alt Sch,0
+8045,Manchester Community Schools,8625,Manchester Jr-Sr High School,0.314
+8050,MSD Wabash County Schools,8651,Northfield Jr-Sr High School,0.241
+8050,MSD Wabash County Schools,8655,Southwood Jr-Sr High School,0.482
+8050,MSD Wabash County Schools,8673,White's Jr-Sr High School,NA
+8060,Wabash City Schools,8693,Wabash High School,0.089
+8060,Wabash City Schools,8694,Wabash Middle School,0.625
+8115,MSD Warren County,8737,Seeger Memorial Jr-Sr High School,0.436
+8130,Warrick County School Corp,8772,Tecumseh High School,0.292
+8130,Warrick County School Corp,8789,Boonville High School,0.302
+8130,Warrick County School Corp,8809,Castle High School,0.481
+8205,Salem Community Schools,8857,Salem High School,0.163
+8215,East Washington School Corp,8905,Eastern High School,0.087
+8220,West Washington School Corp,8869,West Washington Jr-Sr High School,0.261
+8305,Nettle Creek School Corporation,8985,Hagerstown Jr-Sr High School,0.304
+8355,Western Wayne Schools,8961,Lincoln Middle/ High School,0.211
+8355,Western Wayne Schools,8965,Lincoln Middle School,NA
+8360,Centerville-Abington Com Schs,8981,Centerville Sr High School,0.32
+8375,Northeastern Wayne Schools,8927,Northeastern High School,0.163
+8385,Richmond Community Schools,8993,Richmond High School,0.156
+8425,Southern Wells Com Schools,9058,Southern Wells Jr-Sr High School,0.362
+8435,Northern Wells Community Schools,9087,Norwell High School,0.321
+8445,MSD Bluffton-Harrison,9089,Bluffton High School,0.429
+8515,North White School Corp,9135,North White High School,0.13
+8525,Frontier School Corporation,9137,Frontier Jr-Sr High School,0.189
+8535,Tri-County School Corporation,9141,Tri-County Jr/Sr High School,0.278
+8565,Twin Lakes School Corp,9149,Twin Lakes Senior High School,0.277
+8625,Smith-Green Community Schools,9193,Churubusco Jr-Sr High School,0.276
+8635,Purdue Polytechnic High Sch North,7782,Purdue Polytechnic High Sch North,0.179
+8655,Excel Center - Bloomington,4209,Excel Center - Bloomington,NA
+8665,Whitley County Con Schools,9187,Columbia City High School,0.306
+8690,Dynamic Minds Academy,8692,Dynamic Minds Academy,0.2
+8940,James and Rosemary Phalen Leadership Academy High School,9961,James and Rosemary Phalen Leadership Academy High School,0.035
+8960,Purdue Polytechnic High School South Bend,9963,Purdue Polytechnic High School South Bend,0.212
+8970,GEO Next Generation Academy,9966,GEO Next Generation Academy,0
+9000,Phalen Virtual Leadership Academy,9992,Phalen Virtual Leadership Academy,0.023
+9015,Purdue Polytechnic High School Ind,4271,Purdue Polytechnic High School Ind,0.022
+9035,Indiana Connections Career Academy,7947,Indiana Connections Career Academy,0.229
+9050,Excel Center - Clarksville,2006,Excel Center - Clarksville,0
+9100,Indiana Department of Correction,5055,Pendleton Juvenile Correctional,NA
+9120,Hoosier College and Career Academy,2528,Hoosier College and Career Academy,0.066
+9135,KIPP Indy Legacy High,9138,KIPP Indy Legacy High,0.118
+9140,BELIEVE Circle City High School,9994,BELIEVE Circle City High School,0.241
+9145,Herron-Riverside High School,1122,Herron-Riverside High School,0.266
+9160,Excel Center - Muncie,1016,Excel Center - Muncie,NA
+9170,Rooted School Indianapolis,9997,Rooted School Indianapolis,0.04
+9200,Archdiocese of Indianapolis,A575,Our Lady Of Providence High School,0.524
+9200,Archdiocese of Indianapolis,B265,Saint Michael School,NA
+9200,Archdiocese of Indianapolis,B505,Shawe Memorial High School,0.472
+9200,Archdiocese of Indianapolis,C320,Roncalli High School,0.517
+9200,Archdiocese of Indianapolis,C623,Providence Cristo Rey High School,0.053
+9200,Archdiocese of Indianapolis,C650,St Michael St Gabriel Archangels School,0.238
+9200,Archdiocese of Indianapolis,C700,Cathedral High School,0.427
+9200,Archdiocese of Indianapolis,C705,Bishop Chatard High School,0.384
+9200,Archdiocese of Indianapolis,C710,Scecina Memorial High School,0.261
+9200,Archdiocese of Indianapolis,C715,Cardinal Ritter High School,0.2
+9200,Archdiocese of Indianapolis,D130,Saint Louis School,0.643
+9200,Archdiocese of Indianapolis,D135,Oldenburg Academy,0.852
+9200,Archdiocese of Indianapolis,D842,Seton Catholic High School,0.412
+9205,Diocese of Gary,B760,Andrean High School,0.378
+9205,Diocese of Gary,B780,Saint John Evangelist School,0.583
+9205,Diocese of Gary,B835,Saint Mary Catholic Comm School,NA
+9205,Diocese of Gary,B970,Bishop Noll Institute,0.319
+9205,Diocese of Gary,C060,Saint Thomas More School,0.585
+9205,Diocese of Gary,C125,Marquette Catholic High School,0.369
+9205,Diocese of Gary,D085,Saint Paul Catholic School,NA
+9210,Diocese of Lafayette Catholic Sch,A795,St. Michael Catholic School,NA
+9210,Diocese of Lafayette Catholic Sch,B249,Guerin Catholic High School,0.65
+9210,Diocese of Lafayette Catholic Sch,D415,Central Catholic Jr-Sr High School,0.654
+9215,Diocese of Evansville,A660,Washington Catholic Mid/High Sch,0.583
+9215,Diocese of Evansville,A871,Holy Trinity Catholic School,0.783
+9215,Diocese of Evansville,B560,Rivet Middle & High School,0.143
+9215,Diocese of Evansville,D530,Mater Dei High School,0.375
+9215,Diocese of Evansville,D535,Reitz Memorial High School,0.543
+9220,Diocese of Fort Wayne - South Bend,A120,Bishop Dwenger High School,0.423
+9220,Diocese of Fort Wayne - South Bend,A125,Bishop Luers High School,0.291
+9220,Diocese of Fort Wayne - South Bend,D165,Marian High School,0.457
+9220,Diocese of Fort Wayne - South Bend,D225,Saint Joseph High School,0.431
+9230,Lutheran Schools of Indiana,A195,Concordia Lutheran High School,0.529
+9230,Lutheran Schools of Indiana,A205,Concordia Lutheran School,NA
+9230,Lutheran Schools of Indiana,B452,Trinity Lutheran High School,0.286
+9230,Lutheran Schools of Indiana,C270,Lutheran High School,0.176
+9230,Lutheran Schools of Indiana,D090,Immanuel Lutheran School,NA
+9305,Excel Center - Richmond,9012,Excel Center - Richmond,NA
+9315,Signature School Inc,8295,Signature School Inc,0.916
+9320,Community Montessori Inc,1536,Community Montessori,0.237
+9325,Options Charter Schools,2524,Options Westfield,0.043
+9325,Options Charter Schools,2551,Options Noblesville,0.118
+9325,Options Charter Schools,9329,Options Indiana,0.18
+9330,Irvington Community School,1537,Irvington Community School,0.174
+9355,Excel Center - Kokomo,2976,Excel Center - Kokomo,0
+9380,Christel House Academy South,9709,Christel House Watanabe Manual High School,0.079
+9385,Christel House DORS,5532,Christel House DORS,NA
+9445,Charles A Tindley Accelerated Sch,6208,Charles A Tindley Accelerated Sch,0
+9460,Thea Bowman Leadership Academy,4022,Thea Bowman Leadership Academy,0.032
+9505,Indiana Agriculture and Technology,5472,Indiana Agriculture and Technology,0.081
+9535,Gary Lighthouse Charter School,4130,Gary Lighthouse Charter School,0
+9545,21st Century Charter Sch of Gary,4164,21st Century Charter Sch of Gary,0.028
+9575,Victory College Prep,5523,Victory College Prep,0.208
+9605,IN Sch for the Blind & Vis Imprd,C460,IN Sch for the Blind & Vis Imprd,NA
+9610,Indiana School For The Deaf,C695,Indiana School For The Deaf,0.1
+9620,Burris Laboratory School,1441,Burris Laboratory School,0.397
+9650,Herron Charter,5724,Herron High School,0.544
+9670,Indianapolis Metropolitan High Sch,5664,Indianapolis Metropolitan High Sch,0
+9705,Hammond Academy of Science & Tech,4486,Hammond Academy of Science & Tech,0.109
+9730,Neighbors' New Vistas High School,6864,Neighbors' New Vistas High School,NA
+9750,Excel Center - Anderson,4904,Excel Center - Anderson,NA
+9760,Smith Academy for Excellence,0242,Smith Academy for Excellence,NA
+9790,Anderson Preparatory Academy,5092,Anderson Preparatory Academy,0.226
+9840,Excel Center - University Heights,5749,Excel Center - University Heights,NA
+9875,Rock Creek Community Academy,0771,Rock Creek Community Academy,0.341
+9880,Career Academy High School,7567,Career Academy High School,0.069
+9895,IN Math & Science Academy - North,5444,IN Math & Science Academy - North,0.053
+9905,Indiana Connections Academy,7944,Indiana Connections Academy,0.207
+9910,Excel Center for Adult Learners,5669,Excel Center For Adult Learners,NA
+9920,Damar Charter Academy,5191,Damar Charter Academy,NA
+9950,Dugger Union Community School Corp,7952,Dugger Union Community School Corp,0.067
+9965,Career Academy Middle School,7563,Career Academy Middle School,0.481
+9980,Steel City Academy,1113,Steel City Academy,0.059
+9985,Seven Oaks Classical School,1114,Seven Oaks Classical School,0.655
+9995,Excel Center - Shelbyville,1117,Excel Center - Shelbyville,NA
+-999,Independent Non-Public Schools,A004,Hagia Sophia Classical Academy,NA
+-999,Independent Non-Public Schools,A042,River Montessori High School,0.545
+-999,Independent Non-Public Schools,A122,Illiana Christian High School,0.493
+-999,Independent Non-Public Schools,A126,Edinburgh Christian School,NA
+-999,Independent Non-Public Schools,A149,Apogee School For The Gifted,NA
+-999,Independent Non-Public Schools,A170,Blackhawk Christian Mdl/High Sch,0.727
+-999,Independent Non-Public Schools,A236,Cornerstone College Prep Sch,NA
+-999,Independent Non-Public Schools,A303,FaithPrep Indiana,NA
+-999,Independent Non-Public Schools,A304,GEO Focus Academy,0.19
+-999,Independent Non-Public Schools,A450,Columbus Christian School Inc,0.273
+-999,Independent Non-Public Schools,A740,Lakewood Park Christian School,0.191
+-999,Independent Non-Public Schools,A746,Heritage Hall Christian School,NA
+-999,Independent Non-Public Schools,A875,Clinton Christian School,0.636
+-999,Independent Non-Public Schools,A990,Elkhart Christian Academy,0.408
+-999,Independent Non-Public Schools,B009,The Crossing Educational Center,0.01
+-999,Independent Non-Public Schools,B015,Bethany Christian School,0.679
+-999,Independent Non-Public Schools,B045,Christian Academy of Indiana,0.447
+-999,Independent Non-Public Schools,B136,The King's Academy,0.214
+-999,Independent Non-Public Schools,B160,Eman Schools,0.571
+-999,Independent Non-Public Schools,B161,Fishers Christian Academy,0.455
+-999,Independent Non-Public Schools,B167,Paddock View Residential Center,NA
+-999,Independent Non-Public Schools,B190,Indiana Academy,0.053
+-999,Independent Non-Public Schools,B248,Legacy Christian School,0.538
+-999,Independent Non-Public Schools,B290,Bethesda Christian School,0.324
+-999,Independent Non-Public Schools,B299,Legacy Learning Center,0.25
+-999,Independent Non-Public Schools,B455,Sandy Creek Christian Academy,0.25
+-999,Independent Non-Public Schools,B469,DeMotte Christian High School,0.318
+-999,Independent Non-Public Schools,B483,Jay County Christian Academy,0.222
+-999,Independent Non-Public Schools,B493,Christian Academy of Madison,NA
+-999,Independent Non-Public Schools,B595,Lakeland Christian Academy,0.417
+-999,Independent Non-Public Schools,B815,Calumet Christian School,0.129
+-999,Independent Non-Public Schools,C175,Indiana Christian Academy,0.235
+-999,Independent Non-Public Schools,C225,Liberty Christian School,0.149
+-999,Independent Non-Public Schools,C275,Heritage Christian School,0.449
+-999,Independent Non-Public Schools,C282,Horizon Christian School,0.333
+-999,Independent Non-Public Schools,C325,Suburban Christian School,0.034
+-999,Independent Non-Public Schools,C360,Brebeuf Jesuit Preparatory School,0.7
+-999,Independent Non-Public Schools,C375,Traders Point Christian Schools,0.556
+-999,Independent Non-Public Schools,C495,Colonial Christian School,0.429
+-999,Independent Non-Public Schools,C514,Crosspointe Christian Academy,0.182
+-999,Independent Non-Public Schools,C527,Covenant Christian High School,0.468
+-999,Independent Non-Public Schools,C561,Trinity Christian School,0.029
+-999,Independent Non-Public Schools,C575,Central Christian Academy,0.15
+-999,Independent Non-Public Schools,C580,Calvary Christian School,0.333
+-999,Independent Non-Public Schools,C589,The Independence Academy,0.273
+-999,Independent Non-Public Schools,C628,MTI School of Knowledge,0.231
+-999,Independent Non-Public Schools,C677,International Sch of IN HS (9-12),0.48
+-999,Independent Non-Public Schools,C910,Covenant Christian School,0.095
+-999,Independent Non-Public Schools,C927,Lighthouse Christian Academy,0.778
+-999,Independent Non-Public Schools,C940,Tabernacle Christian School,0.387
+-999,Independent Non-Public Schools,C954,Greenwood Christian Academy High School,0.517
+-999,Independent Non-Public Schools,C965,Mooresville Christian Academy,0.133
+-999,Independent Non-Public Schools,D056,Shults-Lewis Child & Family Srvs,NA
+-999,Independent Non-Public Schools,D073,Victory Christian Academy,0.25
+-999,Independent Non-Public Schools,D080,Portage Christian School,0.226
+-999,Independent Non-Public Schools,D196,Bais Yaakov High School of Indiana,NA
+-999,Independent Non-Public Schools,D217,Trinity School At Greenlawn,0.5
+-999,Independent Non-Public Schools,D249,New Vision Christian Academy,NA
+-999,Independent Non-Public Schools,D281,Yeshiva of South Bend,NA
+-999,Independent Non-Public Schools,D305,Community Baptist Christian School,0.3
+-999,Independent Non-Public Schools,D310,Granger Christian School,0.545
+-999,Independent Non-Public Schools,D452,Faith Christian School,0.55
+-999,Independent Non-Public Schools,D489,Evansville Christian Sch Newburgh,0.662
+-999,Independent Non-Public Schools,D525,Evansville Day School,0.857
+-999,Independent Non-Public Schools,D907,T.R.O.Y. Center,NA
+-999,Independent Non-Public Schools,D913,Israel School of Excellence,NA
+-999,Independent Non-Public Schools,D914,International Leadership Schools,0.053
