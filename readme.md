@@ -3,7 +3,7 @@
 
 #### **About**
 
-##### This repository aggregates, cleans, visualizes and maps data related to school transfers within Indiana's primary and secondary school system. The final output is a [webpage](https://tedschurter.github.io/in-ed-transfers/transfer-combo.html) that explains how transfers work and explores the transfer relationships among various school corporations and schools throughout the state. In addition to the explanatory graphics, the project includes three maps that are incoporated into the page:
+##### This repository aggregates, cleans, visualizes and maps data related to school transfers within Indiana's primary and secondary school system. The final output is a [webpage](https://tedschurter.github.io/in-ed-transfers/index.html) that explains how transfers work and explores the transfer relationships among various school corporations and schools throughout the state. In addition to the explanatory graphics, the project includes three maps that are incoporated into the page:
 
   - The **[Outgoing transfers](https://tedschurter.github.io/in-ed-transfers/20240617-outgoing-transfers.html)** map visualizes the number of students who transfer from a school corporation (selected with the filter on the upper left-hand side) to another public school corporation, public charter school or private school. Popup charts display the number of transfers from the selected school corporation to enrolled schools/corporations and visually contrasts their available test scores. 
   
