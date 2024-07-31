@@ -1574,7 +1574,7 @@ m3_sbsc <-
             filter(stlmt_corp_name == schl & 
                      corp_name == schl),
           aes(),
-          size = .01, color = lgst_txt)+
+          size = .01, color = '#969696')+
   scale_size(range =c(0,.75))+
   theme_void()
 
@@ -1598,7 +1598,7 @@ m3_fwsc <-
             filter(stlmt_corp_name == schl & 
                      corp_name == schl),
           aes(),
-          size = .01, color = "888888")+
+          size = .01, color = '#969696')+
   scale_size(range =c(0,.75))+
   theme_void()
 
@@ -1621,7 +1621,7 @@ m3_evsc <-
             filter(stlmt_corp_name == schl & 
                      corp_name == schl),
           aes(),
-          size = .01, color = lgst_txt)+
+          size = .01, color = '#969696')+
   scale_size(range =c(0,.75))+
   theme_void()
 
@@ -1647,7 +1647,7 @@ m3_ips_metro <-
             filter(stlmt_corp_name %in% schl & 
                      corp_name %in% schl),
           aes(),
-          size = .01, color = lgst_txt)+
+          size = .01, color = '#969696')+
   scale_size(range =c(0,.75))+
   theme_void()
 
