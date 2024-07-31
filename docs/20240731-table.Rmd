@@ -1,0 +1,87 @@
+---
+title: ""
+author: ""           
+output:
+  html_document:
+    css: css/style.css
+    theme: paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F, cache = F
+)
+```
+
+```{r libraries, warnings = F}
+library(tidyverse)
+library(DT)
+
+```
+
+```{r load data}
+tfr <- read_csv("clean_data/20240613_transfer_pts_18_24.csv")
+```
+
+```{r filter data}
+# create dataframe of distinct enrolled school names
+dist <- tfr |> 
+  select(nrl_schl_name, nrl_schl_id, yr) |> 
+  distinct(nrl_schl_id, .keep_all = T) |> 
+  group_by(nrl_schl_name) |> 
+  count(nrl_schl_name) |> 
+  filter(n >1) |> 
+  select(nrl_schl_name)
+```
+
+```{r transform}
+tfr <- tfr |> 
+  mutate(
+    nrl_schl_name = 
+      if_else(nrl_schl_name %in% dist$nrl_schl_name, 
+              paste0(nrl_schl_name, " (", nrl_schl_id, ")"),
+              nrl_schl_name
+              )
+    ) |> 
+
+  select(
+    "Year" = "yr",
+    "Settlement Corporation Name" = "stlmt_corp_name", 
+    "Enrolled School Name" =  "nrl_schl_name", 
+    "Parent Choice" = "par_ch",
+    "Other"  = "p_xfer_oth",
+    "Charter"  = "p_xfer_chrtr",
+    "Choice Scholarship" = "pr_ch_sclrs"
+  ) |> 
+  pivot_longer(
+    cols = c(
+      "Parent Choice", 
+      "Other",
+      "Charter", 
+      "Choice Scholarship"
+    ),
+    names_to = "Transfer type", 
+    values_to = "Transfers", values_drop_na = T
+  ) |> 
+  ungroup() |> 
+  mutate(Year = as.factor(Year)) |> 
+  filter(Transfers != 0) 
+```
+
+```{r table}
+datatable(tfr,
+          colnames = c("Year", "Settlement school\ncorporation", "Enrolled school/\nschool corporation", "Transfer type", "Transfers"),
+          # caption = htmltools::tags$caption(
+          #   style = 'caption-side: top; text-align: left;',
+          #   "Indiana Education transfers 2018 to 2024.", style = "color:black"),
+          rownames=FALSE, 
+          filter = "top", 
+          extensions = c('Buttons', 'FixedColumns', 'Responsive'), 
+          options = list(pageLength=100, 
+                         scrollX=T,
+                         dom = 'Bfrtip',
+                         scrollY = '500px',
+                         buttons = c('csv', 'excel'),
+                         fixedHeader = T
+          ))
+```
+
