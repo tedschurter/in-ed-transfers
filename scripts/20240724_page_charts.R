@@ -128,26 +128,12 @@ pub_tot <- transfer_totals("Public",  max(sxfer$yr))
 # charter school totals
 chr_tot <- transfer_totals("Charter",  max(sxfer$yr))
 
+# yearly totals by type 
+yr_tot_typ <- sxfer |>
+  group_by(yr, typ) |>
+  summarise(tot = sum(tot_xfr))
 
-
-# function to determine percent change by type and year
-
-p_inc_typ <- function(type, end_yr, start_yr){
-  100*((yr_tot_typ$tot[yr_tot_typ$yr == end_yr & yr_tot_typ$typ == type]-
-          yr_tot_typ$tot[yr_tot_typ$yr == start_yr & yr_tot_typ$typ == type])/yr_tot_typ$tot[yr_tot_typ$yr ==start_yr & yr_tot_typ$typ == type])
-}
-
-# choice scholarship percent change since 2021 to 2024
-cs_inc <- round(p_inc_typ("Choice Scholarship", 2024, 2021))
-
-# change for public from 2021 to 2024
-pub_inc_18 <- round(p_inc_typ("Public", 2024, 2018)) # 62
-
-pub_inc_21 <- round(p_inc_typ("Public", 2024, 2021)) # 18
-
-# determine pct change by year
-
-# dataframe of yearly totals 
+# dataframe of yearly total transfers 
 yr_tot <- yr_tot_typ |> 
   group_by(yr) |> 
   summarise(tot = sum(tot))
@@ -158,6 +144,23 @@ p_inc <- function(end_yr, start_yr){
           yr_tot$tot[yr_tot$yr == start_yr])/
          yr_tot$tot[yr_tot$yr == start_yr])
 }
+
+
+# function to determine percent change by type and year
+
+p_inc_typ <- function(type, end_yr, start_yr){
+  100*((yr_tot_typ$tot[yr_tot_typ$yr == end_yr & yr_tot_typ$typ == type]-
+          yr_tot_typ$tot[yr_tot_typ$yr == start_yr & yr_tot_typ$typ == type])/yr_tot_typ$tot[yr_tot_typ$yr ==start_yr & yr_tot_typ$typ == type])
+}
+
+# choice scholarship percent change since 2021 to 2024
+cs_inc <- round(p_inc_typ("Choice Scholarship", 2024, 2021)) # 97
+
+# change for public from 2021 to 2024
+pub_inc_18 <- round(p_inc_typ("Public", 2024, 2018)) # 62
+
+pub_inc_21 <- round(p_inc_typ("Public", 2024, 2021)) # 18
+
 
 # change in total transfers since 2018
 tot_pinc <- round(p_inc(2024, 2018)) # 52.1
@@ -254,7 +257,7 @@ ggplot()+
   )+
   
   labs(
-    title = paste0("After remaining relatively flat for years, <span style='color:", pr, "'>Choice Scholarship</span> transfers surged ", cs_inc, "% since 2021. Transfers to <span style='color:", pub, "'>public</span> schools rose ", pub_inc_21, "% in that time and ", pub_inc_18, "% since 2018." ),
+    title = paste0("After remaining relatively flat for years, <b><span style='color:", pr, "'>Choice Scholarship</span></b> transfers surged ", cs_inc, "% since 2021. Transfers to <b><span style='color:", pub, "'>public</span></b> schools rose ", pub_inc_21, "% in that time and ", pub_inc_18, "% since 2018." ),
     
     subtitle = paste0("Total transfers have increased ", tot_pinc, "% since 2018.<br>" ),
     
@@ -290,24 +293,72 @@ ggsave("docs/images/typ-trend.png", plot = last_plot(),
        height = 1300, width = 1800, units = "px")
 
 
-# chart showing percent increase in enrollment for Choice Scholarship, public enrollment and all enrollment ####
+# chart showing percent increase in enrollment for private, public enrollment and all enrollment ####
 
+# create dataframe that includes the percent change in total transfers, public, private and total enrollment
+
+# total percent change in public and private enrollment
 res_pc <- res |> 
   group_by(type, year) |> 
   summarise(tot = sum(enrlmnt)) |> 
   arrange(year) |> 
-  mutate(pc = round(100*((tot-lag(tot, 1))/lag(tot,1)),1))
+  mutate(pc = 
+           round(100*(tot-lag(tot))/lag(tot),1)) 
 
+# adjust for easier binding to yr_tot dataframe
+res_pc <- res_pc |> 
+  rename("typ" = "type", 
+         "yr" = "year") |> 
+  select(yr, typ, tot, pc)
+
+# create dataframe with total enrollment figure to bind to res_pc
+res_pc_b <-  res_pc |> 
+  group_by(yr) |> 
+  summarise(tot = sum(tot)) |> 
+  mutate(pc = 
+           round(100*(tot-lag(tot))/lag(tot),1)) 
+
+
+# and in the darkness bind them ... 
+res_pc_b$typ <- "Enrollment"
+
+res_pc <- rbind(
+  
+  res_pc_b |> 
+    select(yr, typ, tot, pc),
+  
+  res_pc
+  
+) 
+
+# clean up
+rm(res_pc_b)
+
+# add column to yr_tot for total transfers
+yr_tot$typ <- "Transfer"
+
+yr_tot <- yr_tot |> 
+  select(yr, typ, tot) |> 
+  mutate(pc = 
+           round(100*(tot-lag(tot))/lag(tot),1)) 
+
+# bind them
+yr_tot_pc <- rbind(res_pc, yr_tot) 
 
 
 # grid lines dataframe
-x <-    rep(min(res_pc$year,  na.rm = T), 4)
-xend <- rep(max(res_pc$year, na.rm = T), 4)
-y <- rep(c(-6, -3, 0, 3, 6), 4)
-yend  <-  rep(c(-6, -3, 0, 3, 6), 4)
+x <-    rep(min(yr_tot_pc$yr,  na.rm = T), 4)
+xend <- rep(max(yr_tot_pc$yr, na.rm = T), 4)
+y <- rep(c(-6, -3, 0, 3, 6, 9, 12), 4)
+yend  <-  rep(c(-6, -3, 0, 3, 6, 9, 12), 4)
 lines <- data.frame(x, xend,y, yend)
 
-ggplot(res_pc)+
+ggplot()+
+  
+  geom_segment(aes(x = min(yr_tot_pc$yr), xend = max(yr_tot_pc$yr),
+                   y = 0, yend = 0),
+               color = "gray",
+               linewidth = .25)+
   
   # grid lines
   geom_segment(data = lines,
@@ -319,63 +370,65 @@ ggplot(res_pc)+
                linetype = "dotted", 
                linewidth = .1)+
   
-  geom_line(aes(year, pc, color = type, group = type),
-            linewidth = .75,
-            show.legend = F)+
+  # private, public enrollment percent change; transfers percent change 
+  geom_line(data = yr_tot_pc,
+            aes(yr, pc, color = typ, linetype = typ, size = typ), 
+            show.legend = F
+  )+
   
-  geom_line(data = res |> 
-              # filter(year >= 2018) |> 
-              group_by(year) |> 
-              summarise(tot = sum(enrlmnt)) |> 
-              arrange(year) |> 
-              mutate(pc = round(100*((tot-lag(tot, 1))/lag(tot,1)),2)), 
-            aes(year, pc, color = "black", group = 1),
-            linewidth = .75,
-            show.legend = F)+
+  geom_text(data = yr_tot_pc |> filter(yr == 2024) |> 
+              mutate(typ = 
+                       case_when(
+                         typ == "pr"          ~ "Private\nEnrollment", 
+                         typ == "p"           ~ "Public\nEnrollment",
+                         typ == "Transfer"    ~ "Total\nTransfers",
+                         typ == "Enrollment"  ~ "Total\nEnrollment",
+                         .default = typ
+                       )),
+            aes(yr, pc, label = str_wrap(typ, 10)),
+            color = atxt, lineheight = .9,
+            size = 3, hjust = 0, nudge_x = .15,
+            vjust = c(-.25,1,.25, .5) #order: total; public; private; transfers
+  )+
   
-  geom_segment(aes(x = min(res_pc$year), xend = max(res_pc$year),
-                   y = 0, yend = 0),
-               color = "gray",
-               linewidth = .25)+
+  scale_color_manual(values = c(
+    "pr"         = pr,
+    "p"          = pub, 
+    "Enrollment" = "black",
+    "Transfer"   = "gray"))+
   
-  scale_color_manual(values = c("pr" = pr,
-                                "p"  = pub))+
+  scale_linetype_manual (values = c(
+    "pr"         = "solid",
+    "p"          = "solid", 
+    "Enrollment" = "solid",
+    "Transfer"   = "dashed"))+
+  
+  scale_size_manual (values = c(
+    "pr"         = .55,
+    "p"          = .55, 
+    "Enrollment" = .85,
+    "Transfer"   = .55))+
+  
   
   scale_x_continuous(
     expand = expansion(add = c(.75, 1.75)),
     breaks = c(seq(2014, 2024, 1)),
     labels = 
       c("2014", "'15", "'16", "'17", "'18", "'19", "'20", "'21", "'22", "'23", "2024")
-  )+
+  ) +
   
   scale_y_continuous(
+    breaks = unique(lines$y),
     labels = scales::percent(unique(lines$y), scale = 1),
     name = "% change"
   )+
   
-  geom_text(data = res_pc |> filter(year == 2024) |> 
-              mutate(type = if_else(type == "pr", "Choice Scholarship", "Public")),
-            aes(year, pc, label = str_wrap(type, 10)),
-            color = atxt, lineheight = 1,
-            size = 3, hjust = 0, nudge_x = .15)+
-  
-  geom_text(data =res |> 
-              filter(year >= 2018) |> 
-              group_by(year) |> 
-              summarise(tot = sum(enrlmnt)) |> 
-              arrange(year) |> 
-              mutate(pc = round(100*((tot-lag(tot, 1))/lag(tot,1)),2)) |> 
-              filter(year == 2024),
-            aes(2024, pc, label = str_wrap("Total Enrollment", 10)),
-            color = atxt, lineheight = 1,
-            size = 3, hjust = 0, nudge_x = .15, nudge_y = 1)+
-  
   labs(
-    title = paste0("The annual percent change in <span style='color:", pr, "'>Choice Scholarship</span> school enrollment fluctuates more dramatically than <span style='color:", pub, "'>public</span> school enrollment, especially following Covid."),
+    title = paste0("Annual percentage changes in <b>total enrollment </b>remained relatively stable despite dynamic swings in <b><span style='color:", pr, "'>private enrollment</span></b>."),
     
-    subtitle = paste0("Despite pronounced swings, <span style='color:", pr, "'>Choice Scholarship’s</span>  impact on total enrollment is slight. <br><br>" ), 
+    subtitle = paste0("<b><span style='color:#969696'>Total transfers</span></b> have grown annually since 2018.  <br><br>" ), 
     
-    alt = "Line chart showing the percent change in annual enrollment for public, Choice Scholarship and total enrollment in Indiana from 2014 to 2024. Choice Scholarship enrollment drops and climbs dramatically between 2020 and 2022, shifting 12%; public enrollment and total enrollment are less volatile, shifting less than 1%.",
+    alt = "Line chart showing the percent change in annual enrollment for public, private and total enrollment, as well as total transfers, in Indiana from 2014 to 2024. Private enrollment drops and climbs dramatically between 2020 and 2022, shifting 12%; public enrollment and total enrollment are less volatile, shifting less than 1%.",
     
     caption = "<br>**Data**:   Indiana Department of Education<br>(c)   tedschurter.com"
   )+
@@ -398,16 +451,55 @@ ggplot(res_pc)+
     plot.margin = margin(0.0,0,0,0, "in"),
   )
 
+
 ggsave("docs/images/res_pc.png", plot = last_plot(),
        height = 1300, width = 1800, units = "px")
 
 ggsave("docs/images/res_pc.svg", plot = last_plot(),
        height = 1300, width = 1800, units = "px")
 
+
+# figures for webpage text
+
+# percent of total enrollment all transfers make up 2018 
+round((yr_tot_pc$tot[yr_tot_pc$typ == "Transfer" & yr_tot_pc$yr == 2018]/
+         yr_tot_pc$tot[yr_tot_pc$typ == "Enrollment" & yr_tot_pc$yr == 2018])*100) # 12%
+
+# percent of total enrollment all transfers make up 2024
+round((yr_tot_pc$tot[yr_tot_pc$typ == "Transfer" & yr_tot_pc$yr == 2024]/
+         yr_tot_pc$tot[yr_tot_pc$typ == "Enrollment" & yr_tot_pc$yr == 2024])*100) # 18%
+
+# percent of total enrollment all Choice Scholarship transfers make up 2018
+round((yr_tot_typ$tot[yr_tot_typ$typ == "Choice Scholarship" & yr_tot_typ$yr == 2018]/
+         yr_tot_pc$tot[yr_tot_pc$typ == "Enrollment" & yr_tot_pc$yr == 2018])*100) # 3%
+
+# percent of total enrollment all Choice Scholarship transfers make up 2024
+round((yr_tot_typ$tot[yr_tot_typ$typ == "Choice Scholarship" & yr_tot_typ$yr == 2024]/
+         yr_tot_pc$tot[yr_tot_pc$typ == "Enrollment" & yr_tot_pc$yr == 2024])*100) # 6%
+
+# percent of total enrollment private school enrollment in 2024
+(yr_tot_pc$tot[yr_tot_pc$typ == "pr" &
+                 yr_tot_pc$yr == 2024]/
+    res_pc$tot[res_pc$typ == "Enrollment" &
+                 res_pc$yr == 2024])*100  # 8% 
+
+# percent of private school enrollment made up by choice scholarship in 2024
+(yr_tot_typ$tot[yr_tot_typ$typ == "Choice Scholarship" &
+                  yr_tot_typ$yr == 2024]/
+    yr_tot_pc$tot[yr_tot_pc$typ == "pr" &
+                    yr_tot_pc$yr == 2024])*100 # 74%
+
+# percent of private school enrollment made up by choice scholarship in 2024
+(yr_tot_typ$tot[yr_tot_typ$typ == "Choice Scholarship" &
+                  yr_tot_typ$yr == 2018]/
+    yr_tot_pc$tot[yr_tot_pc$typ == "pr" &
+                    yr_tot_pc$yr == 2018])*100 # 41%
+
+
 # scatter plot ####
 
+xfr_rate <- read_csv("clean_data/20240612_student_res_xfer_rate_2018_2024.csv") |> 
 # import data
-xfr_rate <- read_csv("clean_data/student_res_xfer_rate_2018_2024.csv") |> 
   filter(yr == 2024)
 # remove abbreviations for xfr_rate to make left_join on nrl_schl_name possible (avoids confusion of using nrl_schl_id where id's aren't unique when mixed with school corporation ids)
 
@@ -632,6 +724,110 @@ xfr_rate <- left_join(xfr_rate,
   # add color based on transfer rate: blue for positive, red for negative
   mutate(color = if_else(net_xfr_rate > 0, "black", "red"))
 
+
+# figures for net transfer copy 
+
+## NOTE: these apply to corporations only and do not include all schools
+
+# positive net transfer
+
+# transfer to
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(mean(xfr_to, na.rm = T)) # 22
+
+# remove outliers
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(mean(xfr_to, na.rm = T, trim = .2)) # 12
+
+# median
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(median(xfr_to, na.rm = T))  # 12
+
+# transfer from
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(mean(xfr_from, na.rm = T)) # 24
+
+# remove outliers
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(mean(xfr_from, na.rm = T, trim = .2)) # 22
+
+# median
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(median(xfr_from, na.rm = T))  # 22
+
+
+# legal settlement
+
+# trimmed mean
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  summarise(mean(in_stlmt_tot, na.rm = T, trim = .2)) # 1224
+
+
+# negative net transfer
+
+# transfer to
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(mean(xfr_to, na.rm = T)) # 14
+
+# remove outliers
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(mean(xfr_to, na.rm = T, trim = .2)) # 11
+
+# median
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(median(xfr_to, na.rm = T))  # 11
+
+
+# transfer from
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(mean(xfr_from, na.rm = T)) # 39
+
+# remove outliers
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(mean(xfr_from, na.rm = T, trim = .2)) # 32
+
+# median
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(median(xfr_from, na.rm = T))  # 29
+
+# legal settlement
+
+# trimmed mean
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  summarise(mean(in_stlmt_tot, na.rm = T, trim = .2)) # 3000
+
+# how many school corporations have negative net transfers
+xfr_rate |> 
+  filter(net_xfr < 0) |> 
+  nrow() # 186
+
+# how many school corporations have positive net transfers
+xfr_rate |> 
+  filter(net_xfr > 0) |> 
+  nrow()  # 104 
+
+# average number of schools corporation receives transfers from 
+xfr_rate |> 
+  summarise(mean(xfr_to, na.rm = T)) # 17
+
+xfr_rate |> 
+  summarise(median(xfr_to, na.rm = T)) # 11
+
+# scatter plot ####
 
 # create scatter plot
 set.seed(23)

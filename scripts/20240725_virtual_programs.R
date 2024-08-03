@@ -49,16 +49,4 @@ pub_virtual <- tibble(
 pub_virtual
 
 
-ctr_virtual <- tibble(
-  schl = c(
-    
-  ),
-  
-  online_name = c(
-    
-  ),
-  
-  url = c(
-    
-  )
-)
+

@@ -1146,7 +1146,7 @@ xfr_schls_to <- sxfer |>
   count(name = 'xfr_to')
 
 # how many corporations is a given corporation receiving transfers fr
-xfr_schls_from <-sxfer |>
+xfr_schls_from <- sxfer |>
   
   filter(yr == 2024 ) |>
   
@@ -1419,7 +1419,7 @@ plot <- ggplot()+
 ggdraw(plot)+
   draw_plot_label(label =
                     "Each \u25CF represents a\nprivate or charter school.",
-                  .6, .124, size = 4.5, hjust = 0, lineheight = 1, color = "#525252")
+                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
 
 ggsave("docs/images/scrolly2-mult_schls-2.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
@@ -1490,7 +1490,7 @@ plot <- ggplot()+
 ggdraw(plot)+
   draw_plot_label(label =
                     "Each \u25CF represents a\nprivate or charter school.",
-                  .6, .124, size = 4.5, hjust = 0, lineheight = 1, color = "#525252")
+                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
 
 ggsave("docs/images/scrolly2-mult_schls-3.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
@@ -1661,7 +1661,7 @@ ggdraw(m3) +
             height =  .15
   )+
   
-  draw_plot_label(label = "South Bend\nSchool\nCorporation", .466, 1.027, size = 4, 
+  draw_plot_label(label = "South Bend\nSchool Corporation", .42, 1.015, size = 5, 
                   hjust = 0, lineheight = .8, color = "#525252")+
   # fort wayne
   draw_plot(m3_fwsc,
@@ -1671,7 +1671,7 @@ ggdraw(m3) +
             height =  .2
   )+
   
-  draw_plot_label(label = "Fort Wayne\nSchool Corporation", .68, .82, size = 4, 
+  draw_plot_label(label = "Fort Wayne\nSchool Corporation", .68, .82, size = 5, 
                   hjust = 0, lineheight = 1, color = "#525252")+
   
   # evansville
@@ -1683,7 +1683,7 @@ ggdraw(m3) +
   )+
   
   draw_plot_label(label = "Evansville\nVanderburgh\nSchool\nCorporation", .274, .2, 
-                  size = 4, hjust = 0, lineheight = 1, color = "#525252")+
+                  size = 5, hjust = 0, lineheight = 1, color = "#525252")+
   
   # metro indy
   draw_plot(m3_ips_metro,
@@ -1696,14 +1696,15 @@ ggdraw(m3) +
   draw_plot_label(label =
                     "Indianapolis Public Schools,\nMSD Lawrence Township,\nMSD Washington Township",
                   # .21, .73, 
-                  .24, .76,
-                  size = 4, hjust = 0, lineheight = 1, color = "#525252")+
+                  .2, .76,
+                  size = 5, hjust = 0, lineheight = 1, color = "#525252")+
+  
   
   draw_plot_label(label =
                     "Each \u25CF represents a\nprivate or charter school.",
-                  # .21, .73, 
-                  .6, .124, 
-                  size = 4.5, hjust = 0, lineheight = 1, color = "#525252")
+                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
+  
+  
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-4.png", plot = last_plot(),
@@ -1785,17 +1786,46 @@ ggdraw(mult_schls_2a) +
   
   draw_plot_label(label =
                     "Each \u25CF represents a\nprivate or charter school.",
-                  .6, .124, size = 4.5, hjust = 0, lineheight = 1, color = "#525252")
+                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-5.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
 
+# determine what percent of transfers from IPS enroll in schools within IPS boundaries
+
+# dataframe of transfers out of Indianapolis Public Schools
+ips <- 
+  sxfer |> 
+  filter(stlmt_corp_name == "Indianapolis Public Schools") |> 
+  select(nrl_schl_name, nrl_schl_id, nrl_lon, nrl_lat) 
+
+# convert to sf dataframe in order to use with st_within
+ips <- st_as_sf(x = ips,
+                coords = c('nrl_lon', 'nrl_lat')
+)
+
+# assign same CRS as in_dis
+st_crs(ips) <- st_crs(in_dis)
+
+# reduce in_dis to boundary for IPS
+ipsb <-   in_dis |> 
+  filter(corp_name == "Indianapolis Public Schools")
+
+# check if enrolled schools are within IPS boundaries
+st_within(ips, ipsb, sparse = F) 
+
+# Calculate percent of transferred schools from IPS that remain within IPS boundaries
+tibble(within = st_within(ips, ipsb, sparse = F)) |> 
+  filter(within[,1] == TRUE) |> 
+  nrow() /
+  tibble(within = st_within(ips, ipsb, sparse = F)) |> 
+  nrow()  # 39%
 
 #
 
 # clean up
-rm(m3, m3_evsc, m3_fwsc, m3_ips_metro, m3_sbsc, plot, evsc, fwcs, ips_metro, sbsc)
+rm(m3, m3_evsc, m3_fwsc, m3_ips_metro, m3_sbsc, plot, evsc, fwcs, ips_metro, sbsc, ips, ipsb)
 
 # scrolly 3 - incoming transfers ####
 
@@ -1806,9 +1836,11 @@ corp <- sxfer |> distinct(stlmt_corp_name)
 
 inc_plot <- function(schl_name){
   
+  
   if (schl_name %in% corp$stlmt_corp_name){
     
-    ggplot()+
+    plot <-   
+      ggplot()+
       
       geom_sf(data = in_dis,
               color = "#eeeded",  
@@ -1839,6 +1871,17 @@ inc_plot <- function(schl_name){
                  alpha = .75, 
                  show.legend = F)+
       
+      geom_segment(data = sxfer |> 
+                     filter(nrl_schl_name == schl_name) |> 
+                     head(1),
+                   aes(x = nrl_lon,
+                       xend = -88.18,
+                       y = nrl_lat, 
+                       yend = 39.864068),
+                   color = inc, 
+                   linewidth = .2
+      ) +
+      
       # assign colors
       scale_color_manual(values = vals)+
       
@@ -1848,7 +1891,7 @@ inc_plot <- function(schl_name){
              guide_legend(byrow = T))+
       
       scale_size_continuous(name = "\u25EF Indicate\nnumber of\ntransfers\nfrom school\ncorporation"
-                            )+
+      )+
       
       # theme adjustments
       theme_void()+
@@ -1867,7 +1910,8 @@ inc_plot <- function(schl_name){
         plot.title = element_blank(),
       )
   } else {
-    ggplot()+
+    plot <- 
+      ggplot()+
       
       geom_sf(data = in_dis,
               color = "#eeeded",  
@@ -1897,6 +1941,17 @@ inc_plot <- function(schl_name){
                  alpha = .75, 
                  show.legend = F)+
       
+      geom_segment(data = sxfer |> 
+                     filter(nrl_schl_name == schl_name) |> 
+                     head(1),
+                   aes(x = nrl_lon,
+                       xend = -88.18,
+                       y = nrl_lat, 
+                       yend = 39.864068),
+                   color = inc, 
+                   linewidth = .2
+      ) +
+      
       # assign colors
       scale_color_manual(values = vals)+
       
@@ -1905,8 +1960,8 @@ inc_plot <- function(schl_name){
              guide_legend(byrow = T))+
       
       scale_size_continuous(name = "\u25EF Indicate\nnumer of\ntransfers\nfrom school\ncorporation",
-                            )+
-     
+      )+
+      
       # theme adjustments
       theme_void()+
       theme(
@@ -1924,14 +1979,19 @@ inc_plot <- function(schl_name){
       )
     
   }
+  ggdraw(plot)+
+    draw_plot_label(label =
+                      str_wrap(schl_name, 10),
+                    .35, .55, size = 5.5, hjust = 1, vjust = 1, lineheight = 1, color = "#525252")
 }
 
+## IMPORTANT TO NOTE: though the figures are the same, the naming of xfr_to and xfr_from is inconsistent with naming used in 20240724_page_charts.R for similar calculations (calculating the number of corporations from which a corporation sends or receives transfers). Be careful to ensure incoming vs outgoing transfers are understood in the context of "incoming" and "outgoing". "To" and "From" is too ambiguous and should be replaced as time permits; 
 
 # what is the average number of corps/schools a corporation sends transfers to?
 avg_to <- mean(xfr_schls_to$xfr_to)   # 34
 med_to <- median(xfr_schls_to$xfr_to) # 26
 
-# what is the average number of corps/schools a corporation recieves transfers from?
+# what is the average number of corps/schools a corporation receives transfers from?
 avg_fr <- mean(xfr_schls_from$xfr_from)   # 13
 med_fr <- median(xfr_schls_from$xfr_from) # 9
 
@@ -2020,8 +2080,8 @@ xfrs |>
 
 # create plots using inc_plot function to contrast scenarios with different numbers of corporations sending transfers
 
-# Rossville Consolidated School District received transfer students from the median number of corporations
-inc_plot("Rossville Consolidated School District")
+# Maconaquah School Corporation received transfer students from the average number of corporations
+inc_plot("Maconaquah School Corporation")
 
 ggsave("docs/images/scrolly3_in_xfr_1.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")

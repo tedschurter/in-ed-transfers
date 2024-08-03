@@ -28,6 +28,7 @@ h4
 a {
   margin: 0;
   font-weight: 400;
+  text-decoration: none;
 }
 
 a,
@@ -68,6 +69,25 @@ a:hover {
 }
 
 
+#outro {
+  height: 10px; /* sets gap between bottom of scrolly and next element */
+  color: #525252; 
+  /* margin: 2rem 1rem 0.5rem 1rem; */
+  margin: 2rem 1rem 0rem 1rem;
+  max-width: 80rem;
+  font-size:1.4rem;
+}
+
+
+@media (min-width: 840px) {
+  .nav__examples {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+}
+
+/* departures from Soma's example css */
+
 .byline {
   color: #525252; 
   margin: .5rem 0rem 2.5rem 0rem;
@@ -91,11 +111,14 @@ a:hover {
 }
 
 .body__subhed{
-  color: #525252; 
+  font-size: 1.35em;
+  margin: 2rem auto 0.5rem auto;
+  font-family:Helvetica Neue;
+ 
   margin: 0rem 0rem 1.5rem 0rem;
   max-width: 80rem;
-  font-size:1.4rem;
-}
+  
+} */
 
 .body__dek {
   color: #525252; 
@@ -108,33 +131,17 @@ a:hover {
   margin: 1rem 0rem 1rem 0;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 60%;
  }
 
  .chart{
   margin: 1rem 0rem 1rem 0;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 80%;
  }
 
-#outro {
-  height: 10px; /* sets gap between bottom of scrolly and next element */
-  color: #525252; 
-  /* margin: 2rem 1rem 0.5rem 1rem; */
-  margin: 2rem 1rem 0rem 1rem;
-  max-width: 80rem;
-  font-size:1.4rem;
-}
-
-
-
-@media (min-width: 840px) {
-  .nav__examples {
-    margin-top: 0;
-    margin-left: 2rem;
-  }
-}
+/* end additions to J. Soma example */
 
 #scrolly {
   position: relative;
@@ -142,16 +149,14 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   background-color: #fcfdfd;
-  padding: 0rem;
-  /* margin:0rem 0rem 0rem 0rem; */
-}
+  padding: 0rem; /* space on left of scrolling article text block */
+  }
 
-#scrolly >  {
+#scrolly > * {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
-
 
 /* scroll-2 section rules */
 #scrolly2 {
@@ -160,26 +165,26 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   background-color: #fcfdfd;
-  padding: 0rem;
+  padding: 0rem; /* space on left of scrolling article text block */
 }
 
-#scrolly2 >  {
+#scrolly2 > * {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 } 
 
+/* scroll-3 section rules */
 #scrolly3 {
   position: relative; 
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   background-color: #fcfdfd;
-  padding: 0rem;
-  /* margin:0rem 0rem 0rem 0rem; */
+  padding: 0rem; /* space on left of scrolling article text block */
 }
 
-#scrolly3 >  {
+#scrolly3 > * {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -188,9 +193,8 @@ a:hover {
 /* applies to side column of vertical scrolling text */
 article { 
   position: relative;
-  padding: 0rem;
-  max-width: 40rem;
-  /* margin: 0rem 0rem 0rem 0rem; */
+  padding: 0 0rem;
+  max-width: 20rem;
 }
 
 
@@ -203,8 +207,8 @@ article {
   margin: 0;
   background-color: #fcfdfd;
   z-index: 0;
-  top: 12.5vh;
-  height: 80vh;
+  top: 12.5vh; /*shifts graphic up and down within visible page */
+  height: 70vh; /* adjusts height at which scroll section begins ascent up page on last step. */
   /* Center everything inside */
   display: flex;
   align-items: top;
@@ -222,12 +226,12 @@ article {
     } 
 
     
-
 /* settings for non-active vertical scrolling elements */
+
 .step { 
-  margin: 0 auto 8rem auto;
+  margin: 0 auto 5rem auto;
   background-color: #f8fafa;
-  color: #eae9e9;
+  color: #eae9e9 !important;
   
 }
 
@@ -243,7 +247,6 @@ article {
 }
 
 .step p {
-  text-align: center;
   padding: 1rem;
   font-size: 1.2rem;
   text-align: left;
@@ -266,7 +269,7 @@ article {
   /* margin-left: auto; */
   font-size: 1.2rem;
   font-family:Helvetica Neue;
-  color:#646363  
+  color:#090909  
 }
 
 .button {
