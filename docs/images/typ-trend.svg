@@ -38,8 +38,8 @@
 <text x='380.23' y='153.27' style='font-size: 8.54px;fill: #525252; font-family: "Arial";' textLength='44.58px' lengthAdjust='spacingAndGlyphs'>Scholarship</text>
 <text x='380.23' y='109.54' style='font-size: 8.54px;fill: #525252; font-family: "Arial";' textLength='23.23px' lengthAdjust='spacingAndGlyphs'>Public</text>
 <text x='372.46' y='101.60' text-anchor='end' style='font-size: 9.25px;fill: #D95F02; font-family: "Arial";' textLength='28.27px' lengthAdjust='spacingAndGlyphs'>90,052</text>
-<text x='372.46' y='129.64' text-anchor='end' style='font-size: 9.25px;fill: #7570B3; font-family: "Arial";' textLength='28.27px' lengthAdjust='spacingAndGlyphs'>68,814</text>
-<text x='372.46' y='205.15' text-anchor='end' style='font-size: 9.25px;fill: #1B9E77; font-family: "Arial";' textLength='28.27px' lengthAdjust='spacingAndGlyphs'>47,006</text>
+<text x='372.46' y='138.39' text-anchor='end' style='font-size: 9.25px;fill: #7570B3; font-family: "Arial";' textLength='28.27px' lengthAdjust='spacingAndGlyphs'>68,814</text>
+<text x='372.46' y='199.16' text-anchor='end' style='font-size: 9.25px;fill: #1B9E77; font-family: "Arial";' textLength='28.27px' lengthAdjust='spacingAndGlyphs'>47,006</text>
 <line x1='61.83' y1='270.21' x2='372.46' y2='270.21' style='stroke-width: 0.32; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00; stroke-linecap: butt;' />
 <line x1='61.83' y1='224.76' x2='372.46' y2='224.76' style='stroke-width: 0.32; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00; stroke-linecap: butt;' />
 <line x1='61.83' y1='179.30' x2='372.46' y2='179.30' style='stroke-width: 0.32; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00; stroke-linecap: butt;' />
@@ -86,23 +86,24 @@
 <text x='233.54' y='9.77' style='font-size: 14.30px; font-weight: bold;fill: #7570B3; font-family: "Times New Roman";' textLength='42.09px' lengthAdjust='spacingAndGlyphs'>Choice</text>
 <text x='279.21' y='9.77' style='font-size: 14.30px; font-weight: bold;fill: #7570B3; font-family: "Times New Roman";' textLength='72.32px' lengthAdjust='spacingAndGlyphs'>Scholarship</text>
 <text x='355.11' y='9.77' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='49.22px' lengthAdjust='spacingAndGlyphs'>transfers</text>
-<text x='0.50' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='37.86px' lengthAdjust='spacingAndGlyphs'>surged</text>
-<text x='41.93' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.21px' lengthAdjust='spacingAndGlyphs'>97%</text>
-<text x='71.72' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='29.38px' lengthAdjust='spacingAndGlyphs'>since</text>
-<text x='104.67' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='32.18px' lengthAdjust='spacingAndGlyphs'>2021.</text>
-<text x='140.43' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='53.47px' lengthAdjust='spacingAndGlyphs'>Transfers</text>
-<text x='197.48' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>to</text>
-<text x='212.19' y='26.15' style='font-size: 14.30px; font-weight: bold;fill: #D95F02; font-family: "Times New Roman";' textLength='38.16px' lengthAdjust='spacingAndGlyphs'>public</text>
-<text x='253.92' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='42.90px' lengthAdjust='spacingAndGlyphs'>schools</text>
-<text x='300.40' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='23.82px' lengthAdjust='spacingAndGlyphs'>rose</text>
-<text x='327.80' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.21px' lengthAdjust='spacingAndGlyphs'>18%</text>
-<text x='357.58' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>in</text>
-<text x='372.28' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='21.44px' lengthAdjust='spacingAndGlyphs'>that</text>
-<text x='397.30' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='25.42px' lengthAdjust='spacingAndGlyphs'>time</text>
-<text x='0.50' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='20.64px' lengthAdjust='spacingAndGlyphs'>and</text>
-<text x='24.72' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.21px' lengthAdjust='spacingAndGlyphs'>62%</text>
-<text x='54.51' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='29.38px' lengthAdjust='spacingAndGlyphs'>since</text>
-<text x='87.46' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='32.18px' lengthAdjust='spacingAndGlyphs'>2018.</text>
+<text x='0.50' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.99px' lengthAdjust='spacingAndGlyphs'>have</text>
+<text x='31.06' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='37.86px' lengthAdjust='spacingAndGlyphs'>surged</text>
+<text x='72.50' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.21px' lengthAdjust='spacingAndGlyphs'>97%</text>
+<text x='102.28' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='29.38px' lengthAdjust='spacingAndGlyphs'>since</text>
+<text x='135.24' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='32.18px' lengthAdjust='spacingAndGlyphs'>2021.</text>
+<text x='170.99' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='53.47px' lengthAdjust='spacingAndGlyphs'>Transfers</text>
+<text x='228.05' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>to</text>
+<text x='242.75' y='26.15' style='font-size: 14.30px; font-weight: bold;fill: #D95F02; font-family: "Times New Roman";' textLength='38.16px' lengthAdjust='spacingAndGlyphs'>public</text>
+<text x='284.49' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='42.90px' lengthAdjust='spacingAndGlyphs'>schools</text>
+<text x='330.96' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='23.82px' lengthAdjust='spacingAndGlyphs'>rose</text>
+<text x='358.36' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.21px' lengthAdjust='spacingAndGlyphs'>18%</text>
+<text x='388.15' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='11.12px' lengthAdjust='spacingAndGlyphs'>in</text>
+<text x='402.85' y='26.15' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='21.44px' lengthAdjust='spacingAndGlyphs'>that</text>
+<text x='0.50' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='25.42px' lengthAdjust='spacingAndGlyphs'>time</text>
+<text x='29.49' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='20.64px' lengthAdjust='spacingAndGlyphs'>and</text>
+<text x='53.71' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='26.21px' lengthAdjust='spacingAndGlyphs'>62%</text>
+<text x='83.50' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='29.38px' lengthAdjust='spacingAndGlyphs'>since</text>
+<text x='116.45' y='42.53' style='font-size: 14.30px; font-family: "Times New Roman";' textLength='32.18px' lengthAdjust='spacingAndGlyphs'>2018.</text>
 <text x='288.95' y='302.52' style='font-size: 8.25px; font-weight: bold;fill: #808080; font-family: "Arial";' textLength='17.88px' lengthAdjust='spacingAndGlyphs'>Data</text>
 <text x='306.84' y='302.52' style='font-size: 8.25px;fill: #808080; font-family: "Arial";' textLength='2.29px' lengthAdjust='spacingAndGlyphs'>:</text>
 <text x='311.41' y='302.52' style='font-size: 8.25px;fill: #808080; font-family: "Arial";' textLength='27.06px' lengthAdjust='spacingAndGlyphs'>Indiana</text>

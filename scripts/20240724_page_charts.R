@@ -220,14 +220,14 @@ ggplot()+
            hjust = 1)+
   
   # Choice Scholarship transfer 2024 total
-  annotate("text", x = 2024, y = sc_tot+sc_tot*.15, 
+  annotate("text", x = 2024, y = sc_tot+sc_tot*.08, 
            label = format(sc_tot, big.mark = ","),
            color = pr,
            size = 3.25,
            hjust = 1)+
   
   # Charter transfer 2024 total
-  annotate("text", x = 2024, y = chr_tot-chr_tot*.2, 
+  annotate("text", x = 2024, y = chr_tot-chr_tot*.13, 
            label = format(chr_tot, big.mark = ","),
            color = chr,
            size = 3.25,
@@ -257,7 +257,7 @@ ggplot()+
   )+
   
   labs(
-    title = paste0("After remaining relatively flat for years, <b><span style='color:", pr, "'>Choice Scholarship</span></b> transfers surged ", cs_inc, "% since 2021. Transfers to <b><span style='color:", pub, "'>public</span></b> schools rose ", pub_inc_21, "% in that time and ", pub_inc_18, "% since 2018." ),
+    title = paste0("After remaining relatively flat for years, <b><span style='color:", pr, "'>Choice Scholarship</span></b> transfers have surged ", cs_inc, "% since 2021. Transfers to <b><span style='color:", pub, "'>public</span></b> schools rose ", pub_inc_21, "% in that time and ", pub_inc_18, "% since 2018." ),
     
     subtitle = paste0("Total transfers have increased ", tot_pinc, "% since 2018.<br>" ),
     
@@ -293,7 +293,11 @@ ggsave("docs/images/typ-trend.png", plot = last_plot(),
        height = 1300, width = 1800, units = "px")
 
 
-# chart showing percent increase in enrollment for private, public enrollment and all enrollment ####
+# 
+
+# create chart that shows percent of total enrollment each transfer type represents
+
+# following dataframes serve the next two charts created
 
 # create dataframe that includes the percent change in total transfers, public, private and total enrollment
 
@@ -344,6 +348,100 @@ yr_tot <- yr_tot |>
 
 # bind them
 yr_tot_pc <- rbind(res_pc, yr_tot) 
+
+
+# create dataframe for 
+xf_pc <- rbind(
+  yr_tot_typ,
+  
+  res_pc[,1:3] |> 
+    filter(typ == "Enrollment")
+) |> 
+  group_by(yr) |> 
+  arrange(desc(yr)) 
+
+xf_pc <- xf_pc |> 
+  filter(yr >= 2018) |> 
+  group_by(yr) |> 
+  arrange(desc(yr)) |> 
+  mutate(pct = 
+           case_when (
+             typ == "Charter" ~ round(100*(tot/lead(tot, 3)),1),
+             typ == "Choice Scholarship" ~ round(100*(tot/lead(tot, 2)),1),
+             typ == "Public" ~ round(100*(tot/lead(tot, 1)),1), 
+             
+             typ == "Enrollment" ~ tot
+           )
+  ) |> 
+  filter(typ != "Enrollment") |> 
+  mutate(
+    typ = factor(typ, levels = c("Charter", "Public", "Choice Scholarship"), ordered = T)
+  )
+
+xf_pc <- xf_pc |> 
+  arrange(desc(yr), typ) |> 
+  mutate(y_lab = cumsum(pct))
+
+
+
+ggplot(xf_pc)+
+  geom_col(
+    aes(
+      yr, pct,  
+      group = yr,
+      fill = typ
+    ),
+    position = "stack", 
+    show.legend = F, width = .5 
+  )+
+  
+  geom_text(
+    aes(yr, y_lab, label = scales::percent(pct, scale = 1, accuracy = .1), 
+        group = yr
+    ), 
+    hjust = 1.45,
+    color = "white", 
+    size  = 3.25
+  )+
+  
+  scale_fill_manual(values = c("Public" = pub,
+                               "Charter" = chr,
+                               "Choice Scholarship" = pr))+
+  # 
+  scale_x_continuous(
+    breaks = seq(2018, 2024, 1),
+    labels = seq(2018, 2024, 1))+
+  
+  labs(
+    title = paste0("<b><span style='color:", pr, "'>Choice Scholarship</span></b> transfers have nearly doubled their share of total enrollment since 2018, though they still make up a smaller portion than <b><span style='color:", pub, "'>public</span></b> transfers."),
+    
+    subtitle = paste0("<b><span style='color:", chr, "'>Charter</span></b> transfers have remained steady at around 4% of total enrollment." ), 
+    
+    alt = "Series of bar charts by year (2018 to 2024) showing the percentage of total enrollment each type of transfer represents.",
+    
+    caption = "<br>**Data**:   Indiana Department of Education<br>(c)   tedschurter.com"
+  )+
+  
+  coord_flip()+
+  
+  t_theme()+
+  # theme_classic()
+  
+  theme(
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(margin = margin(c(0,.5,0,0))
+                               ),
+    plot.margin = margin(0,0,0,0, "in")
+  )
+
+ggsave("docs/images/typ_pc.png", plot = last_plot(),
+       height = 1300, width = 1800, units = "px")
+
+ggsave("docs/images/typ_pc.svg", plot = last_plot(),
+       height = 1300, width = 1800, units = "px")
+
+
+# line chart showing annual percent change in public, private, total enrollment and transfers
 
 
 # grid lines dataframe
@@ -838,6 +936,13 @@ set.seed(23)
 
 main <- 
   ggplot()+
+  
+  # # main annotation
+  annotate("text_box", x = 83.5, y = 72,
+           label = "**Seventy-four percent** of all corporations send or receive transfers from fewer than **40** schools.",
+           size = 3.65, hjust = 0, vjust = .5, color= atxt, box.color = bg_c,
+           fill = NA, lineheight = 1.05, width = unit(2.7, "inch"))+
+  
   geom_jitter(data = xfr_rate,
               aes(xfr_from, xfr_to, size = in_stlmt_tot, color = color),
               alpha = .3)+
@@ -846,21 +951,21 @@ main <-
   
   # inset box
   geom_rect(aes(
-    xmin = 0, xmax = 50,
-    ymin = 0, ymax = 50),
+    xmin = 0, xmax = 40,
+    ymin = 0, ymax = 40),
     color = atxt,
     fill = NA,
     linewidth = .15
   )+
   
-  geom_curve(aes(x = 25,  xend = 78.5,
+  geom_curve(aes(x = 25,  xend = 77,
                  y = 55,  yend = 115),
              color = atxt,
              curvature = -.2,
              linewidth = .35,
              arrow = arrow(length=unit(0.33,"cm"))
   )+
-  # 
+  
   # # label for curve
   geom_text(aes(
     x = 75,
@@ -869,12 +974,6 @@ main <-
     label = "Detail\narea",
     size = 2.5, hjust = 1, lineheight = .9) +
  
-  # # main annotation
-  annotate("text_box", x = 83.5, y = 72,
-           label = "**Seventy-four percent** of all corporations send or receive transfers from fewer than **40** schools.",
-           size = 3.65, hjust = 0, vjust = .5, color= atxt, box.color = bg_c,
-           fill = NA, lineheight = 1.05, width = unit(2.7, "inch"))+
-  
   
   # # Union SC annotation
   annotate("text_box", x = 35, y = 260,
@@ -995,7 +1094,7 @@ geom_text(aes(
                                 margin = margin(0,0,0,0)),
     legend.title = element_text(size = 7, hjust = 0),
     # adjust margin to align chart with text on webpage
-    plot.margin = margin(0,0,0,0, "in"),
+    plot.margin = margin(0,.15,0,0, "in"),
     axis.text.x = element_blank(),
     axis.text.y = element_blank(),
     plot.background = element_rect(
@@ -1101,19 +1200,19 @@ geom_text(aes(
 
 ggdraw(main) +
   draw_plot(inset,
-            x = .36,
-            y = .365,
+            x = .34,
+            y = .3675,
             width  =  .45,   
             height =  .45    
   )+
   draw_plot(main_l,
-            x = .8,           
+            x = .7798,           
             y = .64,          
             width  =  .06,    
             height =  .06     
   )+
   draw_plot(inset_l,
-            x = .8262,        
+            x = .807,        
             y = .442,         
             width  =  .06,    
             height =  .06     

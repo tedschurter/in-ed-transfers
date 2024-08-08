@@ -313,24 +313,22 @@ ggsave("docs/images/lst_1.png", plot = last_plot(),
 
 # scrolly step 2 public school transfers ####
 
-# how many students transfer to public schools
-z <- round(((sxfer |> 
-               
-               filter(yr == 2024 & stlmt_corp_name == "Western Boone County Community School District"  & typ == "Public") |> 
-               
-               group_by(stlmt_corp_id, typ) |> 
-               
-               ungroup() |> 
-               
-               summarise(tot = sum(tot_xfr)) |> 
-               
-               ungroup() |> 
-               
-               select(tot))/
-              (cp |> filter(stlmt_corp_name == "Western Boone County Community School District") |> 
-                 
-                 select(leg_stl_tot)))*100
-           ) |>
+# how many students transfer to public schools per 100
+# assign legal settlement total for Western Boone to wb
+wb <- cp |> filter(stlmt_corp_name == "Western Boone County Community School District") |> 
+  
+  select(leg_stl_tot) |> pull()
+
+z <- round(100*((sxfer |> 
+                   
+                   filter(yr == 2024 & stlmt_corp_name == "Western Boone County Community School District"  & typ == "Public") |> 
+                   
+                   summarise(tot = sum(tot_xfr)) |> 
+                   
+                   select(tot)/
+                   wb)
+) 
+)|>
   
   pull()  # 8
 
@@ -436,24 +434,14 @@ ggsave("docs/images/lst_2.png", plot = last_plot(),
 # scrolly step 3 charter school transfers ####
 
 # how many charter school transfers
-z <- round(((sxfer |> 
-               
-               filter(yr == 2024 & stlmt_corp_name == "Western Boone County Community School District"  & typ == "Charter") |> 
-               
-               group_by(stlmt_corp_id, typ) |> 
-               
-               ungroup() |> 
-               
-               summarise(tot = sum(tot_xfr)) |> 
-               
-               ungroup() |> 
-               
-               select(tot))/
-              (cp |> filter(stlmt_corp_name == "Western Boone County Community School District") |> 
-                 select(leg_stl_tot)))*100
-           
-           ) |>
-  
+z <- round(100*(sxfer |> 
+                  
+                  filter(yr == 2024 & stlmt_corp_name == "Western Boone County Community School District"  & typ == "Charter") |> 
+                  
+                  summarise(tot = sum(tot_xfr)) |> 
+                  
+                  select(tot)/wb)
+) |>
   pull() #2
 
 # randomly assign z number of icon rows to change to outline shape to represent outgoing transfers 
@@ -572,21 +560,14 @@ ggsave("docs/images/lst_3.png", plot = last_plot(),
 # scrolly step 4 choice scholarship transfers ####
 
 # how many transfer to a choice scholarship school
-z <- round(((sxfer |> 
-               filter(yr == 2024 & stlmt_corp_name == "Western Boone County Community School District"  & typ == "Choice Scholarship") |> 
-               
-               group_by(stlmt_corp_id, typ) |> 
-               
-               ungroup() |> 
-               
-               summarise(tot = sum(tot_xfr)) |> 
-               
-               ungroup() |> 
-               
-               select(tot))/
-              (cp |> filter(stlmt_corp_name == "Western Boone County Community School District") |> 
-                 select(leg_stl_tot)))*100) |> 
-  pull() # 2
+z <- round(100*(sxfer |> 
+                  filter(yr == 2024 & stlmt_corp_name == "Western Boone County Community School District"  & typ == "Choice Scholarship") |> 
+                  
+                  summarise(tot = sum(tot_xfr)) |> 
+                  
+                  select(tot)/wb)
+) |>
+  pull() #2 
 
 # randomly assign z number of icon rows to change to outline shape to represent outgoing transfers 
 zz <- sample(100, abs(z), F) 
@@ -721,28 +702,24 @@ ggsave("docs/images/lst_4.png", plot = last_plot(),
 
 # scrolly step 5 incoming transfers ####
 
-# need to determine z, the number of incoming transfers / 100 students with legal settlement
-z <- (
-  cp |> 
-    filter(stlmt_corp_name == "Western Boone County Community School District") |> 
+# need to determine z, the number of incoming transfers / 100 students with legal settlement; 20240808 update: to preserve consistency, incoming transfer total will come from sxfer data - sheet 3 vs sheet 4 (net transfers) of IDOE transfer xlsx file. 
+z <- round(100*(
+  sxfer |> 
+    filter(nrl_schl_name == "Western Boone County Community School District" &
+             yr == 2024) |> 
     
-    select(pub_incoming) |> 
+    summarise(tot = sum(tot_xfr)) |> 
     
     pull()/
     
-    (cp |>
-       
-       filter(stlmt_corp_name == "Western Boone County Community School District") |> 
-       
-       select(leg_stl_tot) |> 
-       
-       pull()/100)
-  )
+    wb)
+)# 17 (16.89)
+
 
 # need to add enough rows to cover z: two rows of ten to existing ls dataframe to preserve figures removed for outgoing transfers
 
-round(z) # 16
-# add enough incoming transfer students to existing ls dataframe to cover z students (16)
+
+# add enough incoming transfer students to existing ls dataframe to cover z students (17)
 ls <- rbind(ls, 
             
             # add a row of 10 student icons filled with incoming transfer color
@@ -759,7 +736,7 @@ ls <- rbind(ls,
 )
 
 # need to remove the last five rows to remove five figures from total of 120
-ls <- ls[1:116,]
+ls <- ls[1:(100+z),]
 
 # make plot
 lst_4 <- 
@@ -857,7 +834,7 @@ ggsave("docs/images/lst_5.png", plot = last_plot(),
 # scrolly step 6 Western Boone incoming transfers ####
 
 
-# to show final net transfer rate use block of 100 icons + 7 (net transfer rate for W. Boone...) incoming; for continuity, make total icons same, but as plot above, make the difference (8) background color so they disappear.
+# to show final net transfer rate use block of 100 icons + 5 (net transfer rate for W. Boone...) incoming; for continuity, make total icons same, but as plot above, make the difference background color so they disappear.
 
 # all legal settlement grid object ls
 ls <- df
@@ -871,17 +848,10 @@ ls$color <- lgst
 # sample between male and female student icons
 ls$image <- sample(c(paste0(sPath, 'boy_plain.png'), paste0(sPath, 'girl_plain.png')), 100, T)
 
-z <- cp |> 
-  
-  filter(stlmt_corp_name == "Western Boone County Community School District") |> 
-  
-  select(xfr_rate) |> 
-  
-  pull()
 
+# NOTE: These charts use whole figures and when rounding up to preserve that, and when separating out a rate for public, charter and choice scholarship outgoing transfers for illustration purposes, the rates end up slightly higher than if calculated using the raw figures collectively. (Specifically, the rate of 23 for both charter and choice scholarship transfers is 1.59 which each round to 2 and add four total icons; if taken together would add only 3 icons) This example is using five - the incoming rate of 17 - the outgoing rate (boosted by the rounding) of 12 to get a net rate of 5 rather than the actual rate of 5.54, which would ordinarily be rounded to 6. 
 
-
-# round(z) # 6
+z <- 5
 
 # add incoming transfer students to existing ls dataframe
 ls <- rbind(ls, 
@@ -900,7 +870,7 @@ ls <- rbind(ls,
 )
 
 # fill unneeded icons with background color to hide but retain proportion
-ls[107:110,3] <- bg_c
+ls[106:110,3] <- bg_c
 
 
 
@@ -916,7 +886,7 @@ lst_4a <-
   scale_color_manual(values = vals)+
   
   labs(
-    title = paste0("Western Boone County Community School District's net transfer rate of **6** means it has more students attending its schools than living within its borders.")
+    title = paste0("Western Boone County Community School District's net transfer rate of **",z,"** means it has more students attending its schools than living within its borders.")
   )+
   
   t_theme()+
@@ -1117,7 +1087,7 @@ cp |>
     filter(xfr_rate < 0) |>
     
     nrow()/nrow(cp))*100 #63%
- 
+
 # # total outgoing transfer students
 cp |>
   
@@ -1125,7 +1095,7 @@ cp |>
 
 # # total incoming transfer students
 cp |>
-
+  
   summarise(sum(pub_incoming, na.rm=T)) # 88514
 # 
 # # percent of transfer students that enrolled in another public school corporation
@@ -1334,7 +1304,7 @@ top_mdl_nrl_corp <- nrl_schls_3 |>
 
 # 43% of Indiana's school corporations have at least one charter or private school within their boundaries students can transfer to. 
 
-ggplot()+
+plot <- ggplot()+
   
   geom_sf(data = in_dis,
           color = '#f0f0f0', fill = "white")+
@@ -1347,6 +1317,37 @@ ggplot()+
   
   scale_size(range = c(0, .75))+ 
   theme_void()
+
+
+# color legend
+lg_key <- ggplot()+
+  geom_rect(aes(
+            xmin = 0, xmax = 1.5,
+            ymin = 0, ymax = 1.5
+            ),
+            fill = lgst_txt,
+            linewidth = .25
+            )+
+  
+theme_void()
+
+
+ggdraw(plot)+
+  
+  draw_plot(lg_key,
+            x = .613,
+            y = .2,
+            width  =  .04,
+            height =  .035
+  ) +
+  
+  draw_plot_label(
+    label =
+      str_wrap("One or more alternative educational facilities within borders.", width =  35),
+    x = .611, 
+    y = .215, 
+    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
+
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-1.png", plot = last_plot(),
@@ -1416,13 +1417,38 @@ plot <- ggplot()+
 
 # add legend to explain points as school locations
 
-ggdraw(plot)+
-  draw_plot_label(label =
-                    "Each \u25CF represents a\nprivate or charter school.",
-                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
 
+ggdraw(plot)+
+  
+  draw_plot(lg_key,
+            x = .61,
+            y = .2,
+            width  =  .04,
+            height =  .035
+  ) +
+  
+  draw_plot_label(
+    label =
+      str_wrap("Only one alternative educational facility within borders.", width =  35),
+    x = .611, 
+    y = .215, 
+    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")+
+  
+  draw_plot_label(label =
+                    str_wrap("Each \u25CF represents a\nprivate or charter school.", 30),
+                  .61, .105, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
+
+
+
+# combo plot
 ggsave("docs/images/scrolly2-mult_schls-2.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
+
+# average legal settlement
+cp |> 
+  filter(stlmt_corp_name %in% mult_sngl$stlmt_corp_name) |> 
+  summarise(avg = mean(leg_stl_tot, rm.na=T)) # 3,384
+
 
 # scroll step 3
 
@@ -1485,15 +1511,38 @@ plot <- ggplot()+
   
   theme_void()
 
-# add legend to explain points as school locations
+
 
 ggdraw(plot)+
+  
+  # add legend to explain points as school locations
+  draw_plot(lg_key,
+            x = .61,
+            y = .2,
+            width  =  .04,
+            height =  .035
+  ) +
+  
+  # label text
+  draw_plot_label(
+    label =
+      str_wrap("Between 2 to 9 alternative educational facilities within borders.", width =  30),
+    x = .61, 
+    y = .225, 
+    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")+
+  
   draw_plot_label(label =
-                    "Each \u25CF represents a\nprivate or charter school.",
-                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
+                    str_wrap("Each \u25CF represents a\nprivate or charter school.", 30),
+                  .61, .105, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
 
 ggsave("docs/images/scrolly2-mult_schls-3.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
+
+
+# avg legal settlement
+cp |> 
+  filter(stlmt_corp_name %in% mult_med$stlmt_corp_name) |> 
+  summarise(avg = mean(leg_stl_tot, rm.na=T)) # 7,548
 
 
 # scroll step 4 
@@ -1671,7 +1720,7 @@ ggdraw(m3) +
             height =  .2
   )+
   
-  draw_plot_label(label = "Fort Wayne\nSchool Corporation", .68, .82, size = 5, 
+  draw_plot_label(label = "Fort Wayne\nCommunity Schools", .68, .82, size = 5, 
                   hjust = 0, lineheight = 1, color = "#525252")+
   
   # evansville
@@ -1699,16 +1748,44 @@ ggdraw(m3) +
                   .2, .76,
                   size = 5, hjust = 0, lineheight = 1, color = "#525252")+
   
+  # plot key
+  draw_plot(lg_key,
+            x = .61,
+            y = .2,
+            width  =  .04,
+            height =  .035
+  ) +
+  
+  # label text
+  draw_plot_label(
+    label =
+      str_wrap("Ten or more alternative educational facilities within borders.", width =  30),
+    x = .61, 
+    y = .225, 
+    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")+
   
   draw_plot_label(label =
-                    "Each \u25CF represents a\nprivate or charter school.",
-                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
-  
-  
+                    str_wrap("Each \u25CF represents a\nprivate or charter school.", 30),
+                  .61, .105, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
+
+
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-4.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
+
+
+# avg legal settlement
+cp |> 
+  filter(stlmt_corp_name %in% c("Fort Wayne Community Schools",
+                                "South Bend Community School Corporation", 
+                                "Evansville Vanderburgh School Corporation",
+                                "Indianapolis Public Schools",
+                                "Metropolitan School District Lawrence Township",
+                                "Metropolitan School District Washington Township")) |> 
+  summarise(avg = median(leg_stl_tot, rm.na=T)) # 24,349
+
+
 
 # scrolly step 6
 
@@ -1786,7 +1863,7 @@ ggdraw(mult_schls_2a) +
   
   draw_plot_label(label =
                     "Each \u25CF represents a\nprivate or charter school.",
-                  .575, .124, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
+                  .61, .105, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-5.png", plot = last_plot(),
