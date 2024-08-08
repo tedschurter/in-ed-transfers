@@ -127,12 +127,57 @@ a:hover {
   font-size:1.2rem;
 }
 
+.bar_chart{
+  margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+ }
+
+ /* size for large desktop screens */
+ @media only screen and (min-device-width: 550px) {
+  .bar_chart {
+    margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+}
+ /* size for large laptop screens */
+@media only screen and (min-device-width: 1340px) {
+  .bar_chart {
+    margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55%;
+  }
+}
+
 .line_chart{
   margin: 1rem 0rem 1rem 0;
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 20%;
  }
+
+ /* size for large desktop screens */
+ @media only screen and (min-device-width: 550px) {
+  .line_chart {
+    margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+}
+ /* size for large laptop screens */
+@media only screen and (min-device-width: 1340px) {
+  .line_chart {
+    margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55%;
+  }
+}
 
  .chart{
   margin: 1rem 0rem 1rem 0;
@@ -140,6 +185,25 @@ a:hover {
   margin-right: auto;
   width: 80%;
  }
+
+/* size for laptop screens */
+@media only screen and (min-device-width: 550px) {
+  .chart {
+    margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  }
+}
+ /* size for desktop screens */
+@media only screen and (min-device-width: 1340px) {
+  .chart {
+    margin: 1rem 0rem 1rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  }
+}
 
 /* end additions to J. Soma example */
 
@@ -215,15 +279,52 @@ article {
   justify-content: left;
 }
 
+/* adjust graphics container for larger screens*/
+@media only screen and (min-device-width: 1340px) {
+.sticky-thing { 
+  position: -webkit-sticky;
+  position: sticky;
+  width:  auto;
+  height: auto;
+  margin: 0;
+  background-color: #fcfdfd;
+  z-index: 0;
+  top: 12.5vh; /*shifts graphic up and down within visible page */
+  height: 45vh; /* adjusts height at which scroll section begins ascent up page on last step. */
+  /* Center everything inside */
+  display: flex;
+  align-items: top;
+  justify-content: left;
+}
+}
 
 
 /* image within graphics container */
    .sticky-thing img { 
     padding: 0 rem;
     width:  808px; /*900; */
+    height: 404px; /*450px;*/
+    border:#f6f8f8
+    } 
+
+/* size for laptop screens */
+@media only screen and (min-device-width: 550px) {
+  .sticky-thing img { 
+    padding: 0 rem;
+    width:  808px; /*900; */
     height: 404px;/*450px;*/
     border:#f6f8f8
     } 
+}
+ /* size for large screens */
+@media only screen and (min-device-width: 1340px) {
+  .sticky-thing img { 
+    padding: 0 rem;
+    width:  900px;   /*900; */
+    height: 450px;  /*450px;*/
+    border:#f6f8f8
+    } 
+}
 
     
 /* settings for non-active vertical scrolling elements */
