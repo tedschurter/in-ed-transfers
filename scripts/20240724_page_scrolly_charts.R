@@ -310,7 +310,6 @@ ggsave("docs/images/lst_1.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
 
 
-
 # scrolly step 2 public school transfers ####
 
 # how many students transfer to public schools per 100
@@ -466,7 +465,7 @@ lst_2 <-
   scale_color_manual(values = vals)+
   
   labs(
-    title = paste0("For every 100 students with legal residence in Western Boone County Community School District, **<span style='color:#1b9e77'>", z, "**</span> transfer to a **<span style='color:#1b9e77'> public charter school</span>**.")
+    title = paste0("For every 100 students with legal settlement in Western Boone County Community School District, **<span style='color:#1b9e77'>", z, "**</span> transfer to a **<span style='color:#1b9e77'> public charter school</span>**.")
   )+
   
   t_theme()+
@@ -590,7 +589,7 @@ lst_3 <-
   scale_color_manual(values = vals)+
   
   labs(
-    title = paste0("For every 100 students with legal residence in Western Boone County Community School District, **<span style='color:#7570b3'>", z, "**</span> transfer to a **<span style='color:#7570b3'>Choice Scholarship school</span>**.")
+    title = paste0("For every 100 students with legal settlement in Western Boone County Community School District, **<span style='color:#7570b3'>", z, "**</span> transfer to a **<span style='color:#7570b3'>Choice Scholarship school</span>**.")
   )+
   
   t_theme()+
@@ -750,7 +749,7 @@ lst_4 <-
   scale_color_manual(values = vals)+
   
   labs(
-    title = paste0("For every 100 students with legal residence in Western Boone County Community School District, **<span style='color:", inc, "'>", round(z), "**</span> transfer in from other school corporations.")
+    title = paste0("For every 100 students with legal settlement in Western Boone County Community School District, **<span style='color:", inc, "'>", round(z), "**</span> transfer in from other school corporations.")
   )+
   
   t_theme()+
@@ -951,6 +950,7 @@ plot_grid(lst_4a, map_1_1_a, align = "v", axis = "tb",
 
 ggsave("docs/images/lst_6.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
+
 
 
 # clean up
@@ -1304,7 +1304,8 @@ top_mdl_nrl_corp <- nrl_schls_3 |>
 
 # 43% of Indiana's school corporations have at least one charter or private school within their boundaries students can transfer to. 
 
-plot <- ggplot()+
+
+  ggplot()+
   
   geom_sf(data = in_dis,
           color = '#f0f0f0', fill = "white")+
@@ -1317,36 +1318,6 @@ plot <- ggplot()+
   
   scale_size(range = c(0, .75))+ 
   theme_void()
-
-
-# color legend
-lg_key <- ggplot()+
-  geom_rect(aes(
-            xmin = 0, xmax = 1.5,
-            ymin = 0, ymax = 1.5
-            ),
-            fill = lgst_txt,
-            linewidth = .25
-            )+
-  
-theme_void()
-
-
-ggdraw(plot)+
-  
-  draw_plot(lg_key,
-            x = .613,
-            y = .2,
-            width  =  .04,
-            height =  .035
-  ) +
-  
-  draw_plot_label(
-    label =
-      str_wrap("One or more alternative educational facilities within borders.", width =  35),
-    x = .611, 
-    y = .215, 
-    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
 
 
 # combo plot
@@ -1393,8 +1364,8 @@ mean(cp2$xfr_rate[cp2$stlmt_corp_name %in% mult_sngl$stlmt_corp_name]) # 1.1
 mean(cp2$xfr_rate[cp2$stlmt_corp_name %in% top_nrl_corp$stlmt_corp_name]) # -26
 
 # 40% of those corporations have only a single alternative to the public school. They're average transfer rate is 2.
-
-plot <- ggplot()+
+plot <- 
+ggplot()+
   
   geom_sf(data = in_dis |> filter(corp_name %in% mult_sngl$stlmt_corp_name),
           color = 'darkgray', fill = lgst)+
@@ -1415,34 +1386,18 @@ plot <- ggplot()+
   
   theme_void()
 
-# add legend to explain points as school locations
-
-
+# add legend
 ggdraw(plot)+
   
-  draw_plot(lg_key,
-            x = .61,
-            y = .2,
-            width  =  .04,
-            height =  .035
-  ) +
-  
-  draw_plot_label(
-    label =
-      str_wrap("Only one alternative educational facility within borders.", width =  35),
-    x = .611, 
-    y = .215, 
-    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")+
-  
   draw_plot_label(label =
-                    str_wrap("Each \u25CF represents a\nprivate or charter school.", 30),
-                  .61, .105, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
-
+                    str_wrap("Each \u25CF represents a private or charter school.", 25),
+                  .6, .2, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
 
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-2.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
+
 
 # average legal settlement
 cp |> 
@@ -1515,25 +1470,9 @@ plot <- ggplot()+
 
 ggdraw(plot)+
   
-  # add legend to explain points as school locations
-  draw_plot(lg_key,
-            x = .61,
-            y = .2,
-            width  =  .04,
-            height =  .035
-  ) +
-  
-  # label text
-  draw_plot_label(
-    label =
-      str_wrap("Between 2 to 9 alternative educational facilities within borders.", width =  30),
-    x = .61, 
-    y = .225, 
-    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")+
-  
   draw_plot_label(label =
-                    str_wrap("Each \u25CF represents a\nprivate or charter school.", 30),
-                  .61, .105, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
+                    str_wrap("Each \u25CF represents a private or charter school.", 25),
+                  .6, .2, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
 
 ggsave("docs/images/scrolly2-mult_schls-3.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
@@ -1747,26 +1686,10 @@ ggdraw(m3) +
                   # .21, .73, 
                   .2, .76,
                   size = 5, hjust = 0, lineheight = 1, color = "#525252")+
-  
-  # plot key
-  draw_plot(lg_key,
-            x = .61,
-            y = .2,
-            width  =  .04,
-            height =  .035
-  ) +
-  
-  # label text
-  draw_plot_label(
-    label =
-      str_wrap("Ten or more alternative educational facilities within borders.", width =  30),
-    x = .61, 
-    y = .225, 
-    size = 5.5, hjust = 0, lineheight = .9, color = "#525252")+
-  
+ 
   draw_plot_label(label =
-                    str_wrap("Each \u25CF represents a\nprivate or charter school.", 30),
-                  .61, .105, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
+                    str_wrap("Each \u25CF represents a private or charter school.", 25),
+                  .6, .2, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
 
 
 
@@ -1862,8 +1785,8 @@ ggdraw(mult_schls_2a) +
   )+
   
   draw_plot_label(label =
-                    "Each \u25CF represents a\nprivate or charter school.",
-                  .61, .105, size = 5.5, hjust = 0, lineheight = 1, color = "#525252")
+                    str_wrap("Each \u25CF represents a private or charter school.", 25),
+                  .6, .2, size = 5.5, hjust = 0, lineheight = .9, color = "#525252")
 
 # combo plot
 ggsave("docs/images/scrolly2-mult_schls-5.png", plot = last_plot(),
@@ -2163,7 +2086,7 @@ inc_plot("Maconaquah School Corporation")
 ggsave("docs/images/scrolly3_in_xfr_1.png", plot = last_plot(),
        width = 1600, height = 800, units = "px")
 
-# Eminence has similiar legal settlement as Union School Corp, the school/corp with the most number of schools/corps sending transfer students
+# Eminence has similar legal settlement as Union School Corp, the school/corp with the most number of schools/corps sending transfer students
 inc_plot("Eminence Community School Corporation")
 
 ggsave("docs/images/scrolly3_in_xfr_2.png", plot = last_plot(),

@@ -257,7 +257,7 @@ ggplot()+
   )+
   
   labs(
-    title = paste0("After remaining relatively flat for years, <b><span style='color:", pr, "'>Choice Scholarship</span></b> transfers have surged ", cs_inc, "% since 2021. Transfers to <b><span style='color:", pub, "'>public</span></b> schools rose ", pub_inc_21, "% in that time and ", pub_inc_18, "% since 2018." ),
+    title = paste0("Transfers to <b><span style='color:", pub, "'>public schools</span></b> have grown steadily for years. <b><span style='color:", pr, "'>Choice Scholarship</span></b> transfers have surged ", cs_inc, "% since 2021." ),
     
     subtitle = paste0("Total transfers have increased ", tot_pinc, "% since 2018.<br>" ),
     
@@ -287,9 +287,6 @@ ggplot()+
 # save plots
 
 ggsave("docs/images/typ-trend.svg", plot = last_plot(), 
-       height = 1300, width = 1800, units = "px")
-
-ggsave("docs/images/typ-trend.png", plot = last_plot(), 
        height = 1300, width = 1800, units = "px")
 
 
@@ -407,6 +404,8 @@ ggplot(xf_pc)+
   scale_fill_manual(values = c("Public" = pub,
                                "Charter" = chr,
                                "Choice Scholarship" = pr))+
+  
+  scale_y_continuous(name = "Percent of total enrollment")+
   # 
   scale_x_continuous(
     breaks = seq(2018, 2024, 1),
@@ -425,21 +424,19 @@ ggplot(xf_pc)+
   coord_flip()+
   
   t_theme()+
-  # theme_classic()
   
   theme(
+    axis.title.x = element_text(size = rel(x = .85), color = "#505050",
+                                hjust = 0.06),
     axis.text.x = element_blank(),
     axis.text.y = element_text(margin = margin(c(0,.5,0,0))
-                               ),
+    ),
     plot.margin = margin(0,0,0,0, "in")
   )
 
-ggsave("docs/images/typ_pc.png", plot = last_plot(),
-       height = 1300, width = 1800, units = "px")
 
 ggsave("docs/images/typ_pc.svg", plot = last_plot(),
        height = 1300, width = 1800, units = "px")
-
 
 # line chart showing annual percent change in public, private, total enrollment and transfers
 
@@ -522,9 +519,9 @@ ggplot()+
   )+
   
   labs(
-    title = paste0("Annual percentage changes in <b>total enrollment </b>remained relatively stable despite dynamic swings in <b><span style='color:", pr, "'>private enrollment</span></b>."),
+    title = paste0("Though the amount of growth dipped occasionally, <b><span style='color:#969696'>total transfers</span></b> have grown annually."),
     
-    subtitle = paste0("<b><span style='color:#969696'>Total transfers</span></b> have grown annually since 2018.  <br><br>" ), 
+    subtitle = paste0("<b><span style='color:", pr, "'>Private enrollment</span></b> has been more volatile but has buffered the recent slight losses in <b><span style='color:", pub, "'>public enrollment</span></b>. <br><br>" ), 
     
     alt = "Line chart showing the percent change in annual enrollment for public, private and total enrollment, as well as total transfers, in Indiana from 2014 to 2024. Private enrollment drops and climbs dramatically between 2020 and 2022, shifting 12%; public enrollment and total enrollment are less volatile, shifting less than 1%.",
     
@@ -549,9 +546,6 @@ ggplot()+
     plot.margin = margin(0.0,0,0,0, "in"),
   )
 
-
-ggsave("docs/images/res_pc.png", plot = last_plot(),
-       height = 1300, width = 1800, units = "px")
 
 ggsave("docs/images/res_pc.svg", plot = last_plot(),
        height = 1300, width = 1800, units = "px")
@@ -1075,7 +1069,7 @@ geom_text(aes(
   ylim(-40, 300)+
   
   labs(
-    title = "Larger school corporations are more likely than smaller ones to loose more students than they gain from transfers, and to lose them to a larger number of schools and corporations.",
+    title = "Larger school corporations are more likely than smaller ones to lose more students than they gain from transfers, and to lose them to a larger number of schools and corporations.",
     
     subtitle = "Each circle represents a school corporation and its size reflects the number of students with legal settlement. <span style='color:blue'>Blue</span> circles indicate a <span style='color:blue'>positive</span> transfer rate; <span style='color:red'>red</span> circles indicate a <span style='color:red'>negative</span> transfer rate.",
     
