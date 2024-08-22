@@ -176,54 +176,16 @@ out_st <- c(gcu, bcu)
 
 # building blocks for transfer explainer scrolly images ####
 
-# create grid of 10 by 10 student icons with columns to adjust color, icon choice
-df <- data.frame(matrix(nrow = 1,
-                        ncol = 4))
-
-colnames(df) <- c('x', 'y', 'color', 'image')
-
-df <- df |> 
-  
-  filter(x != is.na(x), 
-         y != is.na(y)
-  )
-
-b <- seq(1, 100, 1)
-
-
-for(i in 1:length(seq)){
-  
-  df <- rbind(df, 
-              
-              data.frame(
-                x = rep(seq(i, 10, 1),10),
-                y = rep(seq(1, 10, 1), each = 10), 
-                color = NA, 
-                image = NA
-              )
-  )
-}
-
-# vector of student color types to populate grids
-students <- c('pub',
-              'chr',
-              'pr', 
-              'lst')
-
-
-# all legal settlement grid object 
-
-ls <- df
-
-# add students, color and type
-
-# color and type
-ls$color <- lgst
-# ls$type <- pub
-
-# sample between male and female student icons
-ls$image <- sample(c(paste0(sPath, 'boy_plain.png'), paste0(sPath, 'girl_plain.png')), 100, T)
-
+# create grid of 10 by 10 randomly assigned student icons with legal settlement-color
+df <- data.frame(
+  row = seq(1:100), # add row number to filter icons when sampling replacement rows
+  x = rep(seq(1, 10, 1), 10), # repeat a sequence to 10 by 1 and repeat it 10 times
+  y = rep(1:10, each = 10), # repeat 10 times each number in the sequence from 1 to 10 
+  color = lgst,  # icon's color. Initially fill with color used for legal settlement - lgst
+  image = sample(student, size = 100, T) # type of icon - boy/girl randomly selected
+)
+# duplicate of dataframe of all legal settlement-colored icons
+ls <- df  
 
 # scrolly step 1 ####
 
@@ -341,8 +303,8 @@ zz <- sample(100, abs(z), F)
 
 
 for (a in (zz)){ # if transfers are to be grouped together, use 1:length(zz)
-  ls[a,4] <- sample(out_st, 1)
-  ls[a,3] <- pub
+  ls[a,5] <- sample(out_st, 1)
+  ls[a,4] <- pub
 }
 
 lst_2 <- 
@@ -443,15 +405,14 @@ z <- round(100*(sxfer |>
 ) |>
   pull() #2
 
-# randomly assign z number of icon rows to change to outline shape to represent outgoing transfers 
-zz <- sample(100, abs(z), F) 
-# if transfers should be grouped together use simple sequence instead
-# zz <- seq(1, z, by = 1)  
+# randomly determine which of our z number of elements from our dataframe of 100 values that are still standard color icons will be replaced with charter transfer icons. assign those values to zz
+zz <- sample((ls |> filter(color == lgst) |> select(row) |> pull()), abs(z), F)
+
 
 # replace the full figures with outline figure to represent their absence
 for (a in (zz)){ # if transfers are to be grouped together, use 1:length(zz)
-  ls[a,4] <- sample(out_st, 1)
-  ls[a,3] <- "#1b9e77"
+  ls[a,5] <- sample(out_st, 1)
+  ls[a,4] <- "#1b9e77"
 }
 
 lst_2 <- 
@@ -568,15 +529,13 @@ z <- round(100*(sxfer |>
 ) |>
   pull() #2 
 
-# randomly assign z number of icon rows to change to outline shape to represent outgoing transfers 
-zz <- sample(100, abs(z), F) 
-# if transfers should be grouped together use simple sequence instead
-# zz <- seq(1, z, by = 1)  
+# randomly determine which of our z number of elements from our dataframe of 100 values that are still standard color icons will be replaced with charter transfer icons. assign those values to zz
+zz <- sample((ls |> filter(color == lgst) |> select(row) |> pull()), abs(z), F)
 
 # replace the full figures with outline figure to represent their absence
 for (a in (zz)){ # if transfers are to be grouped together, use 1:length(zz)
-  ls[a,4] <- sample(out_st, 1)
-  ls[a,3] <- pr
+  ls[a,5] <- sample(out_st, 1)
+  ls[a,4] <- pr
 }
 
 lst_3 <- 
@@ -722,16 +681,20 @@ z <- round(100*(
 ls <- rbind(ls, 
             
             # add a row of 10 student icons filled with incoming transfer color
-            data.frame(x = seq(1,10),
-                       y = rep(11, 10), 
-                       color = inc,
-                       image = sample(student, size = 10, T)),
+            data.frame(
+              row = 101:110,
+              x = seq(1,10),
+              y = rep(11, 10), 
+              color = inc,
+              image = sample(student, size = 10, T)),
             
             # add second row of 10 student icons filled with incoming transfer color
-            data.frame(x = seq(1,10),
-                       y = rep(12, 10), 
-                       color = inc,
-                       image = sample(student, size = 10, T))
+            data.frame(
+              row = 111:120,
+              x = seq(1,10),
+              y = rep(12, 10), 
+              color = inc,
+              image = sample(student, size = 10, T))
 )
 
 # need to remove the last five rows to remove five figures from total of 120
@@ -838,16 +801,6 @@ ggsave("docs/images/lst_5.png", plot = last_plot(),
 # all legal settlement grid object ls
 ls <- df
 
-# add students, color and type
-
-# color and type
-ls$color <- lgst
-# ls$type <- pub
-
-# sample between male and female student icons
-ls$image <- sample(c(paste0(sPath, 'boy_plain.png'), paste0(sPath, 'girl_plain.png')), 100, T)
-
-
 # NOTE: These charts use whole figures and when rounding up to preserve that, and when separating out a rate for public, charter and choice scholarship outgoing transfers for illustration purposes, the rates end up slightly higher than if calculated using the raw figures collectively. (Specifically, the rate of 23 for both charter and choice scholarship transfers is 1.59 which each round to 2 and add four total icons; if taken together would add only 3 icons) This example is using five - the incoming rate of 17 - the outgoing rate (boosted by the rounding) of 12 to get a net rate of 5 rather than the actual rate of 5.54, which would ordinarily be rounded to 6. 
 
 z <- 5
@@ -855,22 +808,17 @@ z <- 5
 # add incoming transfer students to existing ls dataframe
 ls <- rbind(ls, 
             
-            data.frame(x = seq(1,10),
+            data.frame(row = seq(101, 110, 1), 
+                       x = seq(1,10),
                        y = rep(11, 10), 
                        color = inc,
                        image = sample(student, size = 10, T)),
             
-            # data.frame(x = seq(1,10),
-            #            y = rep(12, 10), 
-            #            color = inc,
-            #            image = sample(student, size = 10, T)),
-            
-            deparse.level = 0
+           deparse.level = 0
 )
 
 # fill unneeded icons with background color to hide but retain proportion
-ls[106:110,3] <- bg_c
-
+ls[106:110,4] <- bg_c
 
 
 # make plot

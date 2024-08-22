@@ -179,18 +179,11 @@ for (i in 1:length(sc)){
     
     # build dataframe to make grid of 100 student icons
     
-    df <- data.frame(matrix(nrow = 100,
-                            ncol = 2))
-    colnames(df) <- c('x', 'y')
-    
-    df$x <- rep(seq(1, 10, 1), 10)
-    df$y <- rep(1:10, each = 10)
-    
-    # assign color to match legal settlement color from accompanying web page
-    df$color <- lgst
-    
-    # randomly select male or female student icon
-    df$image <- sample(student, size = 100, T)
+    df <- data.frame(x = rep(seq(1, 10, 1), 10), # repeat a sequence to 10 by 1 and repeat it 10 times
+                     y = rep(1:10, each = 10),   # repeat 10 times each number in the sequence from 1 to 10 
+                     color = lgst,  # icon's color. Initially fill with color used for legal settlement - lgst
+                     image = sample(student, size = 100, T) # type of icon - boy/girl randomly selected
+    )
     
     # assign net transfer rate to z
     z <- cp$xfr_rate[cp$stlmt_corp_id == sc[i]]
@@ -273,18 +266,12 @@ for (i in 1:length(sc)){
   } else if (cp$xfr_rate[cp$stlmt_corp_id == sc[i]] == 0 ) { 
     
     # net transfers per 100 students with legal settlement are 0 (doesn't mean no transfers, though) 
-    df <- data.frame(matrix(nrow = 100,
-                            ncol = 2))
-    colnames(df) <- c('x', 'y')
     
-    df$x <- rep(seq(1, 10, 1), 10)
-    df$y <- rep(1:10, each = 10)
-    
-    # set color to match legal settlement color on accompanying web page
-    df$color <- lgst
-    
-    # randomly select male or female student icon
-    df$image <- sample(student, size = 100, T)
+    df <- data.frame(x = rep(seq(1, 10, 1), 10), # repeat a sequence to 10 by 1 and repeat it 10 times
+                     y = rep(1:10, each = 10),   # repeat 10 times each number in the sequence from 1 to 10 
+                     color = lgst,  # icon's color. Initially fill with color used for legal settlement - lgst
+                     image = sample(student, size = 100, T) # type of icon - boy/girl randomly selected
+    )
     
     
     ggplot()+
@@ -356,31 +343,11 @@ for (i in 1:length(sc)){
     # to accommodate transfers added to base of 100, increase dataframe size to 300 and then remove extra (maximum outgoing transfers excluding outlier is 170) after z is determined 
     
     # build dataframe  
-    df <- data.frame(matrix(nrow = 1,
-                            ncol = 2))
     
-    colnames(df) <- c('x', 'y')
-    
-    # create dataframe that repeats x axis sequence to 20 and y axis repetition of row number needed (15 rows of 20 each = 300)
-    
-    for(b in seq(1, 15,1)){
-      
-      df <- rbind(df,
-                  data.frame(
-                    x = seq(1,20),
-                    y = rep(b,20))
-      )
-      
-      # remove NA's
-      df <- df |> filter(!is.na(x),
-                         !is.na(y))
-    }
-    
-    # assign color to match legal settlement color on accompanying web page
-    df$color <- lgst
-    
-    # randomly assign male or female student icon
-    df$image <- sample(student, size = 300, T)
+    df <- data.frame(x = rep(seq(1,20),15), # repeat sequence 1:20 15 times
+                     y = rep(1:15, each = 20),     # repeat sequence 1:15, each number 20 times
+                     color = lgst,
+                     image = sample(student, size = 300, T))
     
     # assign net transfer rate o z
     z <- cp$xfr_rate[cp$stlmt_corp_id == sc[i]]
@@ -464,34 +431,17 @@ for (i in 1:length(sc)){
 
 # Union School Corporation's net transfer rate of 1,780 is too large to accommodate the use of student icons within the confines of a popup chart. Using geom_point instead.
 
-
 name <- "Union School Corporation"
 # build dataframe
-df <- data.frame(matrix(nrow = 1,
-                        ncol = 2))
-
-colnames(df) <- c('x', 'y')
-
-for(b in seq(1, 40,1)){
-  
-  df <- rbind(df,
-              data.frame(
-                x = seq(1,50),
-                y = rep(b,50))
-  )
-  
-  # remove NA's
-  df <- df |> filter(!is.na(x),
-                     !is.na(y))
-}
+df <- data.frame(
+  x = seq(1,50),
+  y = rep(1:40, each = 50),
+  color = lgst
+)
 
 
 # assign net transfer to z
 z <- cp$xfr_rate[cp$stlmt_corp_name == name]
-
-
-# assign color 
-df$color <- lgst
 
 # reduce number of rows to 100 + 100-z
 df <- df[1:(200-(100-z)),]
