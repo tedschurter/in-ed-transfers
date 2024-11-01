@@ -166,7 +166,7 @@
           
             <p>The difference between incoming and outgoing transfers determines a corporation's net transfer and net transfer rate figures. </p>
           
-            <p>Using the rounded rates from above, the net transfer rate is 5. </p>
+            <p>Using the rounded rates from above, the net transfer rate is 5 per 100 students with legal settlement. </p>
           </div>
 
         </div>
@@ -177,7 +177,7 @@
           <img src="images/lst_1.png" alt="">
         </div>
 
-      </section>
+      </section id="scrolly">
 
       <section id="outro"> 
         <hr style="width:60%;text-align:left;margin-left:1;color: #faf9f8"> 
@@ -384,7 +384,7 @@
 
  </div>
 
- <hr style="width:40%;text-align:left;margin-left:1;color: #faf9f8">
+ <hr style="width:60%;text-align:left;margin-left:1;color: #faf9f8">
 
  <br>
 <p class = "body__subhed">
@@ -409,15 +409,39 @@
 
 </div>
 
-<br>
-<hr style="width:40%;text-align:left;margin-left:1;color: #faf9f8">
+<br><br>
+<hr style="width:60%;text-align:left;margin-left:1;color: #faf9f8">
+<br><br>
+<div>
+    <p class = "body">
+    Methodology and notes
+</p>
 
+    <p class = "body">
+    This project uses enrollment, facility, test score and transfer data published on the Indiana Department of Education <a href=https://www.in.gov/doe/it/data-center-and-reports/>data portal</a>; it was current as of early June 2024. </p>
+    
+    <p class = "body">
+    School district boundary data comes from the US Census Bureau via the <a href="https://cran.r-project.org/web/packages/tigris/index.html">Tigris</a> R package. School address data was converted to latitude and longitude  using the Google Maps API via the <a href= "https://cran.r-project.org/web/packages/ggmap/">ggmap</a> R package. </p>
+
+    <p class = "body">
+    School transfer data excludes out of state transfers.
+  </p>
+
+  <p class = "body">
+    Data cleaning, transformations and workflow available at the project <a href="https://github.com/tedschurter/in-ed-transfers">repository</a>.
+  </p> 
+
+ <br><br>
+
+ <hr style="width:60%;text-align:left;margin-left:1;color: #faf9f8">
+
+ <br><br>
+
+<br><br>
+
+
+</div>
 </body>
-
-
-
-
-
 </main>
 
   
@@ -426,34 +450,31 @@
     <script src="https://unpkg.com/scrollama"></script>
     <script>  
      
-      var main = document.querySelector("main");
+     var main = document.querySelector("main");
       
       var scrolly = main.querySelector("#scrolly");
-      var sticky  = scrolly.querySelector(".sticky-thing");
+      var sticky = scrolly.querySelector(".sticky-thing");
       var article = scrolly.querySelector("article");
-      var steps   = article.querySelectorAll(".step");
+      var steps = article.querySelectorAll(".step");
 
       var scrolly2 = main.querySelector("#scrolly2");
-      var sticky2  = scrolly2.querySelector(".sticky-thing");
+      var sticky2 = scrolly2.querySelector(".sticky-thing");
       var article2 = scrolly2.querySelector("article");
-      var steps2   = article2.querySelectorAll(".step");
+      var steps2 = article2.querySelectorAll(".step");
       
-
-      // //scroller 3
       var scrolly3 = main.querySelector("#scrolly3");
-      var sticky3  = scrolly3.querySelector(".sticky-thing");
+      var sticky3 = scrolly3.querySelector(".sticky-thing");
       var article3 = scrolly3.querySelector("article");
-      var steps3   = article3.querySelectorAll(".step");
-
+      var steps3 = article3.querySelectorAll(".step");
 
       // initialize the scrollama
-      var scroller  = scrollama();
+      var scroller = scrollama();
       var scroller2 = scrollama();
       var scroller3 = scrollama();
       
-      // scrollama event handlers - seperate event handler needed for each scrolly section; otherwise sequential images load for every step change throughout page.
-      
-      function handleStepEnter(response) {
+     
+ // scrollama event handlers
+ function handleStepEnter(response) {
         // response = { element, direction, index }
         var el = response.element;
 
@@ -475,7 +496,7 @@
         // remove is-active from all steps
         // then add is-active to this step
         
-        steps.forEach(step => step.classList.remove('is-active'));
+        steps2.forEach(step => step.classList.remove('is-active'));
         el.classList.add('is-active');
 
         // this is where the function to change elements within graphics container belongs
@@ -491,8 +512,8 @@
 
         // remove is-active from all steps
         // then add is-active to this step
-       
-        steps.forEach(step => step.classList.remove('is-active'));
+        
+        steps3.forEach(step => step.classList.remove('is-active'));
         el.classList.add('is-active');
 
         // this is where the function to change elements within graphics container belongs
@@ -502,42 +523,42 @@
 
 
       function init() {
-        // assign appropriate handleStepEnter function from above for each scroller section
         scroller
           .setup({
             step: "#scrolly  article .step",
-            offset: .23, 
+            offset: .33,
             debug: false
           })
           .onStepEnter(handleStepEnter);
 
-          // second stage scroller; assign appropriate handleStepEnter function from above
+          // second stage scroller
           scroller2
           .setup({
             step: "#scrolly2  article .step",
-            offset: .23,
+            offset: .33,
             debug: false
           })
           .onStepEnter(handleStepEnter2);
 
-          // third stage scroller; assign appropriate handleStepEnter function from above
+          // second stage scroller
           scroller3
           .setup({
             step: "#scrolly3  article .step",
-            offset: .23,
+            offset: .33,
             debug: false
           })
           .onStepEnter(handleStepEnter3);
 
         // setup resize event
         window.addEventListener("resize", scroller.resize);
-        // window.addEventListener("resize", scroller2.resize);
-        // window.addEventListener("resize", scroller3.resize);
       }
 
 
       // kick things off
       init();
     </script>
-  <!-- </body> -->
+  </body>
 </html>
+
+
+     
