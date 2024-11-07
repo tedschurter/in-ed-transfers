@@ -1,82 +1,81 @@
 * {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0 2rem 0 3rem;
-  padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  min-height: 1280px;
-  color: #3b3b3b;
-  background-color: #fcfdfd;
-  font-size: 22px;
-  /* margin: 0rem 4rem */
-}
-
-p,
-h1 
-h2,
-h3,
-h4
-
-
-a {
-  margin: 0;
-  font-weight: 400;
-  text-decoration: none;
-}
-
-a,
-a:visited,
-a:hover {
-  color: teal;
-  text-decoration: none;
-  border-bottom: 2px solid currentColor;
-}
-
-
-#intro {
-  max-width: 80rem;
-  margin: 0rem 0rem;
-  margin-bottom: 0rem;
-  text-align: left;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    margin: 0 2rem 0 3rem;
+    padding: 0;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 1280px;
+    color: #3b3b3b;
+    background-color: #fcfdfd;
+    font-size: 22px;
+    /* margin: 0rem 4rem */
+  }
+  
+  p,
+  h1 
+  h2,
+  h3,
+  h4
   
   
-}
-
-.intro__hed {
-  font-size: 2em;
-  margin: 2rem auto 0.5rem auto;
-  font-family:Helvetica Neue 
-}
-
-.intro__dek {
-  color: #8a8a8a; 
-  margin: 0 auto 0 auto;
-}
-
-
-.intro__body {
-  color: #525252;
-  margin: 1rem 5rem 0rem 0rem;
-  max-width: 80rem;
-  font-size:1.2rem;
-}
-
+  a {
+    margin: 0;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  
+  a,
+  a:visited,
+  a:hover {
+    color: teal;
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+  }
+  
+  
+  #intro {
+    max-width: 80rem;
+    margin: 0rem 0rem;
+    margin-bottom: 0rem;
+    text-align: left;
+    
+    
+  }
+  
+  .intro__hed {
+    font-size: 2em;
+    margin: 2rem auto 0.5rem auto;
+    font-family:Helvetica Neue 
+  }
+  
+  .intro__dek {
+    color: #8a8a8a; 
+    margin: 0 auto 0 auto;
+  }
+  
+  
+  .intro__body {
+    color: #525252;
+    margin: 1rem 5rem 0rem 0rem;
+    max-width: 80rem;
+    font-size:1.2rem;
+  }
 
 #outro {
-  height: 10px; /* sets gap between bottom of scrolly and next element */
-  color: #525252; 
-  /* margin: 2rem 1rem 0.5rem 1rem; */
-  margin: 2rem 1rem 0rem 1rem;
-  max-width: 80rem;
-  font-size:1.4rem;
-}
+    height: 10px; /* sets gap between bottom of scrolly and next element */
+    color: #525252; 
+    /* margin: 2rem 1rem 0.5rem 1rem; */
+    margin: 2rem 1rem 0rem 1rem;
+    max-width: 80rem;
+    font-size:1.4rem;
+  }
 
 
 @media (min-width: 840px) {
@@ -103,6 +102,8 @@ a:hover {
   font-size:1.1rem;
 }
 
+
+
 .body__header {
   color: #525252; 
   margin: 0rem 1rem 0rem 2rem;
@@ -118,7 +119,7 @@ a:hover {
   margin: 0rem 0rem 1.5rem 0rem;
   max-width: 80rem;
   
-} */
+} 
 
 .body__dek {
   color: #525252; 
@@ -133,6 +134,8 @@ a:hover {
   margin-right: auto;
   width: 20%;
  }
+
+ 
 
  /* size for laptop screens */
  @media only screen and (min-device-width: 550px) {
@@ -224,19 +227,19 @@ a:hover {
 
 /* scroll-2 section rules */
 #scrolly2 {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #fcfdfd;
-  padding: 0rem; /* space on left of scrolling article text block */
-}
-
-#scrolly2 > * {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-} 
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #fcfdfd;
+    padding: 0rem; /* space on left of scrolling article text block */
+    }
+  
+  #scrolly2 > * {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
 
 /* scroll-3 section rules */
 #scrolly3 {
@@ -263,21 +266,23 @@ article {
 
 
 /*graphics container*/
-.sticky-thing { 
-  position: -webkit-sticky;
-  position: sticky;
-  width:  auto;
-  height: auto;
-  margin: 0;
-  background-color: #fcfdfd;
-  z-index: 0;
-  top: 12.5vh; /*shifts graphic up and down within visible page */
-  height: 70vh; /* adjusts height at which scroll section begins ascent up page on last step. */
-  /* Center everything inside */
-  display: flex;
-  align-items: top;
-  justify-content: left;
-}
+@media only screen and (min-device-width: 550px) {
+  .sticky-thing { 
+    position: -webkit-sticky;
+    position: sticky;
+    width:  auto;
+    height: auto;
+    margin: 0;
+    background-color: #fcfdfd;
+    z-index: 0;
+    top: 12.5vh; /*shifts graphic up and down within visible page */
+    height: 45; /* adjusts height at which scroll section begins ascent up page on last step. */
+    /* Center everything inside */
+    display: flex;
+    align-items: top;
+    justify-content: left;
+  }
+  }
 
 /* adjust graphics container for larger screens*/
 @media only screen and (min-device-width: 1340px) {
@@ -290,7 +295,7 @@ article {
   background-color: #fcfdfd;
   z-index: 0;
   top: 12.5vh; /*shifts graphic up and down within visible page */
-  height: 45vh; /* adjusts height at which scroll section begins ascent up page on last step. */
+  height: 60vh; /* adjusts height at which scroll section begins ascent up page on last step. */
   /* Center everything inside */
   display: flex;
   align-items: top;
@@ -300,12 +305,12 @@ article {
 
 
 /* image within graphics container */
-   .sticky-thing img { 
-    padding: 0 rem;
-    width:  808px; /*900; */
-    height: 404px; /*450px;*/
-    border:#f6f8f8
-    } 
+   /* .sticky-thing img {  */
+    /* padding: 0 rem; */
+    /*width:  808px; /*900; */
+    /*height: 404px; /*450px;*/
+    /* border:#f6f8f8 */
+    /* }  */
 
 /* size for laptop screens */
 @media only screen and (min-device-width: 550px) {
